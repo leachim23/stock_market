@@ -112,7 +112,7 @@
     const tip = tooltip(host);
     const W = host.clientWidth || 640, rowH = 22, m = { t: 22, r: 56, b: 8, l: 64 };
     const H = m.t + m.b + rows.length * rowH;
-    const ext = Math.max(10, ...rows.map(r => Math.abs(r.value)));
+    const ext = Math.max(10, ...rows.map(r => Math.abs(r.value))) * 1.18;  // Platz für Wertlabels
     const x = v => m.l + (v + ext) / (2 * ext) * (W - m.l - m.r);
     host.querySelectorAll("svg").forEach(s => s.remove());
     const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: "img", "aria-label": opts.label || "" }, host);

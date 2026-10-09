@@ -1,0 +1,23 @@
+BMW kauf 100,16
+BYD kauf 16,94
+EINRIDE kauf 2,64
+INFLEQTION INC 22,9
+IonQ 40,198
+Ouster 7,823
+Terrestial energie 22,81
+
+
+
+
+• A1103G
+Xtrackers MSCI World Momentum UCITS ETF 1C (ISIN: IE00BL25JP72)64,4
+• A142N1
+iShares S&P 500 Information Technology Sector UCITS ETF (ISIN: IE00B3WJKG14)36,24
+• A0MM0S
+iShares Global Water UCITS ETF (ISIN: IE00B1TXK627)946
+• LYX018
+Amundi MSCI Semiconductors ESG Screened UCITS ETF (ISIN: LU1900066033)88,3
+• LYX02K
+Amundi STOXX Europe 600 Healthcare UCITS ETF (ISIN: LU1834986900)150
+• LYX0GP
+Amundi MSCI World Information Technology UCITS ETF (ISIN: LU0533033667)78,37

@@ -4,8 +4,7 @@
 
 **Gesamtwert:** n/a – die Reports weisen ausschließlich prozentuale Gewichtungen je Depot aus, keine Stückzahlen oder Euro-Beträge.
 
-> 👤 **Mein Depot:** Handlungsempfehlung für die eigenen Positionen → [mein_depot.md](mein_depot.md)
-> 🛒 **Kaufempfehlung:** Becker vs. Zweitmeinung, diversifiziert → [kaufempfehlung.md](kaufempfehlung.md)
+> 👤 **Eigene Depots:** [michi_g](depots/michi_g.md) ([Kaufempfehlung](depots/michi_g_kaufempfehlung.md)) · [michi_h](depots/michi_h.md) ([Kaufempfehlung](depots/michi_h_kaufempfehlung.md))
 
 ## 🏋️ Core-Satellite-Architektur (Becker Barbell)
 

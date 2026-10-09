@@ -13,14 +13,14 @@ Depot-Steckbriefe, eigene Depotbewertung und Kaufempfehlung auf Basis der wöche
 python website/serve.py
 ```
 
-Der Befehl lädt Kurse und Analystenkonsens neu, bewertet das eigene Depot und die Kaufempfehlung neu, baut die Seite und startet `http://localhost:8765` mit Live-Kursen.
+Der Befehl lädt Kurse und Analystenkonsens neu, bewertet alle Depots unter `input/` samt Kaufempfehlung neu, baut die Seite und startet `http://localhost:8765` mit Live-Kursen.
 
 | Pfad | Inhalt |
 |---|---|
-| `portfolio/` | Markdown-Wiki: Dashboard, Steckbriefe, `mein_depot.md`, `kaufempfehlung.md` |
+| `portfolio/` | Markdown-Wiki: Dashboard, Steckbriefe, `depots/<name>.md` und `depots/<name>_kaufempfehlung.md` |
 | `docs/` | Fertige, generierte Webseite (wird von GitHub Pages ausgeliefert) |
 | `website/` | Build (`build.py`), Charts, Yahoo-Anbindung (`yahoo.py`), Server (`serve.py`) |
 | `tools/` | Rohdaten aus den Reports (`assets_data.py`) und Generatoren |
-| `input/michi_h/md_portolio.md` | Eigenes Depot (Format: `TICKER gekauft am TT.MM.JJJJ`) |
+| `input/<name>/*.md` | Eigene Depots, ein Ordner je Person (Zeile = Name aus dem Depotauszug, optional Kaufkurs in EUR oder `gekauft am TT.MM.JJJJ`) |
 
 Die Quell-PDFs liegen nur lokal in `PDF_input/` und sind nicht Teil des Repositories.

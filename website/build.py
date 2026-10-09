@@ -15,8 +15,8 @@ HERE = Path(__file__).resolve().parent
 SRC = HERE.parent / "portfolio"
 PUB = HERE.parent / "docs"  # GitHub Pages liefert /docs aus
 PRICES = HERE / "data" / "prices.json"
-MINE = HERE / "data" / "mine.json"
-BUY = HERE / "data" / "buy.json"
+DEPOTS = HERE / "data" / "depots"
+DEPOT_NAV = []  # [(id, label)] – wird in build() gefüllt
 
 DEPOT_LABEL = {"mein": "Mein Depot", "beta": "Beta-Depot", "2030": "2030-Depot", "alpha": "Alpha-Depot"}
 
@@ -110,8 +110,7 @@ def page(title, body, root="", extra_head=""):
   <a class="brand" href="{root}index.html">Portfolio-Wiki</a>
   <nav>
     <a href="{root}index.html">Dashboard</a>
-    <a href="{root}mein-depot.html">Mein Depot</a>
-    <a href="{root}kaufempfehlung.html">Kaufempfehlung</a>
+    {"".join(f'<a href="{root}depot-{i}.html">Depot {l}</a>' for i, l in DEPOT_NAV)}
     <a href="{root}overview.html">Analyse &amp; Makro</a>
   </nav>
   <button class="theme-toggle" type="button" aria-label="Farbschema wechseln" onclick="toggleTheme()">◐</button>
@@ -183,7 +182,14 @@ liveQuotes([{json.dumps(ticker)}], d => {{
 </script>"""
 
 
-def buy_page(b, wiki):
+def votes_html(r):
+    names = {"becker": "Becker", "analysten": "Analysten", "fundamental": "Fundamental", "momentum": "Momentum"}
+    dots = "".join(f'<i class="vd v{v}" title="{names[k]}: {"positiv" if v > 0 else "negativ" if v < 0 else "neutral"}"></i>' for k, v in r["votes"].items())
+    neg = f' · {r["votesNeg"]} negativ' if r["votesNeg"] else ""
+    return f'<span class="votes">{dots}<b>{r["votesPos"]}/4 positiv</b>{neg}</span>'
+
+
+def buy_page(b, wiki, dep):
     de = lambda d: f"{d[8:]}.{d[5:7]}.{d[:4]}"
     pct = lambda v: "–" if v is None else f"{'+' if v > 0 else '−' if v < 0 else ''}{abs(v):.1f} %".replace(".", ",")
     num = lambda v: f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
@@ -194,15 +200,13 @@ def buy_page(b, wiki):
     sc = lambda i: f"c{i + 1}"
     stale_becker = b["beckerAge"] > b["maxAge"]
 
-    alloc_bar = "".join(f'<span class="{sc(i)}" style="flex:{rows[t]["alloc"]}" title="{t} {rows[t]["alloc"]} %"></span>'
-                        for i, t in enumerate(b["picks"]))
-    alloc_leg = "".join(f'<span class="{sc(i)}"><i></i><b>{t}</b> {rows[t]["alloc"]} % · {esc(rows[t]["bucket"])}</span>'
-                        for i, t in enumerate(b["picks"]))
-    before = "".join(f'<span class="chip-s">{esc(h["bucket"])} <small>{h["t"]}</small></span>' for h in b["holdings"])
-    after = "".join(f'<span class="chip-s new">{esc(rows[t]["bucket"])} <small>{t}</small></span>' for t in b["picks"])
+    before = "".join(f'<span class="chip-s">{esc(k)} <small>{dec(v)} %</small></span>'
+                     for k, v in sorted(dep["bucketWeights"].items(), key=lambda x: -x[1]))
+    scen = b.get("scenarios") or [{"id": "A", "title": "Empfehlung", "allocKey": "alloc", "excludedKey": "excluded", "picks": b["picks"], "text": ""}]
 
-    cards = ""
-    for i, t in enumerate(b["picks"]):
+    def cards_for(tickers, key):
+      cards = ""
+      for i, t in enumerate(tickers):
         r = rows[t]
         q = r["consensus"] or {}
         if q.get("mean"):
@@ -223,33 +227,66 @@ def buy_page(b, wiki):
             second += (f'<p class="web {tone}"><span class="age ok">{de(w["date"])}</span> {esc(w["text"])} '
                        f'<a href="{w["url"]}" target="_blank" rel="noopener">{esc(w["source"])}</a></p>')
         agree_cls = {"Übereinstimmung": "pos", "Divergenz": "neg"}.get(r["agree"], "")
-        tech = '<p class="note">Einziger zusätzlicher Technologie-/Halbleiterwert – CRWD ist bereits Tech.</p>' if r.get("techNote") else ""
+        tech = f'<p class="note">Sektor heute im Depot: {dec(r["bucketWeight"])} % · Familie {esc(r["family"])}: {dec(r["familyWeight"])} %</p>'
         becker_age = f'{de(b["beckerDate"])} · {b["beckerAge"]} Tage' + (" – veraltet" if stale_becker else "")
         s_ = r["score"]
-        cards += f"""<article class="buy-card {sc(i)}">
+        cards += f"""<article class="buy-card {sc(i % 5)}">
   <header>
     <div><span class="rank">{i + 1}</span><a class="tk" href="{link(t)}">{t}</a> <span class="nm">{esc(r['name'])}</span></div>
-    <div class="buy-meta"><span class="badge-s">{esc(r['bucket'])}</span><span class="badge-s">{r['slot']}</span><b>{r['alloc']} %</b></div>
+    <div class="buy-meta"><span class="badge-s">{esc(r['bucket'])}</span><span class="badge-s">{esc(r.get('slot', ''))}</span><b>{r.get(key, 0)} %</b></div>
   </header>
   <div class="trend">{num(r['price'])} {r['currency']} · <span class="{'pos' if (r['vsMa200'] or 0) > 0 else 'neg'}">{pct(r['vsMa200'])} vs. 200T</span> · <span data-spark="{json.dumps(r['spark'])}"></span></div>
   <div class="vs">
     <section class="op becker">
-      <h4>Becker</h4>
+      <h4>1 · Becker</h4>
       <div class="op-head"><b>{esc(r['signalLabel'])}</b><span class="age {'stale' if stale_becker else 'ok'}">{becker_age}</span></div>
       <p>{esc(r['becker'])}</p>
     </section>
     <section class="op second">
-      <h4>Zweitmeinung</h4>
+      <h4>2 · Analysten &amp; Web</h4>
       {second}
     </section>
+    <section class="op">
+      <h4>3 · Fundamental (Buffett-Kennzahlen)</h4>
+      <div class="op-head"><b class="v{r['fund']['score']}">{esc(r['fund']['label'])}</b><span class="age ok">{de(r['fund']['date'])} · aktuell</span></div>
+      <ul class="kz">{"".join(f"<li>{esc(x)}</li>" for x in r['fund']['details'])}</ul>
+    </section>
+    <section class="op">
+      <h4>4 · Momentum (relative Stärke vs. S&amp;P 500)</h4>
+      <div class="op-head"><b class="v{r['mom']['score']}">{esc(r['mom']['label'])}</b><span class="age ok">{de(r['mom']['date'])} · Schlusskurs</span></div>
+      <ul class="kz">{"".join(f"<li>{esc(x)}</li>" for x in r['mom']['details'])}</ul>
+    </section>
   </div>
-  <footer><span class="agree {agree_cls}">{esc(r['agree'])}</span> <span class="muted">Wertung {dec(s_['total'])} = Becker {dec(s_['becker'])} · Analysten {dec(s_['analyst'])} · Web {dec(s_['web'])} · Trend {dec(s_['trend'])}</span>{tech}</footer>
+  <footer>{votes_html(r)}<span class="agree {agree_cls}">Becker vs. Analysten: {esc(r['agree'])}</span> <span class="muted">Wertung {dec(s_['total'])} = Becker {dec(s_['becker'])} · Analysten {dec(s_['analyst'])} · Web {dec(s_['web'])} · Trend {dec(s_['trend'])} · Fundamental {dec(round(s_['fundamental'], 2))} · Momentum {dec(round(s_['momentum'], 2))}</span>{tech}</footer>
 </article>"""
+      return cards
+
+    blocks, tabs = "", ""
+    for k, sv in enumerate(scen):
+        key = sv["allocKey"]
+        bar = "".join(f'<span class="{sc(i % 5)}" style="flex:{max(rows[t].get(key, 0), 0.5)}" title="{t} {rows[t].get(key, 0)} %"></span>'
+                      for i, t in enumerate(sv["picks"]))
+        leg = "".join(f'<span class="{sc(i % 5)}"><i></i><b>{t}</b> {rows[t].get(key, 0)} % · {esc(rows[t]["bucket"])}</span>'
+                      for i, t in enumerate(sv["picks"]))
+        after = "".join(f'<span class="chip-s new">{esc(rows[t]["bucket"])} <small>{t}</small></span>' for t in sv["picks"])
+        tabs += f'<button type="button" class="chip{" active" if k == 0 else ""}" data-scen="{sv["id"]}">{esc(sv["title"])}</button>'
+        blocks += f"""<div class="scen" data-scen="{sv['id']}"{'' if k == 0 else ' hidden'}>
+<section class="card">
+  <h2>{esc(sv['title'])}</h2>
+  <p class="cap">{esc(sv['text'])}</p>
+  <div class="cover"><div><small>Sektoren heute im Depot (Gewicht)</small><div>{before}</div></div><div><small>Neu durch dieses Szenario</small><div>{after}</div></div></div>
+  <h3 class="mini">Aufteilung neuen Kapitals</h3>
+  <div class="wbar">{bar}</div><div class="wlegend">{leg}</div>
+</section>
+<section class="buy-list">{cards_for(sv['picks'], key)}</section>
+</div>"""
 
     excl = "".join(
         f'<tr><td><a class="tk" href="{link(r["t"])}">{r["t"]}</a><div class="sub">{esc(r["name"])}</div></td><td>{esc(r["bucket"])}</td>'
-        f'<td>{esc(r["signalLabel"])}</td><td>{esc(r["score"]["analystLabel"])}</td><td class="num">{dec(r["score"]["total"])}</td>'
-        f'<td>{esc(r["excluded"])}</td></tr>' for r in b["rows"] if r["excluded"])
+        f'<td>{esc(r["signalLabel"])}</td><td>{esc(r["score"]["analystLabel"])}</td><td class="v{r["fund"]["score"]}">{esc(r["fund"]["label"])}</td>'
+        f'<td class="v{r["mom"]["score"]}">{esc(r["mom"]["label"])}</td><td class="num">{dec(r["score"]["total"])}<div class="sub">{r["votesPos"]}/4 positiv</div></td>'
+        f'<td>{esc(r["excluded"] or "empfohlen")}</td><td>{esc(r.get("excludedB") or "empfohlen")}</td></tr>'
+        for r in b["rows"] if r["excluded"] or r.get("excludedB"))
     market = "".join(f'<li><span class="age ok">{de(w["date"])}</span> {esc(w["text"])} '
                      f'<a href="{w["url"]}" target="_blank" rel="noopener">{esc(w["source"])}</a></li>' for w in b["market"])
     stale_web = "".join(f'<li><span class="age stale">{de(w["date"])}</span> {esc(w["source"])} – ignoriert (älter als {b["maxAge"]} Tage)</li>'
@@ -262,22 +299,22 @@ def buy_page(b, wiki):
     return f"""
 <div id="freshness" class="banner" hidden></div>
 <section class="hero">
-  <h1>Kaufempfehlung</h1>
-  <p>Erstellt am <b>{de(b['generated'])}</b>, gültig bis <b>{de(b['validUntil'])}</b> (max. {b['maxAge']} Tage). Becker-Signale gegenübergestellt mit einer Zweitmeinung aus Yahoo-Analystenkonsens und datierten Webquellen – gefiltert auf Diversifikation zu deinem Depot. Keine Anlageberatung.</p>
+  <h1>Kaufempfehlung {esc(dep['label'])}</h1>
+  <p class="tabs"><a href="depot-{dep['id']}.html">Depot {esc(dep['label'])}</a><b>Kaufempfehlung</b></p>
+  <p>Erstellt am <b>{de(b['generated'])}</b>, gültig bis <b>{de(b['validUntil'])}</b> (max. {b['maxAge']} Tage). Vier Meinungen je Titel: Becker, Analysten (Yahoo + datierte Webquellen), Fundamentaldaten nach Buffett-Kennzahlen und Momentum/relative Stärke – gefiltert auf Diversifikation zum Depot {esc(dep['label'])}. Keine Anlageberatung.</p>
 </section>
 {warn}
 <section class="card">
-  <h2>Diversifikation</h2>
-  <p class="cap">Regeln: max. ein Titel je Sektor und je Familie (nur ein Technologie-/Halbleiterwert), keine Sektoren, die das Depot schon abdeckt, 3 Einzelaktien + 2 Kern-Bausteine (doppelt gewichtet, Becker-Barbell).</p>
-  <div class="cover"><div><small>Heute im Depot</small><div>{before}</div></div><div><small>Neu durch die Empfehlung</small><div>{after}</div></div></div>
-  <h3 class="mini">Aufteilung neuen Kapitals</h3>
-  <div class="wbar">{alloc_bar}</div><div class="wlegend">{alloc_leg}</div>
+  <h2>Zwei Szenarien</h2>
+  <p class="cap">Gleiche Kandidaten und Meinungen, unterschiedliche Aufteilung. A folgt der verbindlichen Barbell-Strategie, B verzichtet ganz auf den Barbell-Anker.</p>
+  <div class="chips" role="group" aria-label="Szenario">{tabs}</div>
+  <p class="cap" style="margin-top:12px">Barbell-Regeln (Szenario A): Neues Kapital zuerst in fehlende Anker-Bausteine (Geldmarkt, kurzlaufende AAA-Staatsanleihen, physisches Gold, höchstens ein Welt-ETF). Satelliten nur, solange der Satellit unter 15 % liegt – dann max. 2 Titel, ein Titel je Sektor/Familie, keine Sektoren ≥ 10 % bzw. Familien ≥ 25 %. Kandidaten der „ignorierten Mitte“ werden ausgeschlossen. Barbell heute: Anker {dec(round(dep.get("barbell", {}).get("ist", {}).get("Anker", 0)))} % · Satellit {dec(round(dep.get("barbell", {}).get("ist", {}).get("Satellit", 0)))} % · Mitte {dec(round(dep.get("barbell", {}).get("ist", {}).get("Mitte", 0)))} %.</p>
 </section>
-<section class="buy-list">{cards}</section>
+{blocks}
 <section class="card">
   <h2>Nicht empfohlen</h2>
   <p class="cap">Alle geprüften Kandidaten aus Beckers Depots und Watchlists mit dem Grund für den Ausschluss.</p>
-  <div class="table-wrap"><table><thead><tr><th>Titel</th><th>Sektor</th><th>Becker</th><th>Zweitmeinung</th><th class="num">Wertung</th><th>Grund</th></tr></thead><tbody>{excl}</tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th>Titel</th><th>Sektor</th><th>Becker</th><th>Analysten</th><th>Fundamental</th><th>Momentum</th><th class="num">Wertung</th><th>Grund Szenario A</th><th>Grund Szenario B</th></tr></thead><tbody>{excl}</tbody></table></div>
 </section>
 <section class="card">
   <h2>Marktstimmung aus dem Web</h2>
@@ -293,58 +330,160 @@ def buy_page(b, wiki):
     el.innerHTML = '⛔ <b>Diese Kaufempfehlung ist ' + days + ' Tage alt und damit abgelaufen.</b> Bitte neu erzeugen: <code>python website/serve.py</code>';
   }}
   document.querySelectorAll('[data-spark]').forEach(s => s.innerHTML = sparkline(JSON.parse(s.dataset.spark), 80, 22));
+  document.querySelectorAll('button[data-scen]').forEach(btn => btn.addEventListener('click', () => {{
+    document.querySelectorAll('button[data-scen]').forEach(x => x.classList.toggle('active', x === btn));
+    document.querySelectorAll('div.scen').forEach(d => d.hidden = d.dataset.scen !== btn.dataset.scen);
+  }}));
 }})();
 </script>"""
 
 
-def mine_page(mine):
-    items = mine["items"]
-    pct = lambda v: f"{'+' if v > 0 else '−' if v < 0 else ''}{abs(v):.1f} %".replace(".", ",")
-    num = lambda v: f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
-    sc = lambda i: f"s{i % 4 + 1}"
-    cards = ""
-    for i, a in enumerate(items):
-        r = a["reco"]
-        cls = "pos" if a["perf"] > 0 else "neg"
-        cards += f"""<div class="reco-card {sc(i)}">
-  <h3><a href="assets/{a['ticker']}.html">{a['ticker']}</a><span class="reco reco-{r['cls']}">{html.escape(r['aktion'])}</span></h3>
-  <div class="nm">{html.escape(a['name'])}</div>
-  <div class="kv">
-    <div><small>Kauf {a['buyDate'][8:]}.{a['buyDate'][5:7]}.</small><b>{num(a['buy'])}{'*' if a['buyAssumed'] else ''}</b></div>
-    <div><small>Kurs ({a['currency']})</small><b data-live-p="{a['ticker']}">{num(a['price'])}</b></div>
-    <div><small>seit Kauf</small><b class="{cls}">{pct(a['perf'])}</b></div>
-    <div><small>vs. 200-Tage-Linie</small><b class="{'pos' if a['vsMa200'] > 0 else 'neg'}">{pct(a['vsMa200'])}</b></div>
-  </div>
-  <p><strong>{html.escape(r['kurz'])}</strong></p>
-</div>"""
-    wbar = "".join(f'<span class="{sc(i)}" style="flex:{a["weight"]}" title="{a["ticker"]} {a["weight"]} %"></span>' for i, a in enumerate(items))
-    wleg = "".join(f'<span class="{sc(i)}"><i></i>{a["ticker"]} {str(a["weight"]).replace(".", ",")} %</span>' for i, a in enumerate(items))
-    series = [{"label": a["ticker"], "dates": a["dates"], "close": a["close"], "cls": sc(i)} for i, a in enumerate(items)]
-    md = (SRC / "mein_depot.md").read_text(encoding="utf-8") if (SRC / "mein_depot.md").exists() else ""
-    md = re.sub(r"^## 📊 Überblick.*?(?=^## )", "", md, flags=re.S | re.M)  # Tabelle steht schon als Karten oben
-    md = md.replace("](assets/", "](assets/").replace("](index.md)", "](index.md)")
+def md_inline(x):
+    return inline(x)
+
+
+def dots(h):
+    names = {"becker": "Becker", "analysten": "Analysten", "fundamental": "Fundamental", "momentum": "Momentum"}
+    v = h.get("votes") or {}
+    if not v:
+        return "–"
+    return ('<span class="votes">' + "".join(
+        f'<i class="vd v{x}" title="{names[k]}: {"positiv" if x > 0 else "negativ" if x < 0 else "neutral"}"></i>' for k, x in v.items())
+        + f'<b>{h.get("votesPos", 0)}/4</b></span>')
+
+
+def depot_page(d, wiki):
+    esc = html.escape
+    pct = lambda v: "–" if v is None else f"{'+' if v > 0 else '−' if v < 0 else ''}{abs(v):.1f} %".replace(".", ",")
+    num = lambda v: "–" if v is None else f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+    dec = lambda v: str(v).replace(".", ",")
+    link = lambda t, sym: f"assets/{t}.html" if t in wiki else f"https://finance.yahoo.com/quote/{sym or t}"
+    hs = d["holdings"]
+    has_buy = any(h.get("perf") is not None for h in hs)
+    order = {"Verkaufen": 0, "Trimmen": 1, "Nachkaufen": 2, "Halten": 3}
+    acts = d.get("actions", {})
+    picks = d["buy"]["picks"]
+    plan_cols = [("Verkaufen", "verkaufen", acts.get("Verkaufen", [])), ("Trimmen", "reduzieren", acts.get("Trimmen", [])),
+                 ("Nachkaufen", "kaufen", acts.get("Nachkaufen", [])), ("Neu kaufen", "kaufen", picks),
+                 ("Szenario B", "kaufen", (d["buy"].get("scenarios") or [{}, {"picks": []}])[1]["picks"]),
+                 ("Halten", "halten", acts.get("Halten", []))]
+    plan = "".join(
+        f'<div class="pcol pc-{c}"><h3>{k} <small>{len(v)}</small></h3>'
+        + ("".join(f'<span class="ptk">{esc(x)}</span>' for x in v) if v else '<span class="muted">–</span>')
+        + (f'<a class="pmore" href="kaufempfehlung-{d["id"]}.html">Begründung →</a>' if k in ("Neu kaufen", "Szenario B") and v else "")
+        + ('<div class="sub">ohne Barbell-Anker</div>' if k == "Szenario B" else "")
+        + "</div>" for k, c, v in plan_cols)
+    analysis = "".join(f"<li>{md_inline(x)}</li>" for x in d.get("analysis", []))
+    bb = d.get("barbell") or {"ist": {}, "ziel": {}, "status": []}
+    roles = [("Anker", "rb-anker"), ("Satellit", "rb-sat"), ("Mitte", "rb-mitte")]
+    def bbar(vals):
+        return "".join(f'<span class="{c}" style="flex:{max(vals.get(r, 0), 0.0001)}" title="{r} {dec(round(vals.get(r, 0), 1))} %"></span>' for r, c in roles)
+    bb_html = (f'<div class="bbrow"><span class="bbl">Ist</span><div class="wbar">{bbar(bb["ist"])}</div></div>'
+               f'<div class="bbrow"><span class="bbl">Ziel</span><div class="wbar">{bbar(bb["ziel"])}</div></div>'
+               '<div class="wlegend">' + "".join(f'<span class="{c}"><i></i>{r} {dec(round(bb["ist"].get(r, 0)))} % '
+                                                  f'<small>(Ziel {dec(round(bb["ziel"].get(r, 0)))} %)</small></span>' for r, c in roles) + '</div>'
+               '<ul class="ana">' + "".join(f"<li>{esc(x)}</li>" for x in bb["status"]) + '</ul>')
+
+    bars = ""
+    mx = max(d["bucketWeights"].values() or [1])
+    for k, v in sorted(d["bucketWeights"].items(), key=lambda x: -x[1]):
+        over = v >= 10
+        bars += (f'<div class="sbar{" over" if over else ""}"><span class="sl">{esc(k)}</span>'
+                 f'<span class="st"><i style="width:{v / mx * 100:.1f}%"></i></span><span class="sv">{dec(v)} %{" · voll" if over else ""}</span></div>')
+
+    rows = ""
+    for h in sorted(hs, key=lambda h: (not h["resolved"], order.get(h.get("entscheidung"), 9), h["bucket"], h["t"])):
+        if not h["resolved"]:
+            rows += (f'<tr class="unres"><td><b>{esc(h["t"])}</b><div class="sub">{esc(h["raw"])}</div></td><td>–</td><td class="num">–</td>'
+                     + (f'<td class="num">–</td>' if has_buy else "") +
+                     f'<td class="num">–</td><td>–</td><td>–</td><td><span class="reco reco-halten">Daten nachtragen</span><div class="sub">{esc(h.get("hint", ""))}</div></td></tr>')
+            continue
+        v = h.get("vsMa200")
+        perf_td = ""
+        if has_buy:
+            warn = f'<div class="sub neg">⚠️ unplausibel – bitte prüfen</div>' if h.get("buyWarn") else ""
+            perf_td = (f'<td class="num {"pos" if (h.get("perf") or 0) > 0 else "neg"}" title="{esc(h.get("buyWarn", ""))}">{pct(h.get("perf"))}'
+                       f'<div class="sub">Kauf {num(h.get("buy"))} €</div>{warn}</td>')
+        price = f'{num(h.get("price"))} <small>{h.get("currency", "")}</small>' if h.get("price") is not None else "–"
+        if h.get("currency") not in (None, "EUR") and h.get("priceEUR") is not None:
+            price += f'<div class="sub">{num(h["priceEUR"])} €</div>'
+        bk = h["becker"]
+        btxt = {"held": "Im Becker-Depot", "sold": "Von Becker verkauft", "watch": "Becker-Watchlist", "none": "–"}[bk["kind"]]
+        rows += (f'<tr><td><a class="tk" href="{link(h["t"], h.get("symbol"))}">{esc(h["t"])}</a><div class="sub">{esc(h["name"])}</div></td>'
+                 f'<td>{esc(h["bucket"])}<div class="sub"><span class="role role-{(h.get("role") or "").lower()}">{esc(h.get("role") or "–")}</span> · {esc(h.get("style") or "")}</div></td>'
+                 f'<td class="num">{price}</td>{perf_td}'
+                 f'<td class="num {"pos" if (v or 0) > 0 else "neg"}"><span data-spark="{json.dumps(h.get("spark") or [])}"></span>{pct(v)}</td>'
+                 f'<td><span class="bk bk-{bk["kind"]}" title="{esc(bk["text"])}">{btxt}</span></td>'
+                 f'<td>{dots(h)}</td>'
+                 f'<td><span class="reco reco-{h["ecls"]}">{esc(h["entscheidung"])}</span>'
+                 + (f' <span class="prio prio-{h["prio"]}">Priorität {esc(h["prio"])}</span>' if h.get("prio") else "")
+                 + f'<div class="sub why">{esc(h["egrund"])}</div>'
+                 f'<details class="det"><summary>Alle Gründe</summary><ul>{"".join(f"<li>{esc(x)}</li>" for x in h.get("gruende", []))}</ul></details></td></tr>')
+
+    ma_rows = [{"label": h["t"], "sub": h["name"], "value": h["vsMa200"], "href": link(h["t"], h.get("symbol"))}
+               for h in hs if h.get("vsMa200") is not None]
+    ma_rows.sort(key=lambda r: -r["value"])
+    perf_rows = [{"label": h["t"], "sub": h["name"], "value": h["perf"], "href": link(h["t"], h.get("symbol"))}
+                 for h in hs if h.get("perf") is not None]
+    perf_rows.sort(key=lambda r: -r["value"])
+    unres = ""
+    warns = [h for h in hs if h.get("buyWarn")]
+    if warns:
+        unres += ('<div class="banner warn">⚠️ <b>Kaufkurs unplausibel:</b> '
+                  + "; ".join(f'{esc(h["t"])} ({esc(h["name"])}): {esc(h["buyWarn"])}' for h in warns)
+                  + '. Diese Positionen fließen nicht in die Performance ein – möglicherweise sind Zeilen in der Depot-Datei vertauscht.</div>')
+    if d["unresolved"]:
+        unres += (f'<div class="banner warn">⚠️ <b>{len(d["unresolved"])} Positionen nicht aufgelöst:</b> {esc(", ".join(d["unresolved"]))}. '
+                 f'Bitte Name oder ISIN in <code>input/{esc(d["id"])}/</code> nachtragen – sie fehlen in Bewertung und Sektorgewichten.</div>')
+    perf_card = ""
+    if perf_rows:
+        perf_card = f"""<section class="card">
+  <h2>Performance seit Kauf</h2>
+  <p class="cap">Kaufkurse aus der Depot-Datei (als EUR interpretiert), aktueller Kurs in EUR umgerechnet. Ø {pct(d['perf'])} über {d['perfCount']} Positionen (gleichgewichtet).</p>
+  <div id="perfbars"></div>
+</section>"""
     return f"""
 <section class="hero">
-  <h1>Mein Depot</h1>
-  <p>Performance seit Kauf <strong class="{'pos' if mine['total'] > 0 else 'neg'}">{pct(mine['total'])}</strong> · {len(items)} Positionen · Kurse Yahoo Finance · Empfehlungen nach Beckers Regelwerk und Buffett-Check. Keine Anlageberatung.</p>
+  <h1>Depot {esc(d['label'])}</h1>
+  <p class="tabs"><b>Depot {esc(d['label'])}</b><a href="kaufempfehlung-{d['id']}.html">Kaufempfehlung</a></p>
+  <p>{len(hs)} Positionen aus <code>input/{esc(d['id'])}/</code> · Kurse Yahoo Finance vom {d['generated'][8:]}.{d['generated'][5:7]}.{d['generated'][:4]} · bewertet nach Beckers Regelwerk (Status, 200-Tage-Linie) und Analystenkonsens. Keine Anlageberatung.</p>
 </section>
-<section class="reco-grid">{cards}</section>
+{unres}
 <section class="card">
-  <h2>Performance seit Kauf</h2>
-  <p class="cap">Jede Position indexiert auf 100 am Kauftag. Linie über 100 = im Gewinn.</p>
-  <div id="perf"></div>
+  <h2>Aktionsplan</h2>
+  <p class="cap">Eine Entscheidung je Position aus Barbell-Rolle (Anker/Satellit/Mitte), Steuerung (prozyklisch mit Stop, antizyklisch mit Cost Average), Becker-Status, vier Meinungen und 200-Tage-Linie. Reihenfolge: erst verkaufen, dann Mitte abbauen (Priorität „hoch“ zuerst), dann gestaffelt in den Anker. Keine Anlageberatung.</p>
+  <div class="plan">{plan}</div>
 </section>
 <section class="card">
-  <h2>Gewichtung</h2>
-  <p class="cap">{html.escape(mine['note'])} * Kaufkurs = Yahoo-Schlusskurs am Kauftag.</p>
-  <div class="wbar">{wbar}</div><div class="wlegend">{wleg}</div>
+  <h2>Barbell: Ist gegen Ziel</h2>
+  <p class="cap">Verbindliche Strategie: 85 % defensiver Anker (Geldmarkt, kurzlaufende AAA-Staatsanleihen, physisches Gold, höchstens ein Welt-ETF) · 15 % aggressiver Satellit · keine Mitte. Anteile nach Anzahl der Positionen (ohne Stückzahlen). Rebalancing quartalsweise.</p>
+  {bb_html}
 </section>
-<article class="prose wide">{md_to_html(md)}</article>
+<section class="card">
+  <h2>Gesamtanalyse</h2>
+  <ul class="ana">{analysis}</ul>
+</section>
+<section class="card">
+  <h2>Sektorgewichte</h2>
+  <p class="cap">Ohne Stückzahlen zählt jede Position gleich. Ab 10 % gilt ein Sektor als ausreichend besetzt („voll“) und wird in der Kaufempfehlung nicht weiter aufgestockt.</p>
+  <div class="sbars">{bars}</div>
+</section>
+{perf_card}
+<section class="card">
+  <h2>Abstand zur 200-Tage-Linie</h2>
+  <p class="cap"><i class="sw sw-up"></i>darüber · <i class="sw sw-down"></i>darunter. Beckers zentrale Marke für Stopps.</p>
+  <div id="ma200"></div>
+</section>
+<section class="table-wrap">
+<table class="dep">
+<thead><tr><th>Position</th><th>Sektor · Rolle</th><th class="num">Kurs</th>{'<th class="num">seit Kauf</th>' if has_buy else ''}<th class="num">vs. 200T</th><th>Becker</th><th>4 Meinungen</th><th>Entscheidung</th></tr></thead>
+<tbody>{rows}</tbody>
+</table>
+</section>
 <script>
-indexChart(document.getElementById('perf'), {json.dumps(series, separators=(",", ":"))});
-liveQuotes({json.dumps([a["ticker"] for a in items])}, d => {{
-  for (const t in d) {{ const el = document.querySelector('[data-live-p="'+t+'"]'); if (el && d[t].price) el.textContent = fmtNum(d[t].price); }}
-}});
+document.querySelectorAll('[data-spark]').forEach(s => s.innerHTML = sparkline(JSON.parse(s.dataset.spark), 70, 20));
+divergingBars(document.getElementById('ma200'), {json.dumps(ma_rows, ensure_ascii=False)}, {{label: 'Abstand zur 200-Tage-Linie'}});
+{f"divergingBars(document.getElementById('perfbars'), {json.dumps(perf_rows, ensure_ascii=False)}, {{label: 'Performance seit Kauf'}});" if perf_rows else ''}
 </script>"""
 
 
@@ -357,8 +496,14 @@ def build():
     shutil.copy(HERE / "charts.js", PUB / "charts.js")
     prices = json.loads(PRICES.read_text(encoding="utf-8")) if PRICES.exists() else {"fetched": None, "prices": {}}
     P = prices["prices"]
-    mine = json.loads(MINE.read_text(encoding="utf-8")) if MINE.exists() else {"items": []}
-    mine_t = {i["ticker"] for i in mine["items"]}
+    deps = [json.loads(f.read_text(encoding="utf-8")) for f in sorted(DEPOTS.glob("*.json")) if f.stem != "index"]
+    DEPOT_NAV[:] = [(d["id"], d["label"]) for d in deps]
+    held_by = {}
+    for d in deps:
+        for h in d["holdings"]:
+            held_by.setdefault(h["t"], []).append(d["id"])
+            if h["t"] in ("2B70", "G2XJ", "SPYD"):
+                held_by.setdefault({"2B70": "IBB", "G2XJ": "GDXJ", "SPYD": "NOBL"}[h["t"]], []).append(d["id"])
 
     assets = []
     for f in sorted((SRC / "assets").glob("*.md")):
@@ -367,7 +512,7 @@ def build():
         becker = section(md, "🗣️")
         meta["chance"] = becker.get("Chance", "")
         meta["href"] = f"assets/{f.stem}.html"
-        meta["mine"] = f.stem in mine_t
+        meta["mine"] = sorted(set(held_by.get(f.stem, [])))
         q = P.get(f.stem)
         if q:
             meta.update({k: q[k] for k in ("symbol", "currency", "price", "chg1d", "chg1y", "vsMa200")})
@@ -395,7 +540,6 @@ def build():
     stand = stand.group(1).strip() if stand else ""
     counts = {k: sum(1 for a in assets if a.get("depot") == k) for k in DEPOT_LABEL}
     cash = {"beta": "20 %", "2030": "0 %", "alpha": "11 %"}
-    counts["mein"] = len(mine_t)
     roles = {"beta": "Beta-Core · Kapitalerhalt", "2030": "Langfrist-Core · Sparplan", "alpha": "Alpha-Satellit · Themenwetten"}
     cards = "".join(
         f'<button class="kpi depot-{k}" data-depot="{k}" type="button">'
@@ -403,21 +547,24 @@ def build():
         f'<span class="kpi-value">{counts[k]}</span><span class="kpi-sub">Positionen · Cash {cash[k]}</span>'
         f'<span class="kpi-role">{roles[k]}</span></button>'
         for k in ("beta", "2030", "alpha"))
-    if mine["items"]:
-        cards = (f'<a class="kpi kpi-mine" href="mein-depot.html"><span class="kpi-label">Mein Depot</span>'
-                 f'<span class="kpi-value">{"+" if mine["total"] > 0 else "−"}{abs(mine["total"]):.1f} %</span>'.replace(".", ",")
-                 + f'<span class="kpi-sub">{len(mine_t)} Positionen · seit Kauf</span><span class="kpi-role">Handlungsempfehlung →</span></a>') + cards
+    own = ""
+    for d in deps:
+        perf = (f'{"+" if d["perf"] > 0 else "−"}{abs(d["perf"]):.1f} %'.replace(".", ",") + " Ø seit Kauf") if d.get("perf") is not None else "ohne Kaufkurse"
+        own += (f'<a class="kpi kpi-mine" href="depot-{d["id"]}.html"><span class="kpi-label">Depot {html.escape(d["label"])}</span>'
+                f'<span class="kpi-value">{len(d["holdings"])}</span><span class="kpi-sub">Positionen · {perf}</span>'
+                f'<span class="kpi-role">Bewertung &amp; Kaufempfehlung →</span></a>')
+    cards = own + cards
     dash = f"""
 <section class="hero">
   <h1>Depot-Steckbriefe</h1>
-  <p>{len(assets)} Positionen aus Beckers drei Depots und deinem eigenen Depot, analysiert nach Buffett (Value) und Becker (Makro &amp; Asymmetrie). Stand {html.escape(stand)}.</p>
+  <p>{len(assets)} Steckbriefe aus Beckers drei Depots und den eigenen Depots, analysiert nach Buffett (Value) und Becker (Makro &amp; Asymmetrie). Stand {html.escape(stand)}.</p>
 </section>
 <section class="kpis">{cards}</section>
 <section class="toolbar">
   <input id="q" type="search" placeholder="Suche nach Name, Ticker, Thema …" aria-label="Suche">
   <div class="chips" role="group" aria-label="Depot-Filter">
     <button class="chip active" data-f="all" type="button">Alle</button>
-    <button class="chip" data-f="mein" type="button">Mein Depot</button>
+    {"".join(f'<button class="chip" data-f="dep:{i}" type="button">{html.escape(l)}</button>' for i, l in DEPOT_NAV)}
     <button class="chip" data-f="beta" type="button">Beta</button>
     <button class="chip" data-f="2030" type="button">2030</button>
     <button class="chip" data-f="alpha" type="button">Alpha</button>
@@ -449,7 +596,7 @@ const num = v => {{ const m=String(v??'').replace('−','-').match(/-?\\d+(?:[.,
 const cls = v => v==null?'':v>0?'pos':v<0?'neg':'';
 function visible(){{
   const q=document.getElementById('q').value.toLowerCase();
-  return DATA.filter(a=>(filter==='all'||a.depot===filter||(filter==='mein'&&a.mine)) &&
+  return DATA.filter(a=>(filter==='all'||a.depot===filter||(filter.startsWith('dep:')&&a.mine.includes(filter.slice(4)))) &&
     (a.ticker+' '+a.name+' '+a.block+' '+a.chance).toLowerCase().includes(q));
 }}
 function render(){{
@@ -466,7 +613,7 @@ function render(){{
     const w = Math.max(2, Math.min(100, (val>0?val:0)/30*100));
     return `<tr data-href="${{a.href}}">
       <td><a class="tk" href="${{a.href}}">${{a.ticker}}</a></td>
-      <td>${{a.name}}${{a.mine?' <span class="badge depot-mein">Mein Depot</span>':''}}<div class="sub">${{a.block}}</div></td>
+      <td>${{a.name}}${{a.mine.map(m=>' <span class="badge depot-mein">'+m+'</span>').join('')}}<div class="sub">${{a.block}}</div></td>
       <td><span class="badge depot-${{a.depot}}">${{LABEL[a.depot]}}</span></td>
       <td class="num"><div class="bar ${{stale?'stale':''}} depot-${{a.depot}}"><span style="width:${{w}}%"></span></div>${{stale?(a.last||'–'):a.alloc+' %'}}</td>
       <td class="num" data-p="${{a.ticker}}">${{a.price!=null?fmtNum(a.price)+' <small>'+a.currency+'</small>':'–'}}</td>
@@ -500,12 +647,11 @@ liveQuotes(DATA.map(a=>a.ticker), d=>{{
 </script>
 """
     (PUB / "index.html").write_text(page("Portfolio-Wiki", dash), encoding="utf-8")
-    if BUY.exists():
-        (PUB / "kaufempfehlung.html").write_text(
-            page("Kaufempfehlung", buy_page(json.loads(BUY.read_text(encoding="utf-8")), {a["ticker"] for a in assets})),
-            encoding="utf-8")
-    if mine["items"]:
-        (PUB / "mein-depot.html").write_text(page("Mein Depot", mine_page(mine)), encoding="utf-8")
+    wiki = {a["ticker"] for a in assets}
+    for d in deps:
+        (PUB / f"depot-{d['id']}.html").write_text(page(f"Depot {d['label']}", depot_page(d, wiki)), encoding="utf-8")
+        (PUB / f"kaufempfehlung-{d['id']}.html").write_text(
+            page(f"Kaufempfehlung {d['label']}", buy_page(d["buy"], wiki, d)), encoding="utf-8")
     print(f"Webseite gebaut: {PUB / 'index.html'} ({len(assets)} Steckbriefe)")
 
 

@@ -249,3 +249,62 @@ h3.mini { font-size: 14px; margin: 8px 0 0; }
 ul.plain { padding-left: 0; list-style: none; margin: 0; }
 ul.plain li { margin: 8px 0; font-size: 14px; }
 @media (max-width: 760px) { .vs, .cover { grid-template-columns: 1fr; } }
+
+/* Depot-Seiten */
+.tabs { display: flex; gap: 6px; margin: 6px 0 10px; }
+.tabs a, .tabs b { font-size: 14px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); }
+.tabs b { background: var(--text); color: var(--bg); border-color: var(--text); }
+.sbars { display: grid; gap: 6px; }
+.sbar { display: grid; grid-template-columns: minmax(140px, 220px) 1fr 90px; gap: 10px; align-items: center; font-size: 13.5px; }
+.sbar .st { height: 12px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.sbar .st i { display: block; height: 100%; background: var(--d2030); border-radius: 0 4px 4px 0; }
+.sbar.over .st i { background: var(--alpha); }
+.sbar .sv { font-variant-numeric: tabular-nums; color: var(--muted); }
+.sbar.over .sv { color: var(--text); font-weight: 600; }
+table.dep td { vertical-align: top; }
+table.dep .spark { display: inline-block; vertical-align: middle; margin-right: 6px; }
+table.dep .why { max-width: 46ch; -webkit-line-clamp: 3; }
+tr.unres td { color: var(--muted); }
+.bk { font-size: 12px; padding: 2px 8px; border-radius: 6px; background: var(--surface-2); white-space: nowrap; cursor: help; }
+.bk-sold { color: var(--neg); } .bk-held { color: var(--pos); }
+.reco-kaufen { color: var(--pos); }
+@media (max-width: 760px) { .sbar { grid-template-columns: 110px 1fr 70px; } }
+
+/* Vier Meinungen */
+.op .kz { margin: 6px 0 0; padding-left: 18px; font-size: 13px; }
+.op .kz li { margin: 2px 0; }
+.v1 { color: var(--pos); } .v-1 { color: var(--neg); }
+.votes { display: inline-flex; align-items: center; gap: 4px; margin-right: 10px; font-size: 13px; }
+.votes b { margin-left: 4px; }
+.vd { width: 12px; height: 12px; border-radius: 50%; display: inline-block; background: var(--surface-2); border: 1px solid var(--border); }
+.vd.v1 { background: var(--pos); border-color: var(--pos); }
+.vd.v-1 { background: var(--neg); border-color: var(--neg); }
+
+/* Aktionsplan */
+.plan { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.pcol { border: 1px solid var(--border); border-top: 4px solid var(--pc, var(--border)); border-radius: 8px; padding: 10px; }
+.pcol h3 { margin: 0 0 8px; font-size: 15px; display: flex; justify-content: space-between; }
+.pcol h3 small { color: var(--muted); font-weight: 400; }
+.pc-verkaufen { --pc: var(--neg); } .pc-reduzieren { --pc: #ec835a; } .pc-kaufen { --pc: var(--pos); } .pc-halten { --pc: var(--axis); }
+.ptk { display: inline-block; font-size: 12.5px; font-weight: 600; padding: 2px 7px; margin: 0 4px 4px 0; border-radius: 6px; background: var(--surface-2); }
+.pmore { display: block; font-size: 12.5px; margin-top: 4px; }
+ul.ana { margin: 0; padding-left: 18px; } ul.ana li { margin: 7px 0; }
+.reco-verkaufen { color: var(--neg); border-color: var(--neg); background: color-mix(in srgb, var(--neg) 10%, transparent); }
+details.det { font-size: 12px; margin-top: 3px; } details.det summary { cursor: pointer; color: var(--accent); }
+details.det ul { margin: 4px 0 0; padding-left: 16px; color: var(--muted); }
+@media (max-width: 900px) { .plan { grid-template-columns: 1fr 1fr; } }
+
+/* Barbell */
+.rb-anker { --sc: var(--d2030); } .rb-sat { --sc: var(--alpha); } .rb-mitte { --sc: var(--axis); }
+.wbar .rb-anker, .wbar .rb-sat, .wbar .rb-mitte { background: var(--sc); }
+.bbrow { display: grid; grid-template-columns: 44px 1fr; gap: 8px; align-items: center; }
+.bbrow .bbl { font-size: 12.5px; color: var(--muted); }
+.role { font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 5px; background: var(--surface-2); }
+.role-anker { color: var(--d2030); } .role-satellit { color: var(--alpha); } .role-mitte { color: var(--muted); }
+.prio { font-size: 11px; padding: 1px 6px; border-radius: 5px; background: var(--surface-2); color: var(--muted); white-space: nowrap; }
+.prio-hoch { color: var(--neg); font-weight: 600; }
+
+/* Szenarien */
+.plan { grid-template-columns: repeat(6, 1fr); }
+@media (max-width: 1100px) { .plan { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px) { .plan { grid-template-columns: 1fr 1fr; } }

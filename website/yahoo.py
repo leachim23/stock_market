@@ -21,6 +21,9 @@ YAHOO = {
     "EWG2": "EWG2.SG",     # EUWAX Gold II, Stuttgart
     "0D7Z": "AIGI.L",      # WisdomTree Industrial Metals, London
     "XEON": "XEON.DE",     # Xtrackers EUR Overnight, Xetra
+    "EXVM": "EXVM.DE",     # iShares eb.rexx Government Germany 0-1yr (AAA, kurzlaufend)
+    "4GLD": "4GLD.DE",     # Xetra-Gold (physisch hinterlegt)
+    "VWCE": "VWCE.DE",     # Vanguard FTSE All-World
 }
 
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -169,5 +172,29 @@ def fetch_consensus(ticker):
         "upside": round((target / price - 1) * 100, 1) if price and target else None,
         "dist": {k: trend.get(k, 0) for k in ("strongBuy", "buy", "hold", "sell", "strongSell")},
         "sector": (res.get("assetProfile") or {}).get("sector"),
+        "date": time.strftime("%Y-%m-%d"),
+    }
+
+
+def fetch_fundamentals(ticker):
+    """Fundamentaldaten (3. Meinung): Bewertung, Qualität, Verschuldung, Cashflow, Rendite."""
+    op, crumb = _opener()
+    url = (f"https://query2.finance.yahoo.com/v10/finance/quoteSummary/{symbol(ticker)}"
+           f"?modules=defaultKeyStatistics,summaryDetail,financialData&crumb={crumb}")
+    with op.open(url, timeout=20) as r:
+        res = json.load(r)["quoteSummary"]["result"][0]
+
+    def g(mod, key):
+        v = (res.get(mod) or {}).get(key)
+        return v.get("raw") if isinstance(v, dict) else v
+
+    return {
+        "trailingPE": g("summaryDetail", "trailingPE"), "forwardPE": g("summaryDetail", "forwardPE"),
+        "peg": g("defaultKeyStatistics", "pegRatio"), "roe": g("financialData", "returnOnEquity"),
+        "margin": g("financialData", "profitMargins"), "debtEq": g("financialData", "debtToEquity"),
+        "fcf": g("financialData", "freeCashflow"), "mcap": g("summaryDetail", "marketCap"),
+        "growth": g("financialData", "revenueGrowth"),
+        "beta": g("defaultKeyStatistics", "beta") or g("summaryDetail", "beta"),
+        "yield": g("summaryDetail", "yield") or g("summaryDetail", "dividendYield"),
         "date": time.strftime("%Y-%m-%d"),
     }

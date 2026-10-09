@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Kaufempfehlung: Becker-Signale vs. Zweitmeinung (Yahoo-Analystenkonsens + datierte Webquellen),
+"""Bausteine der Kaufempfehlung (genutzt von tools/portfolios.py): Becker-Signale vs. Zweitmeinung (Yahoo-Analystenkonsens + datierte Webquellen),
 gefiltert auf Diversifikation gegenüber dem eigenen Depot.
 
     python tools/buy_reco.py   -> portfolio/kaufempfehlung.md + website/data/buy.json
@@ -17,7 +17,6 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "website"))
 sys.path.insert(0, str(ROOT / "tools"))
 import yahoo  # noqa: E402
-import my_portfolio  # noqa: E402
 
 MAX_AGE = 4          # Tage
 SLOTS = {"Einzelaktie": 3, "Kern-Baustein": 2}   # Becker-Barbell: Satelliten + stabiler Kern
@@ -43,6 +42,15 @@ def slot(c):
 # --------------------------------------------------------------------------- Becker-Universum
 # signal: kaufen (aktiver Nachkauf/Ausbau) · pruefen (Watchlist/Prüfung) · warten (nur bei Rücksetzer) · nein
 CANDIDATES = [
+    # --- Anker-Bausteine (Barbell, SKILL.md Abschnitt 0)
+    dict(t="XEON", name="Xtrackers EUR Overnight Rate Swap (Geldmarkt)", bucket="Geldmarkt", kind="ETF", signal="kaufen",
+         becker="Beta-Depot: Liquidität ist eine strategische Position (Ziel ~20 %) – Munition für den Crash; Becker hält 8 % im XEON."),
+    dict(t="EXVM", name="iShares eb.rexx Government Germany 0-1yr", bucket="Kurzlaufende Staatsanleihen (AAA)", kind="ETF", signal="pruefen",
+         becker="Nicht in Beckers Depots (er bevorzugt taktisch lange US-Anleihen). Im Barbell-Anker gefordert: kurzlaufende AAA-Staatsanleihen – Bund statt Treasury (USA nicht mehr AAA)."),
+    dict(t="4GLD", name="Xetra-Gold (physisch hinterlegt)", bucket="Gold physisch", kind="ETF", signal="kaufen",
+         becker="Beta-Depot: Gold ~19 % als monetäres Fundament gegen Geldentwertung (Debasement Trade); Becker will auf günstigere Gold-Produkte wechseln – Xetra-Gold ist physisch hinterlegt."),
+    dict(t="VWCE", name="Vanguard FTSE All-World", bucket="Breiter Markt (Welt)", kind="ETF", signal="pruefen",
+         becker="Nicht in Beckers Beta-Depot (er meidet marktgewichtete Indizes wegen des KI-Klumpens). Im Barbell-Anker optional: höchstens ein Welt-ETF."),
     dict(t="GOOGL", name="Alphabet", bucket="Kommunikation & Internet", kind="Aktie", signal="kaufen",
          becker="2030-Depot, Status AUFBAUEN: gefällt Becker derzeit am besten – er ist 'ausdrücklich bullisch' auf die Aktie."),
     dict(t="AMZN", name="Amazon", bucket="Konsum zyklisch", kind="Aktie", signal="kaufen",
@@ -59,7 +67,7 @@ CANDIDATES = [
          becker="Beta-Depot: Kern des Aktienteils (18 %), unverändert – kein aktiver Ausbau genannt."),
     dict(t="RGLD", name="Royal Gold", bucket="Gold & Edelmetalle", kind="Aktie", signal="pruefen",
          becker="2030-Watchlist: steht oben auf der Liste möglicher Neuaufnahmen – langfristig von steigenden Goldpreisen profitieren."),
-    dict(t="GLD", name="SPDR Gold Shares", bucket="Gold & Edelmetalle", kind="ETF", signal="warten",
+    dict(t="GLD", name="SPDR Gold Shares", bucket="Gold physisch", kind="ETF", signal="warten",
          becker="Beta-Depot: Nachkauf nur bei deutlicher Schwäche; Wechsel auf gebührengünstigeres Produkt geplant. UCITS: EWG2."),
     dict(t="V", name="Visa", bucket="Finanzen & Zahlungsverkehr", kind="Aktie", signal="pruefen",
          becker="2030-Watchlist (antizyklisch beobachtet) – KI- und Stablecoin-Profiteur; Käufe erst nach McDonald's-Abbau."),
@@ -173,149 +181,98 @@ def agreement(c, sc, q):
     return "Divergenz"
 
 
-def run():
-    sys.stdout.reconfigure(encoding="utf-8")
-    today = date.today()
-    holdings = [r["ticker"] for r in my_portfolio.parse()]
-    held_buckets = {HOLD_BUCKET.get(t, t) for t in holdings}
-
-    def load(c):
-        h = yahoo.fetch_history(c["t"])
-        try:
-            q = yahoo.fetch_consensus(c["t"])
-        except Exception:  # noqa: BLE001
-            q = None
-        return c, h, q
-
-    with ThreadPoolExecutor(8) as ex:
-        loaded = list(ex.map(load, [c for c in CANDIDATES if c["t"] not in holdings]))
-
-    rows = []
-    for c, h, q in loaded:
-        web = fresh_web(c["t"], today)
-        sc = score(c, q, h, web, today)
-        rows.append({**c, "price": h["price"], "currency": h["currency"], "vsMa200": h["vsMa200"], "chg1y": h["chg1y"],
-                     "ma200": h["ma200"], "spark": h["close"][-252::3], "consensus": q, "web": web, "score": sc,
-                     "agree": agreement(c, sc, q), "signalLabel": SIGNAL_LABEL[c["signal"]]})
-    rows.sort(key=lambda r: -r["score"]["total"])
-
-    # Diversifikation: max. 1 Titel je Bucket und je Familie, keine Buckets, die das Depot schon abdeckt,
-    # keine 'nein'-Signale, kein Widerspruch zwischen Becker und Zweitmeinung, feste Plätze je Klasse.
-    held_fam = {family(b) for b in held_buckets}
-    picks, used, used_fam, filled = [], set(), set(), {k: 0 for k in SLOTS}
-    for r in rows:
-        r["slot"], r["family"] = slot(r), family(r["bucket"])
-        why = None
-        if r["signal"] == "nein":
-            why = "Becker: nicht einsteigen"
-        elif r["bucket"] in held_buckets:
-            why = f"Sektor bereits im Depot ({r['bucket']})"
-        elif r["bucket"] in used:
-            why = f"Sektor schon belegt ({r['bucket']})"
-        elif r["family"] in used_fam:
-            why = f"Familie '{r['family']}' schon belegt – Klumpenrisiko vermeiden"
-        elif r["agree"] == "Divergenz" and r["signal"] != "kaufen":
-            why = "Becker und Zweitmeinung uneinig"
-        elif r["score"]["total"] < 2:
-            why = "Gesamtwertung zu niedrig"
-        elif filled[r["slot"]] >= SLOTS[r["slot"]]:
-            why = f"Plätze für {r['slot']} belegt (besser bewertete Alternativen)"
-        r["excluded"] = why
-        if not why:
-            picks.append(r)
-            used.add(r["bucket"])
-            used_fam.add(r["family"])
-            filled[r["slot"]] += 1
-    r_tech_note = "Technologie" in held_fam
-    for r in picks:
-        r["techNote"] = r_tech_note and r["family"] == "Technologie"
-
-    # Vorgeschlagene Aufteilung neuen Kapitals: ETFs/Kern doppelt gewichtet (Becker-Barbell)
-    w = {r["t"]: (2 if r["slot"] == "Kern-Baustein" else 1) for r in picks}
-    tw = sum(w.values()) or 1
-    for r in picks:
-        r["alloc"] = round(w[r["t"]] / tw * 100)
-
-    payload = {
-        "generated": today.isoformat(), "validUntil": (today + timedelta(days=MAX_AGE)).isoformat(), "maxAge": MAX_AGE,
-        "beckerDate": BECKER_DATE, "beckerAge": age(BECKER_DATE, today),
-        "holdings": [{"t": t, "bucket": HOLD_BUCKET.get(t, t)} for t in holdings],
-        "picks": [r["t"] for r in picks], "rows": rows,
-        "market": fresh_web("*", today),
-        "staleWeb": [dict(date=d, text=x, source=s[0]) for d, x, _, s in WEB.get("*", []) if age(d, today) > MAX_AGE],
-    }
-    OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
-    OUT_JSON.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    write_md(payload)
-    print(f"Kaufempfehlung {today}: {', '.join(f'{r['t']} ({r['alloc']} %)' for r in picks)}")
-    return payload
-
-
-def de(d):
-    return f"{d[8:]}.{d[5:7]}.{d[:4]}"
-
-
-def pct(v):
-    return "–" if v is None else f"{'+' if v > 0 else '−' if v < 0 else ''}{abs(v):.1f} %".replace(".", ",")
-
-
-def write_md(p):
-    rows = {r["t"]: r for r in p["rows"]}
-    L = [
-        "# 🛒 Kaufempfehlung – Becker vs. Zweitmeinung",
-        "",
-        f"**Erstellt:** {de(p['generated'])} · **Gültig bis:** {de(p['validUntil'])} (max. {p['maxAge']} Tage)",
-        "",
-    ]
-    if p["beckerAge"] > p["maxAge"]:
-        L += [f"> ⚠️ **Becker-Signale veraltet:** Der letzte Report ist vom {de(p['beckerDate'])} ({p['beckerAge']} Tage). "
-              "Sie fließen nur halb gewichtet ein. Neue PDFs in `PDF_input/` legen und neu generieren.", ""]
-    L += [
-        "> Keine Anlageberatung. Ziel: Diversifikation zum bestehenden Depot ("
-        + ", ".join(f"{h['t']} = {h['bucket']}" for h in p["holdings"]) + "). Regeln: max. ein Titel je Sektor und je Familie (z. B. nur ein Technologie-/Halbleiterwert), "
-        "keine bereits abgedeckten Sektoren, 3 Einzelaktien + 2 Kern-Bausteine (ETFs/Anleihen) nach Beckers Barbell-Prinzip.",
-        "",
-        "## ✅ Empfehlungen",
-        "",
-        "| # | Titel | Sektor / Rolle | Anteil neues Kapital | Becker (Stand " + de(p["beckerDate"]) + ") | Zweitmeinung (" + de(p["generated"]) + ") | Bild |",
-        "|---|---|---|---|---|---|---|",
-    ]
-    for i, t in enumerate(p["picks"], 1):
-        r = rows[t]
-        q = r["consensus"] or {}
-        sec = (f"{r['score']['analystLabel']} · {q.get('analysts')} Analysten · Ziel {pct(q.get('upside'))}"
-               if q.get("mean") else r["score"]["analystLabel"])
-        L.append(f"| {i} | **{r['name']} ({t})** | {r['bucket']} · {r['slot']} | {r['alloc']} % | {r['signalLabel']} | {sec} | {r['agree']} |")
-    L.append("")
-    for t in p["picks"]:
-        r = rows[t]
-        q = r["consensus"] or {}
-        L += [f"### {r['name']} ({t})", "",
-              f"- **Becker ({de(p['beckerDate'])}, {p['beckerAge']} Tage alt):** {r['becker']}"]
-        if q.get("mean"):
-            d = q["dist"]
-            L.append(f"- **Analystenkonsens Yahoo Finance ({de(q['date'])}):** {r['score']['analystLabel']} (Note {q['mean']:.2f} von 1–5), "
-                     f"{q['analysts']} Analysten – {d['strongBuy']}× Strong Buy, {d['buy']}× Buy, {d['hold']}× Hold, {d['sell'] + d['strongSell']}× Sell. "
-                     f"Mittleres Kursziel {q['target']:.2f} {r['currency']} ({pct(q['upside'])}).")
-        else:
-            L.append("- **Analystenkonsens:** keiner (ETF) – Zweitmeinung aus Trend und Webquellen.")
-        for w in r["web"]:
-            L.append(f"- **Web ({de(w['date'])}, [{w['source']}]({w['url']})):** {w['text']}")
-        if r.get("techNote"):
-            L.append("- **Hinweis Diversifikation:** Mit CRWD hält das Depot bereits einen Technologiewert – dieser Titel ist der einzige zusätzliche Tech-/Halbleiterwert.")
-        L.append(f"- **Trend:** Kurs {r['price']:.2f} {r['currency']}, {pct(r['vsMa200'])} zur 200-Tage-Linie, 1 Jahr {pct(r['chg1y'])}.")
-        L.append("")
-    L += ["## ❌ Nicht empfohlen (mit Grund)", "", "| Titel | Sektor | Becker | Zweitmeinung | Grund |", "|---|---|---|---|---|"]
-    for r in p["rows"]:
-        if r["excluded"]:
-            L.append(f"| {r['name']} ({r['t']}) | {r['bucket']} | {r['signalLabel']} | {r['score']['analystLabel']} | {r['excluded']} |")
-    L += ["", "## 🌐 Marktstimmung aus dem Web (≤ 4 Tage)", ""]
-    L += [f"- **{de(w['date'])}** · [{w['source']}]({w['url']}): {w['text']}" for w in p["market"]]
-    if p["staleWeb"]:
-        L += ["", "*Wegen Alter ignoriert:* " + "; ".join(f"{w['source']} ({de(w['date'])})" for w in p["staleWeb"])]
-    L += ["", "---", "[⬅️ Dashboard](index.md) | [👤 Mein Depot](mein_depot.md) | *Keine Anlageberatung.*", ""]
-    OUT_MD.write_text("\n".join(L), encoding="utf-8")
-
-
 if __name__ == "__main__":
-    run()
+    raise SystemExit("Kaufempfehlungen je Depot erzeugt jetzt: python tools/portfolios.py")
+
+
+# --------------------------------------------------------------------------- 3. Meinung: Fundamentaldaten (Buffett)
+def _pc(v):
+    return f"{v * 100:.0f} %".replace(".", ",")
+
+
+def fundamental_view(c, f):
+    """Liefert (Wertung -1/0/+1, Label, Detailzeilen). Aktien: Qualität + Bewertung; ETFs: KGV bzw. Rendite."""
+    if not f:
+        return 0, "Keine Daten", []
+    if c["bucket"] == "Anleihen":
+        y = f.get("yield")
+        if y is None:
+            return 0, "Keine Daten", []
+        return (1 if y >= 0.04 else 0), ("Attraktive Rendite" if y >= 0.04 else "Neutral"), [f"Ausschüttungsrendite {_pc(y)} (≥ 4 % = attraktiv)"]
+    if c["bucket"] in ("Gold & Edelmetalle", "Krypto") and c["kind"] == "ETF":
+        return 0, "Nicht anwendbar", ["Rohstoff/Krypto – keine Unternehmenskennzahlen"]
+    if c["kind"] == "ETF":
+        pe = f.get("trailingPE")
+        if not pe:
+            return 0, "Keine Daten", []
+        det = [f"KGV des Korbs {pe:.1f}".replace(".", ",")] + ([f"Rendite {_pc(f['yield'])}"] if f.get("yield") else [])
+        return (1, "Fair bewertet", det) if pe < 18 else (-1, "Teuer", det) if pe > 25 else (0, "Neutral", det)
+    q, v, det = 0, 0, []
+    roe, mg, de, fcf, mcap, fpe, peg = (f.get(k) for k in ("roe", "margin", "debtEq", "fcf", "mcap", "forwardPE", "peg"))
+    if roe is not None:
+        q += roe >= 0.15
+        det.append(f"Eigenkapitalrendite {_pc(roe)}")
+    if mg is not None:
+        q += mg >= 0.15
+        det.append(f"Nettomarge {_pc(mg)}")
+    if de is not None:
+        q += de <= 100
+        det.append(f"Verschuldung/EK {de / 100:.1f}".replace(".", ","))
+    if fcf is not None:
+        q += fcf > 0
+    if fpe and fpe > 0:
+        v += 2 if fpe < 15 else 1 if fpe < 25 else -1 if fpe > 40 else 0
+        det.append(f"KGV (erwartet) {fpe:.1f}".replace(".", ","))
+    if peg:
+        v += 1 if peg < 1.5 else -1 if peg > 3 else 0
+        det.append(f"PEG {peg:.2f}".replace(".", ","))
+    if fcf and mcap:
+        fy = fcf / mcap
+        v += fy >= 0.04
+        det.append(f"FCF-Rendite {fy * 100:.1f} %".replace(".", ","))
+    det.insert(0, f"Qualität {q}/4")
+    total = q + v
+    if total >= 5:
+        return 1, "Positiv – Qualität zu fairem Preis", det
+    if total <= 2:
+        return -1, "Kritisch – teuer oder schwache Qualität", det
+    return 0, "Neutral", det
+
+
+# --------------------------------------------------------------------------- 4. Meinung: Momentum / relative Stärke
+def momentum_view(h, spy):
+    """Relative Stärke vs. S&P 500 (SPY) über 3/6/12 Monate + Trendstatus (Kurs > 50T > 200T)."""
+    c, s = h.get("close") or [], spy.get("close") or []
+    if len(c) < 64 or len(s) < 64:
+        return 0, "Zu kurze Historie", [], {}
+    ret = lambda a, n: (a[-1] / a[-n - 1] - 1) * 100 if len(a) > n else None
+    rows, out = {}, 0
+    for lbl, n in (("3M", 63), ("6M", 126), ("12M", 252)):
+        a, b = ret(c, n), ret(s, n)
+        if a is None or b is None:
+            continue
+        rows[lbl] = (round(a, 1), round(b, 1))
+        out += a > b
+    ma50 = sum(c[-50:]) / 50
+    ma200 = sum(c[-200:]) / 200 if len(c) >= 200 else None
+    trend = 0
+    if ma200:
+        trend = 1 if c[-1] > ma50 > ma200 else -1 if c[-1] < ma50 < ma200 else 0
+    tlabel = {1: "Aufwärtstrend (Kurs > 50T > 200T)", -1: "Abwärtstrend (Kurs < 50T < 200T)", 0: "Trend uneinheitlich"}[trend]
+    det = [f"{k}: {a:+.1f} % vs. S&P {b:+.1f} %".replace(".", ",") for k, (a, b) in rows.items()] + [tlabel]
+    pts = out + trend
+    if pts >= 3:
+        return 1, "Stark – schlägt den Markt", det, rows
+    if pts <= 0:
+        return -1, "Schwach – hinkt dem Markt hinterher", det, rows
+    return 0, "Neutral", det, rows
+
+
+def opinion_votes(c, q, sc, fs, ms):
+    """+1/0/-1 je Meinung: Becker, Analysten, Fundamental, Momentum."""
+    b = {"kaufen": 1, "pruefen": 1, "halten": 0, "warten": 0, "nein": -1}[c["signal"]]
+    if q and q.get("mean"):
+        a = 1 if q["mean"] <= 2.2 else -1 if q["mean"] >= 3 else 0
+    else:
+        a = 1 if sc["analyst"] >= 1 else 0
+    return {"becker": b, "analysten": a, "fundamental": fs, "momentum": ms}

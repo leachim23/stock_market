@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Lokaler Server mit Yahoo-Finance-Anbindung.
 
-    python website/serve.py            -> lädt Kursverläufe neu, bewertet Mein Depot, baut die Seite, öffnet http://localhost:8765
+    python website/serve.py            -> lädt Kursverläufe neu, bewertet alle Depots unter input/, baut die Seite, öffnet http://localhost:8765
     python website/serve.py --no-fetch -> ohne Neuladen der Historie (schneller Start)
 
 Endpunkte:
@@ -20,8 +20,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent / "tools"))
 import build  # noqa: E402
-import buy_reco  # noqa: E402
-import my_portfolio  # noqa: E402
+import portfolios  # noqa: E402
 import yahoo  # noqa: E402
 
 PORT = 8765
@@ -31,8 +30,7 @@ LOCK = threading.Lock()
 def refresh():
     with LOCK:
         yahoo.update(yahoo.wiki_tickers())
-        my_portfolio.main()
-        buy_reco.run()
+        portfolios.run()
         build.build()
 
 

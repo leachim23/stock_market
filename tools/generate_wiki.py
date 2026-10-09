@@ -98,8 +98,8 @@ def index_md():
         "",
         "**Gesamtwert:** n/a – die Reports weisen ausschließlich prozentuale Gewichtungen je Depot aus, keine Stückzahlen oder Euro-Beträge.",
         "",
-        "> 👤 **Mein Depot:** Handlungsempfehlung für die eigenen Positionen → [mein_depot.md](mein_depot.md)",
-        "> 🛒 **Kaufempfehlung:** Becker vs. Zweitmeinung, diversifiziert → [kaufempfehlung.md](kaufempfehlung.md)",
+        "> 👤 **Eigene Depots:** " + " · ".join(f"[{d.name}](depots/{d.name}.md) ([Kaufempfehlung](depots/{d.name}_kaufempfehlung.md))"
+                                          for d in sorted((ROOT / "input").iterdir()) if d.is_dir()),
         "",
         "## 🏋️ Core-Satellite-Architektur (Becker Barbell)",
         "",
