@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Baut die statische Webseite aus portfolio/*.md nach website/public/.
+"""Baut die statische Webseite aus portfolio/*.md nach docs/ (GitHub Pages).
 
 Quelle der Wahrheit sind die Markdown-Dateien – nach Änderungen dort einfach
-`python website/build.py` ausführen und website/public/index.html im Browser öffnen.
+`python website/build.py` ausführen und docs/index.html im Browser öffnen.
 Keine externen Abhängigkeiten.
 """
 import html
@@ -13,7 +13,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SRC = HERE.parent / "portfolio"
-PUB = HERE / "public"
+PUB = HERE.parent / "docs"  # GitHub Pages liefert /docs aus
 PRICES = HERE / "data" / "prices.json"
 MINE = HERE / "data" / "mine.json"
 BUY = HERE / "data" / "buy.json"
@@ -352,6 +352,7 @@ def build():
     if PUB.exists():
         shutil.rmtree(PUB)
     (PUB / "assets").mkdir(parents=True)
+    (PUB / ".nojekyll").write_text("", encoding="utf-8")  # Pages: Dateien unverändert ausliefern
     shutil.copy(HERE / "style.css", PUB / "style.css")
     shutil.copy(HERE / "charts.js", PUB / "charts.js")
     prices = json.loads(PRICES.read_text(encoding="utf-8")) if PRICES.exists() else {"fetched": None, "prices": {}}

@@ -159,7 +159,8 @@
 
   /* ---------------------------------------------------------- Live-Kurse (nur via serve.py) */
   window.liveQuotes = function (tickers, onData) {
-    if (!location.protocol.startsWith("http")) return;
+    // nur mit lokalem Server (serve.py); auf file:// und GitHub Pages gibt es keine /api
+    if (!["localhost", "127.0.0.1"].includes(location.hostname)) return;
     const pull = () => fetch("/api/quotes?t=" + encodeURIComponent(tickers.join(",")))
       .then(r => r.ok ? r.json() : null).then(d => d && onData(d)).catch(() => {});
     pull(); setInterval(pull, 60000);

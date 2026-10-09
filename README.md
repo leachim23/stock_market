@@ -4,7 +4,8 @@ Depot-Steckbriefe, eigene Depotbewertung und Kaufempfehlung auf Basis der wöche
 
 ## Webseite ansehen
 
-`website/public/index.html` im Browser öffnen. Die Seite ist statisch und braucht keinen Server.
+- **Online:** https://leachim23.github.io/stock_market/ (GitHub Pages, Ordner `docs/`)
+- **Lokal:** `docs/index.html` im Browser öffnen. Die Seite ist statisch und braucht keinen Server.
 
 ## Aktualisieren
 
@@ -17,7 +18,8 @@ Der Befehl lädt Kurse und Analystenkonsens neu, bewertet das eigene Depot und d
 | Pfad | Inhalt |
 |---|---|
 | `portfolio/` | Markdown-Wiki: Dashboard, Steckbriefe, `mein_depot.md`, `kaufempfehlung.md` |
-| `website/` | Build (`build.py`), Charts, Yahoo-Anbindung (`yahoo.py`), Server (`serve.py`), fertige Seite in `public/` |
+| `docs/` | Fertige, generierte Webseite (wird von GitHub Pages ausgeliefert) |
+| `website/` | Build (`build.py`), Charts, Yahoo-Anbindung (`yahoo.py`), Server (`serve.py`) |
 | `tools/` | Rohdaten aus den Reports (`assets_data.py`) und Generatoren |
 | `input/michi_h/md_portolio.md` | Eigenes Depot (Format: `TICKER gekauft am TT.MM.JJJJ`) |
 
