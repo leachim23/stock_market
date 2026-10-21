@@ -15,24 +15,24 @@
 |---|---|---|---|---|
 | 10 % | 9 % | 10 % | 9 % | 9 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
-- **Chance:** Digitalbank mit laut Becker 'super starkem' Wachstum. Er erwartet, dass die Aktie wie Robinhood wieder anzieht – und will dann reduzieren.
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
+- **Chance:** Digitalbank mit laut Inputgeber 'super starkem' Wachstum. Er erwartet, dass die Aktie wie Robinhood wieder anzieht – und will dann reduzieren.
 - **Risiko:** Kurs im unteren Korridor. Ein Bruch unter 14,90 USD (tiefere Tiefs) wäre 'richtig böse'. Steigende Zinsen bleiben das Grundproblem.
-- **Wochenstatus:** KW42: Sheet-Status 'reduzieren' gilt für Block C – Becker lässt SoFi laufen: fundamental 'sehr, sehr gut', der Abverkauf kommt von den Zinsen.
+- **Wochenstatus:** KW42: Sheet-Status 'reduzieren' gilt für Block C – Inputgeber lässt SoFi laufen: fundamental 'sehr, sehr gut', der Abverkauf kommt von den Zinsen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Banklizenz und Cross-Selling-Ökosystem (Kredit, Konto, Invest) – im Wettbewerb mit Großbanken und Neobrokern aber kaum Preissetzungsmacht. (Bewertung: **Schwach**)
 - **Circle of Competence:** SoFi ist eine Online-Bank, die vor allem gut verdienenden jungen Akademikern Kredite, Konten und Geldanlage anbietet. Sie verdient an der Zinsmarge und an Gebühren. Mit Galileo/Technisys verkauft sie zusätzlich Banksoftware an andere Fintechs.
 - **Management & Verschuldung:** Gründer-nahes Management, wächst schnell, inzwischen GAAP-profitabel. Als Bank ist Verschuldung/EBITDA nicht aussagekräftig – relevant sind Eigenkapitalquote und Kreditausfälle.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Extrem hoch – Zinssenkungen wirken doppelt (Kreditnachfrage + Bewertung).
 - **Asymmetrisches Risikoprofil:** Ja – bei fallenden Zinsen 'nächster großer Gewinner', bei hohen Zinsen Gefahr eines panischen Ausverkaufs.
 - **Antizyklischer Status:** Im unteren Korridor – antizyklisch, aber Unterstützung bei 14,90 USD muss halten.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]
-- *Nachkaufmarke bei Liquiditäts-Dip:* Warnsignal: Bruch unter 14,90 USD (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Warnsignal: Bruch unter 14,90 USD (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

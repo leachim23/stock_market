@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 2 % | – | – | 2 % | 2 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Foundry für Silicon-Photonics- und Connectivity-Chips mit Produktion außerhalb China/Taiwan. Erholt sich laut Recap KW40.
 - **Risiko:** Kapitalintensiv und zyklisch; liegt seit Einstieg im Minus.
 - **Wochenstatus:** KW42: unverändert −9 % – einziger Wert im Block, der sich nicht verschlechtert hat.
@@ -25,7 +25,7 @@
 - **Circle of Competence:** GlobalFoundries fertigt Chips im Auftrag anderer Firmen in älteren, spezialisierten Fertigungsverfahren. Die Fabriken stehen in den USA, Europa und Singapur. Kunden schätzen die geopolitisch sichere Lieferkette.
 - **Management & Verschuldung:** Mehrheitsaktionär Mubadala; moderate Verschuldung.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel.
 - **Asymmetrisches Risikoprofil:** Mittel.
 - **Antizyklischer Status:** Unter Einstand – Erholung abwarten.

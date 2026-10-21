@@ -15,8 +15,8 @@
 |---|---|---|---|---|
 | – | 5 % | 5 % | 5 % | 5 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
-- **Chance:** S&P-500-Werte mit ≥25 Jahren Dividendensteigerung, gleichgewichtet, Sektorkappung 30 %. Durch gestiegene Zinsen stark gefallen – Becker erwartet keine dauerhaft hohen Zinsen.
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
+- **Chance:** S&P-500-Werte mit ≥25 Jahren Dividendensteigerung, gleichgewichtet, Sektorkappung 30 %. Durch gestiegene Zinsen stark gefallen – Inputgeber erwartet keine dauerhaft hohen Zinsen.
 - **Risiko:** Zinsempfindlich; bleibt in tech-getriebenen Rallys zurück (im Beta gewollt).
 - **Wochenstatus:** KW42: antizyklischer Kauf aufgegangen – 'für einen so langweiligen ETF eine ziemlich starke Entwicklung'. Nachkauf erst beim nächsten Rücksetzer.
 
@@ -27,14 +27,14 @@
 - **Circle of Competence:** Der ETF kauft gleichgewichtet alle S&P-500-Firmen, die ihre Dividende seit mindestens 25 Jahren jedes Jahr erhöht haben. Das sind meist reife Qualitätsunternehmen. Er ist das Gegenteil eines KI-Wachstumsindex.
 - **Management & Verschuldung:** Kein operatives Management. Relevant sind Kostenquote (TER), Replikationsmethode und Emittentenrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel – profitiert von fallenden Zinsen, besonders bei harter Landung.
 - **Asymmetrisches Risikoprofil:** Nein – defensiver Qualitätsbaustein.
 - **Antizyklischer Status:** Zinsbedingt abgestraft – antizyklischer Kauf.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* n/a (ETF)
-- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf erst beim nächsten Rücksetzer (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf erst beim nächsten Rücksetzer (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

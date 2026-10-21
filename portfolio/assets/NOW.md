@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 8 % | 8 % | 8 % | 9 % | 9 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Workflow-Plattform für Großkonzerne mit sehr hoher Kundenbindung und klarem KI-Anwendungsfall. Ursprünglich antizyklisch gekauft, nach Block B aufgestiegen.
 - **Risiko:** Mit 8 % hoch gewichtet; nach dem starken Software-Lauf bleibt die Bewertung anspruchsvoll.
 - **Wochenstatus:** KW42: unter besonderer Beobachtung – die Position ist groß, der Ausbruch ist nicht gelungen.
@@ -25,7 +25,7 @@
 - **Circle of Competence:** ServiceNow liefert Software, mit der Großunternehmen interne Abläufe digitalisieren (z. B. IT-Tickets, HR-Anfragen). Kunden zahlen jährliche Abo-Gebühren. KI-Agenten sollen künftig Teile dieser Abläufe automatisch erledigen.
 - **Management & Verschuldung:** Sehr hohe Margen und freier Cashflow, Netto-Cash. Hohe aktienbasierte Vergütung verwässert.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel bis hoch – Software-Multiples sind zinssensitiv.
 - **Asymmetrisches Risikoprofil:** Nein – Qualitäts-Growth, Upside begrenzt durch hohe Bewertung.
 - **Antizyklischer Status:** Nach antizyklischem Kauf deutlich gelaufen – jetzt Momentum statt Antizyklik.

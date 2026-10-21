@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 2 % | 2 % | 2 % | 2 % | 2 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Standardwerkzeuge für Softwareteams (Jira, Confluence) mit hoher Kundenbindung. Position zweimal halbiert, Rest läuft.
 - **Risiko:** Verhaltener Ausblick auf 2027; der Software-Sektor ist deutlich gelaufen.
 - **Wochenstatus:** KW42: 'eigentlich sehr, sehr stark' – Rücksetzer mit dem breiten Software-Abverkauf.
@@ -25,7 +25,7 @@
 - **Circle of Competence:** Atlassian verkauft Software, mit der Entwicklerteams Aufgaben planen (Jira) und Wissen teilen (Confluence). Bezahlt wird pro Nutzer im Abo. Der Vertrieb läuft fast ohne Außendienst über Self-Service.
 - **Management & Verschuldung:** Gründergeführt, hoher Cashflow, moderate Schulden (Verschuldung/EBITDA < 1). Hohe aktienbasierte Vergütung.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel bis hoch – Software-Bewertung zinssensitiv.
 - **Asymmetrisches Risikoprofil:** Gering – Restposition.
 - **Antizyklischer Status:** Abgestraft, aber Ausblick schwach – 'ignored', These nur noch halb intakt.

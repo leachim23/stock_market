@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 7 % | – | – | 7 % | 6 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Stationäre Brennstoffzellen erzeugen Strom direkt vor Ort – unabhängig von Netzanschlüssen, dem Engpass beim Bau von KI-Rechenzentren.
 - **Risiko:** Sehr hohe Bewertung nach starkem Lauf, extreme Volatilität.
 - **Wochenstatus:** KW42: +29 → +8 %. Ausstieg bei nachhaltigem Bruch der 200-Tage-Linie; Strom- und Netzanschlüsse als möglicher nächster KI-Engpass.
@@ -25,14 +25,14 @@
 - **Circle of Competence:** Bloom baut Kraftwerke im Schrankformat, die aus Erdgas oder Wasserstoff Strom erzeugen. Rechenzentren können damit sofort Strom bekommen, ohne jahrelang auf einen Netzanschluss zu warten. Bloom verdient an Verkauf und Wartungsverträgen.
 - **Management & Verschuldung:** Erst kürzlich profitabel; Wandelanleihen und hohe Verschuldung relativ zum EBITDA.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Hoch – Growth-/Energie-Wert mit Finanzierungsabhängigkeit.
 - **Asymmetrisches Risikoprofil:** Ja – Kleiner Wert mit großem Rechenzentrums-Hebel.
 - **Antizyklischer Status:** Nach starkem Lauf – Momentum.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]
-- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf bei tieferem Rücksetzer (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf bei tieferem Rücksetzer (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

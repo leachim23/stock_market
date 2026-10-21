@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 6 % | – | – | 6 % | 7 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Ökosystem aus Smartphones, IoT und schnell wachsendem E-Auto-Geschäft – Hardware-Skaleneffekte plus wiederkehrende Software-Erlöse.
 - **Risiko:** Harter Wettbewerb im China-EV- und Smartphone-Markt, regulatorische Eingriffe.
 - **Wochenstatus:** KW42: Gewinner der Woche (−6 → −3 %), während der US-Markt abverkauft wurde.
@@ -25,7 +25,7 @@
 - **Circle of Competence:** Xiaomi verkauft günstige, gut ausgestattete Smartphones und Haushaltsgeräte, die alle über eine App vernetzt sind. Seit 2024 baut es erfolgreich Elektroautos. Geld verdient es zusätzlich mit Internet-Services auf seinen Geräten.
 - **Management & Verschuldung:** Gründergeführt (Lei Jun), Netto-Cash-Position.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Sehr hoch – China-Liquidity-Play.
 - **Asymmetrisches Risikoprofil:** Mittel.
 - **Antizyklischer Status:** Leicht unter Einstand – geduldig abwarten.

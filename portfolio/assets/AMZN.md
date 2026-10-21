@@ -15,8 +15,8 @@
 |---|---|---|---|---|
 | 7 % | 6 % | 7 % | 7 % | 7 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
-- **Chance:** AWS ist der größte Cloud-Anbieter und direkter KI-Profiteur. Steht ganz oben auf Beckers Nachkaufliste.
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
+- **Chance:** AWS ist der größte Cloud-Anbieter und direkter KI-Profiteur. Steht ganz oben auf Inputgebers Nachkaufliste.
 - **Risiko:** Nachkäufe vorerst blockiert: Durch die eingebuchten McDonald's-Puts ist das gesamte Cash des Depots gebunden.
 - **Wochenstatus:** KW42: mit Alphabet am interessantesten – 'außergewöhnlich gut aufgestellt', sollte sich auch in einem größeren Abverkauf sehr gut halten.
 
@@ -25,14 +25,14 @@
 - **Circle of Competence:** Amazon verkauft online Waren und betreibt dafür das größte Logistiknetz des Westens. Mit AWS vermietet es Rechenleistung an Unternehmen – das ist der Gewinntreiber. Werbung ist das dritte, schnell wachsende Standbein.
 - **Management & Verschuldung:** Management reinvestiert konsequent statt Dividenden – langfristig orientiert. Verschuldung/EBITDA klar < 1. Hohe KI-Investitionen drücken den freien Cashflow.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel bis hoch – Konsum und Cloud-Bewertungen profitieren von lockerer Geldpolitik.
 - **Asymmetrisches Risikoprofil:** Nein – Mega-Cap-Compounder.
-- **Antizyklischer Status:** Zuletzt schwächer als die übrigen Plattformen – laut Becker eher Nachkaufniveau.
+- **Antizyklischer Status:** Zuletzt schwächer als die übrigen Plattformen – laut Inputgeber eher Nachkaufniveau.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]
-- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf, sobald Cash frei (Becker); eigene Marke: [eigene Eingabe]
+- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf, sobald Cash frei (Inputgeber); eigene Marke: [eigene Eingabe]
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

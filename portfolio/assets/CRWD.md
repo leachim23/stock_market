@@ -15,9 +15,9 @@
 |---|---|---|---|---|
 | 0 % (2030) | raus (2030) | – | Watchlist (2030) | – |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
-- **Chance:** Becker (2030-Depot KW38): führende Cloud-Security-Plattform und 'einer der Titel, die er am liebsten zurückkaufen würde'. Er hatte die Position verkauft, weil sie zu stark gestiegen war.
-- **Risiko:** Ab KW39 auf Beckers Liste 'Nicht mehr einsteigen': Die Aktie ist ihm 'inzwischen zu stark gelaufen'. Gleiche Einordnung wie Palantir.
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
+- **Chance:** Inputgeber (2030-Depot KW38): führende Cloud-Security-Plattform und 'einer der Titel, die er am liebsten zurückkaufen würde'. Er hatte die Position verkauft, weil sie zu stark gestiegen war.
+- **Risiko:** Ab KW39 auf Inputgebers Liste 'Nicht mehr einsteigen': Die Aktie ist ihm 'inzwischen zu stark gelaufen'. Gleiche Einordnung wie Palantir.
 - **Wochenstatus:** KW42: in den Reports nicht erwähnt; zuletzt (KW41) auf der 2030-Watchlist für Block B.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
@@ -25,10 +25,10 @@
 - **Circle of Competence:** CrowdStrike schützt Computer und Cloud-Server von Unternehmen vor Hackerangriffen. Ein kleines Programm auf jedem Gerät meldet verdächtiges Verhalten an die Cloud, wo KI Angriffe erkennt. Kunden zahlen Abo-Gebühren und kaufen nach und nach weitere Module dazu.
 - **Management & Verschuldung:** Gründergeführt (George Kurtz), Netto-Cash-Position, starker freier Cashflow – aber hohe aktienbasierte Vergütung. Der weltweite IT-Ausfall im Juli 2024 hat das Geschäftsmodell nicht beschädigt.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Hoch – Software-Growth mit hohem Multiple reagiert stark auf Zinsen und Liquidität.
 - **Asymmetrisches Risikoprofil:** Nein – nach rund +116 % in 12 Monaten ist das Chance-Risiko-Verhältnis nicht mehr asymmetrisch.
-- **Antizyklischer Status:** Weit über der 200-Tage-Linie – Sentiment-Übertreibung. Becker: 'zu stark gelaufen'.
+- **Antizyklischer Status:** Weit über der 200-Tage-Linie – Sentiment-Übertreibung. Inputgeber: 'zu stark gelaufen'.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]

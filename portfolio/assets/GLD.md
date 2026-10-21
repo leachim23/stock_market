@@ -15,10 +15,10 @@
 |---|---|---|---|---|
 | 15 % | 15 % | – | 14 % | 14 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Liquide US-Gold-Position, Kern-Hedge gegen Fiat-Entwertung. Zentralbanken kaufen weltweit Gold, USA weiten Schulden alle 70 Tage um 1 Bio. USD aus.
 - **Risiko:** Steigende Realzinsen belasten; zuletzt unter der 200-Tage-Linie. Test der 4.000 USD möglich.
-- **Wochenstatus:** KW42: auf Zielallokation; Gold findet Becker langfristig 'wieder sehr attraktiv'. Tausch in ein günstigeres Produkt geplant.
+- **Wochenstatus:** KW42: auf Zielallokation; Gold findet Inputgeber langfristig 'wieder sehr attraktiv'. Tausch in ein günstigeres Produkt geplant.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -27,14 +27,14 @@
 - **Circle of Competence:** Der ETF hält physische Goldbarren im Tresor und bildet den Goldpreis ab. Gold wirft keine Zinsen ab, ist aber ein jahrtausendealter Wertspeicher. Er steigt typischerweise bei Geldentwertung und Krisen.
 - **Management & Verschuldung:** Kein operatives Management. Relevant sind Kostenquote (TER), Replikationsmethode und Emittentenrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Hoch – profitiert von Geldmengenausweitung und fallenden Realzinsen.
 - **Asymmetrisches Risikoprofil:** Nein – monetäres Fundament.
 - **Antizyklischer Status:** Unter der 200-Tage-Linie – antizyklischer Nachkauf bei Rücksetzer.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* n/a
-- *Nachkaufmarke bei Liquiditäts-Dip:* Gold-Test bei 4.000 USD = Kaufmoment (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Gold-Test bei 4.000 USD = Kaufmoment (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

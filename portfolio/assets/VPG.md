@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 2 % | – | – | 2 % | 2 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Präzisionssensorik und Messtechnik für Robotik/Automatisierung mit ersten Humanoid-Design-Wins. Erholt sich (KW40).
 - **Risiko:** Schwächster Wert im Depot (−50 %, KW38). These intakt, braucht aber deutlich mehr Zeit.
 - **Wochenstatus:** KW42: −44 %, Unterstützung hielt zunächst. Bricht sie, Nachkaufzone 45–50 – solange das Kerngeschäft hält; Zahlen stehen an.
@@ -25,14 +25,14 @@
 - **Circle of Competence:** VPG stellt hochpräzise Sensoren her, die Kraft, Gewicht und Dehnung messen. Roboter brauchen solche Sensoren, um Dinge zu greifen. Kunden sind Industrie, Medizin und Luftfahrt.
 - **Management & Verschuldung:** Konservativ, geringe Verschuldung.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel bis hoch – Small-Cap.
 - **Asymmetrisches Risikoprofil:** Ja – Humanoid-Fantasie in Small-Cap.
 - **Antizyklischer Status:** Halbiert – antizyklisch.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]
-- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf bei 45–50, solange das Kerngeschäft hält (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf bei 45–50, solange das Kerngeschäft hält (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

@@ -1,6 +1,6 @@
-# Becker Makro-Crashkurs 2026 – Zusammenfassung
+# Inputgeber Makro-Crashkurs 2026 – Zusammenfassung
 
-Quelle: `PDF_input/markro_crash_kurs/` (nicht im Repository). Bildungsmaterial von Balthasar Becker / Pure Alpha. Die folgenden Punkte geben **Beckers Thesen** wieder, keine geprüften Fakten. Zahlen stammen von seinen Folien, mit der dort genannten Quelle.
+Quelle: `PDF_input/markro_crash_kurs/` (nicht im Repository). Bildungsmaterial von Inputgeber / Pure Alpha. Die folgenden Punkte geben **Inputgebers Thesen** wieder, keine geprüften Fakten. Zahlen stammen von seinen Folien, mit der dort genannten Quelle.
 
 | Einheit | Datum | Titel | Stand |
 |---|---|---|---|
@@ -32,7 +32,7 @@ Neue Einheiten unten ergänzen und die Tabelle fortschreiben.
 - **Bessembinder (1926–2025):** 3,7 % aller US-Aktien erzeugen 100 % der Netto-Wertschöpfung. 46 Firmen erzeugen die Hälfte davon. Die mittlere Aktie hat über ihre Lebenszeit −6,9 % Rendite, obwohl der Index rund 10 % pro Jahr bringt.
 - **These:** KI macht aus „Winner takes most“ ein „Winner takes even more“. Wenige Plattformen nehmen Hunderten Firmen Marktanteile ab.
 
-**Beckers System („Perpetual Wealth Building Machine“)**
+**Inputgebers System („Perpetual Wealth Building Machine“)**
 - Zeitaufteilung, nicht Kapitalaufteilung: **85 %** operative Tätigkeit (Cashflow erzeugen) → **10 %** Alpha-Depot (Kapital vermehren, Liquiditäts- und Wirtschaftszyklus spielen) → **5 %** Beta-Depot (Vermögen sichern, prognosefrei per ETF, antizyklisches Rebalancing).
 - Gewinne aus dem Alpha-Depot fließen ins Beta-Depot, bis die Rendite den Lebensstil dauerhaft trägt („Escape Velocity“).
 - Drei Hebel: mehr verdienen (Value-Hierarchie Angestellter → Selbstständig → Unternehmer; „Welle statt härter rudern“), weniger ausgeben (größter Posten sind die Steuern), die Differenz investieren.
@@ -57,8 +57,8 @@ Neue Einheiten unten ergänzen und die Tabelle fortschreiben.
 - Wachstum hat drei Quellen: Erwerbstätigkeit (demografisch begrenzt, Geburtenraten und Erwerbsquote sinken), Produktivität (der einzige dauerhafte Hebel) und Verschuldung (geliehen von morgen).
 - Steigende Schulden bringen steigende Zinszahlungen, also muss die Liquidität steigen. Neue Schulden dienen zunehmend der Refinanzierung alter Schulden. Es entsteht ein Teufelskreis.
 - **Fälligkeitsstruktur USA (30.06.2026):** Etwa ein Drittel der handelbaren Staatsschulden (10,15 Bio. $) wird innerhalb von 12 Monaten fällig, 67,7 % innerhalb von 5 Jahren. Die durchschnittliche Restlaufzeit beträgt 71 Monate.
-- **Schulden zu Liquidität:** globale Schulden 353 Bio. $ (IIF, Q1 2026) zu globaler Liquidität 195 Bio. $ (Howell, Sept. 2026), also **etwa 181 %**. Liegt der Wert über der Linie, fehlt Liquidität für die Refinanzierung. Dort lagen Lehman, die Euro- und die EM-Krise. (In den Weekly Recaps nennt Becker die Kennzahl als Verhältnis von Schulden- zu Liquiditätswachstum 1,8, kritisch ab 2,2–2,3.)
-- **Ergebnis: etwa 8 % Geldentwertung pro Jahr.** Das ist die Hürde, die jede Anlage erst schlagen muss. In KW41 nennt Becker 8–10 %.
+- **Schulden zu Liquidität:** globale Schulden 353 Bio. $ (IIF, Q1 2026) zu globaler Liquidität 195 Bio. $ (Howell, Sept. 2026), also **etwa 181 %**. Liegt der Wert über der Linie, fehlt Liquidität für die Refinanzierung. Dort lagen Lehman, die Euro- und die EM-Krise. (In den Weekly Recaps nennt Inputgeber die Kennzahl als Verhältnis von Schulden- zu Liquiditätswachstum 1,8, kritisch ab 2,2–2,3.)
+- **Ergebnis: etwa 8 % Geldentwertung pro Jahr.** Das ist die Hürde, die jede Anlage erst schlagen muss. In KW41 nennt Inputgeber 8–10 %.
 
 **Vom Fehler zum Vorteil**
 - Nicht alle Anlagen profitieren gleich vom Gelddrucken.

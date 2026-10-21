@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 4 % | 4 % | 4 % | 4 % | 4 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Breiter Zugang zum US-Biotech-Sektor. These: Biotech profitiert langfristig stark von KI, weil sich Wirkstoffforschung und Studien beschleunigen.
 - **Risiko:** Biotech schwankt deutlich stärker als der Gesundheitssektor; einzelne Studienergebnisse bewegen den Sektor.
 - **Wochenstatus:** KW42: profitiert von starken Healthcare-Zuflüssen – an den roten Tagen lag der Sektor im Plus.
@@ -27,7 +27,7 @@
 - **Circle of Competence:** Der ETF hält rund 200 US-Biotech- und Pharmawerte aus dem Nasdaq. Er profitiert, wenn neue Medikamente zugelassen werden und Übernahmen stattfinden. Schwergewichte sind große, profitable Biotech-Konzerne.
 - **Management & Verschuldung:** Kein operatives Management. Relevant sind Kostenquote (TER), Replikationsmethode und Emittentenrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Hoch – Biotech ist stark zins- und finanzierungsabhängig.
 - **Asymmetrisches Risikoprofil:** Mittel – Sektorwette mit Übernahme-Fantasie, aber breit gestreut.
 - **Antizyklischer Status:** Sektor lange ignoriert – antizyklischer Charakter.

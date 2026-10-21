@@ -15,10 +15,10 @@
 |---|---|---|---|---|
 | 7 % | 7 % | – | 6 % | 6 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
-- **Chance:** Rund 5 % Verzinsung langfristig einloggen; fällt der Zins, steigt der Kurs. Guter Rezessions-Hedge. Beckers 'interessantester antizyklischer Gegentrade'.
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
+- **Chance:** Rund 5 % Verzinsung langfristig einloggen; fällt der Zins, steigt der Kurs. Guter Rezessions-Hedge. Inputgebers 'interessantester antizyklischer Gegentrade'.
 - **Risiko:** Sehr zinssensitiv – steigen die Zehnjahresrenditen weiter, fällt der Kurs. Währungsrisiko USD.
-- **Wochenstatus:** KW42: Fluchthafen der Woche – Becker war 'zu früh dran', jetzt läuft die Position. XEON soll schrittweise hierher fließen.
+- **Wochenstatus:** KW42: Fluchthafen der Woche – Inputgeber war 'zu früh dran', jetzt läuft die Position. XEON soll schrittweise hierher fließen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -27,14 +27,14 @@
 - **Circle of Competence:** Der ETF hält US-Staatsanleihen mit über 20 Jahren Restlaufzeit. Fallen die Zinsen um 1 Prozentpunkt, steigt der Kurs um rund 16-17 %. Er ist der klassische Gegenpol zu Aktien in Rezessionen.
 - **Management & Verschuldung:** Kein operatives Management. Relevant sind Kostenquote (TER), Replikationsmethode und Emittentenrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Hoch (invers zu Zinsen) – profitiert direkt von Zinssenkungen/QE.
 - **Asymmetrisches Risikoprofil:** Mittel – Zinsrückgang + Kupon = asymmetrisch bei hohen Ausgangszinsen.
-- **Antizyklischer Status:** Nach dem Zinsgipfel erholt – Becker hält den Höhepunkt der Renditen für gesehen.
+- **Antizyklischer Status:** Nach dem Zinsgipfel erholt – Inputgeber hält den Höhepunkt der Renditen für gesehen.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* n/a
-- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkaufen, wenn weiter unter Druck (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkaufen, wenn weiter unter Druck (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

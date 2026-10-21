@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Bausteine der Kaufempfehlung (genutzt von tools/portfolios.py): Becker-Signale vs. Zweitmeinung (Yahoo-Analystenkonsens + datierte Webquellen),
+"""Bausteine der Kaufempfehlung (genutzt von tools/portfolios.py): Inputgeber-Signale vs. Zweitmeinung (Yahoo-Analystenkonsens + datierte Webquellen),
 gefiltert auf Diversifikation gegenüber dem eigenen Depot.
 
     python tools/buy_reco.py   -> portfolio/kaufempfehlung.md + website/data/buy.json
 
 Frische-Regel: Eine Quelle zählt nur voll, wenn sie höchstens MAX_AGE Tage alt ist.
-Ältere Becker-Signale werden halb gewichtet und markiert; ältere Webquellen werden ignoriert.
+Ältere Inputgeber-Signale werden halb gewichtet und markiert; ältere Webquellen werden ignoriert.
 """
 import json
 import sys
@@ -19,14 +19,14 @@ sys.path.insert(0, str(ROOT / "tools"))
 import yahoo  # noqa: E402
 
 MAX_AGE = 4          # Tage
-SLOTS = {"Einzelaktie": 3, "Kern-Baustein": 2}   # Becker-Barbell: Satelliten + stabiler Kern
+SLOTS = {"Einzelaktie": 3, "Kern-Baustein": 2}   # Inputgeber-Barbell: Satelliten + stabiler Kern
 # Übergeordnete Familien: höchstens ein Titel je Familie (verhindert z. B. mehrere Halbleiter-nahe Werte)
 FAMILY = {"Halbleiter": "Technologie", "Robotik & Automatisierung": "Technologie", "Messtechnik & Photonics": "Technologie",
           "Software & Cybersecurity": "Technologie", "Breiter Markt (gleichgewichtet)": "US-Aktien breit",
           "Dividenden-Qualität": "US-Aktien breit"}
 OUT_MD = ROOT / "portfolio" / "kaufempfehlung.md"
 OUT_JSON = ROOT / "website" / "data" / "buy.json"
-BECKER_DATE = "2026-10-16"   # letzter Becker-Report: pdf/ (KW42)
+INPUTGEBER_DATE = "2026-10-16"   # letzter Inputgeber-Report: pdf/ (KW42)
 
 # Diversifikations-Buckets für die eigenen Positionen
 HOLD_BUCKET = {"LULU": "Konsum zyklisch", "CRWD": "Software & Cybersecurity", "IBB": "Gesundheit / Biotech"}
@@ -39,85 +39,85 @@ def family(bucket):
 def slot(c):
     return "Kern-Baustein" if c["kind"] == "ETF" or c["t"] == "BRK-B" else "Einzelaktie"
 
-# --------------------------------------------------------------------------- Becker-Universum
+# --------------------------------------------------------------------------- Inputgeber-Universum
 # signal: kaufen (aktiver Nachkauf/Ausbau) · pruefen (Watchlist/Prüfung) · warten (nur bei Rücksetzer) · nein
 CANDIDATES = [
     # --- Anker-Bausteine (Barbell, SKILL.md Abschnitt 0)
     dict(t="XEON", name="Xtrackers EUR Overnight Rate Swap (Geldmarkt)", bucket="Geldmarkt", kind="ETF", signal="kaufen",
-         becker="Beta-Depot 9 %, Status EINSTEIGEN: Liquidität (21 %) ist die strategische Reserve für den Moment, in dem die Notenbank eingreifen muss."),
+         inputgeber="Beta-Depot 9 %, Status EINSTEIGEN: Liquidität (21 %) ist die strategische Reserve für den Moment, in dem die Notenbank eingreifen muss."),
     dict(t="EXVM", name="iShares eb.rexx Government Germany 0-1yr", bucket="Kurzlaufende Staatsanleihen (AAA)", kind="ETF", signal="pruefen",
-         becker="Nicht in Beckers Depots (er schichtet Euro-Liquidität in US-Anleihen, 'eventuell auch kürzere Laufzeiten'). Im Barbell-Anker gefordert: kurzlaufende AAA-Staatsanleihen – Bund statt Treasury (USA nicht mehr AAA)."),
+         inputgeber="Nicht in Inputgebers Depots (er schichtet Euro-Liquidität in US-Anleihen, 'eventuell auch kürzere Laufzeiten'). Im Barbell-Anker gefordert: kurzlaufende AAA-Staatsanleihen – Bund statt Treasury (USA nicht mehr AAA)."),
     dict(t="4GLD", name="Xetra-Gold (physisch hinterlegt)", bucket="Gold physisch", kind="ETF", signal="kaufen",
-         becker="Beta-Depot: Gold 18 % auf Zielallokation, langfristig 'wieder sehr attraktiv'. Xetra-Gold kam aus der Gruppe als Ersatz für EWG2 – Becker: 'das kann sein'."),
+         inputgeber="Beta-Depot: Gold 18 % auf Zielallokation, langfristig 'wieder sehr attraktiv'. Xetra-Gold kam aus der Gruppe als Ersatz für EWG2 – Inputgeber: 'das kann sein'."),
     dict(t="VWCE", name="Vanguard FTSE All-World", bucket="Breiter Markt (Welt)", kind="ETF", signal="pruefen",
-         becker="Nicht in Beckers Beta-Depot (er meidet marktgewichtete Indizes wegen des KI-Klumpens). Im Barbell-Anker optional: höchstens ein Welt-ETF."),
+         inputgeber="Nicht in Inputgebers Beta-Depot (er meidet marktgewichtete Indizes wegen des KI-Klumpens). Im Barbell-Anker optional: höchstens ein Welt-ETF."),
     # --- 2030-Depot
     dict(t="GOOGL", name="Alphabet", bucket="Kommunikation & Internet", kind="Aktie", signal="kaufen",
-         becker="2030-Depot 10 %, Status AUFBAUEN: mit Amazon der interessanteste Wert – sollte sich auch in einem größeren Abverkauf sehr gut halten."),
+         inputgeber="2030-Depot 10 %, Status AUFBAUEN: mit Amazon der interessanteste Wert – sollte sich auch in einem größeren Abverkauf sehr gut halten."),
     dict(t="AMZN", name="Amazon", bucket="Konsum zyklisch", kind="Aktie", signal="kaufen",
-         becker="2030-Depot 7 %, Status AUFBAUEN: 'außergewöhnlich gut aufgestellt'. Kappen die Hyperscaler ihre KI-Investitionen, sollten ihre eigenen Aktien steigen."),
+         inputgeber="2030-Depot 7 %, Status AUFBAUEN: 'außergewöhnlich gut aufgestellt'. Kappen die Hyperscaler ihre KI-Investitionen, sollten ihre eigenen Aktien steigen."),
     dict(t="ASML", name="ASML Holding", bucket="Halbleiter", kind="Aktie", signal="kaufen",
-         becker="2030-Depot 3 %, Status AUFBAUEN: erholt sich nach dem Abverkauf; Pick-and-Shovel unabhängig davon, welcher Chiphersteller gewinnt."),
+         inputgeber="2030-Depot 3 %, Status AUFBAUEN: erholt sich nach dem Abverkauf; Pick-and-Shovel unabhängig davon, welcher Chiphersteller gewinnt."),
     dict(t="RKLB", name="Rocket Lab", bucket="Raumfahrt", kind="Aktie", signal="pruefen",
-         becker="2030: 'interessantester Neueinstiegskandidat' nach dem brutalen Abverkauf – Becker schreibt Puts (Strike 66, effektiv ~60), um die Aktie eingebucht zu bekommen. Es kann weiter nach unten gehen."),
+         inputgeber="2030: 'interessantester Neueinstiegskandidat' nach dem brutalen Abverkauf – Inputgeber schreibt Puts (Strike 66, effektiv ~60), um die Aktie eingebucht zu bekommen. Es kann weiter nach unten gehen."),
     dict(t="RGLD", name="Royal Gold", bucket="Gold & Edelmetalle", kind="Aktie", signal="pruefen",
-         becker="2030: mögliche Neuaufnahme – lief an einem schwachen Tag deutlich im Plus."),
+         inputgeber="2030: mögliche Neuaufnahme – lief an einem schwachen Tag deutlich im Plus."),
     dict(t="CRDO", name="Credo Technology", bucket="Halbleiter", kind="Aktie", signal="kaufen",
-         becker="Alpha 4 % (+28 %), Status EINSTEIGEN – stärkster Wert im Depot; zusätzlich Neuaufnahme-Kandidat im 2030-Depot."),
+         inputgeber="Alpha 4 % (+28 %), Status EINSTEIGEN – stärkster Wert im Depot; zusätzlich Neuaufnahme-Kandidat im 2030-Depot."),
     # --- Beta-Depot
     dict(t="MKL", name="Markel Group", bucket="Finanzen & Zahlungsverkehr", kind="Aktie", signal="kaufen",
-         becker="Beta-Depot 14 %, Status EINSTEIGEN: an den roten Tagen der Woche im Plus – 'bei Markel würde er einsteigen'."),
+         inputgeber="Beta-Depot 14 %, Status EINSTEIGEN: an den roten Tagen der Woche im Plus – 'bei Markel würde er einsteigen'."),
     dict(t="BRK-B", name="Berkshire Hathaway B", bucket="Finanzen & Zahlungsverkehr", kind="Aktie", signal="warten",
-         becker="Beta-Depot 18 %, Status EINSTEIGEN – nach dem starken Anstieg würde Becker für einen Einstieg aber den nächsten Rücksetzer abwarten."),
+         inputgeber="Beta-Depot 18 %, Status EINSTEIGEN – nach dem starken Anstieg würde Inputgeber für einen Einstieg aber den nächsten Rücksetzer abwarten."),
     dict(t="RSP", name="Invesco S&P 500 Equal Weight ETF", bucket="Breiter Markt (gleichgewichtet)", kind="ETF", signal="warten",
-         becker="Beta 8 %, Status LAUFEN LASSEN: gut gelaufen, Chance-Risiko schlechter – nächsten Rücksetzer abwarten. UCITS: SP2Q (IE00BNGJJT35)."),
+         inputgeber="Beta 8 %, Status LAUFEN LASSEN: gut gelaufen, Chance-Risiko schlechter – nächsten Rücksetzer abwarten. UCITS: SP2Q (IE00BNGJJT35)."),
     dict(t="NOBL", name="ProShares S&P 500 Dividend Aristocrats", bucket="Dividenden-Qualität", kind="ETF", signal="warten",
-         becker="Beta 5 %, Status LAUFEN LASSEN: antizyklischer Kauf aufgegangen – nächsten Rücksetzer abwarten. UCITS-Näherung: SPYD (IE00B6YX5D40)."),
+         inputgeber="Beta 5 %, Status LAUFEN LASSEN: antizyklischer Kauf aufgegangen – nächsten Rücksetzer abwarten. UCITS-Näherung: SPYD (IE00B6YX5D40)."),
     dict(t="TLT", name="iShares 20+ Year Treasury Bond ETF", bucket="Anleihen", kind="ETF", signal="kaufen",
-         becker="Beta 6 %, Status EINSTEIGEN: Fluchthafen der Woche; Euro-Liquidität soll schrittweise in TLT/TIP fließen. Zinsgipfel laut Becker gesehen. UCITS: DTLA (IE00BFM6TC58)."),
+         inputgeber="Beta 6 %, Status EINSTEIGEN: Fluchthafen der Woche; Euro-Liquidität soll schrittweise in TLT/TIP fließen. Zinsgipfel laut Inputgeber gesehen. UCITS: DTLA (IE00BFM6TC58)."),
     dict(t="GLD", name="SPDR Gold Shares", bucket="Gold physisch", kind="ETF", signal="warten",
-         becker="Beta 14 %, auf Zielallokation; wegen hoher Gebühren will Becker in ein günstigeres Produkt tauschen. UCITS: EWG2 / Xetra-Gold."),
+         inputgeber="Beta 14 %, auf Zielallokation; wegen hoher Gebühren will Inputgeber in ein günstigeres Produkt tauschen. UCITS: EWG2 / Xetra-Gold."),
     dict(t="IBIT", name="iShares Bitcoin Trust", bucket="Krypto", kind="ETF", signal="warten",
-         becker="Beta 10 %, auf Zielallokation – nicht mehr aggressiv nachkaufen, Einsteiger nur in Tranchen. Struktur beendet unter 75.000 USD. UCITS-ETP: IB1T."),
+         inputgeber="Beta 10 %, auf Zielallokation – nicht mehr aggressiv nachkaufen, Einsteiger nur in Tranchen. Struktur beendet unter 75.000 USD. UCITS-ETP: IB1T."),
     # --- Alpha-Depot und Watchlists
     dict(t="XPEV", name="XPeng", bucket="China & Schwellenländer", kind="Aktie", signal="kaufen",
-         becker="Alpha 4 % (−17 %), Status EINSTEIGEN: China hielt im Abverkauf – Becker hält XPeng 'für Einsteiger ausdrücklich für kaufbar'."),
+         inputgeber="Alpha 4 % (−17 %), Status EINSTEIGEN: China hielt im Abverkauf – Inputgeber hält XPeng 'für Einsteiger ausdrücklich für kaufbar'."),
     dict(t="KEYS", name="Keysight Technologies", bucket="Messtechnik & Photonics", kind="Aktie", signal="pruefen",
-         becker="Alpha 5 % (−10 %): reiner Chart-Trade – wird der Ausbruch negiert, geht Becker raus."),
+         inputgeber="Alpha 5 % (−10 %): reiner Chart-Trade – wird der Ausbruch negiert, geht Inputgeber raus."),
     dict(t="BE", name="Bloom Energy", bucket="Strom & Netzinfrastruktur", kind="Aktie", signal="pruefen",
-         becker="Alpha 6 % (+8 %), Status EINSTEIGEN: Strom- und Netzanschlüsse als möglicher nächster KI-Engpass; Ausstieg bei nachhaltigem Bruch der 200-Tage-Linie."),
+         inputgeber="Alpha 6 % (+8 %), Status EINSTEIGEN: Strom- und Netzanschlüsse als möglicher nächster KI-Engpass; Ausstieg bei nachhaltigem Bruch der 200-Tage-Linie."),
     dict(t="GDX", name="VanEck Gold Miners ETF", bucket="Gold & Edelmetalle", kind="ETF", signal="pruefen",
-         becker="Alpha-Watchlist KW42: neben GDXJ jetzt auch der großkapitalisierte GDX – Minen verdienen beim aktuellen Goldpreis 'einen Haufen Geld'."),
+         inputgeber="Alpha-Watchlist KW42: neben GDXJ jetzt auch der großkapitalisierte GDX – Minen verdienen beim aktuellen Goldpreis 'einen Haufen Geld'."),
     dict(t="DHI", name="D.R. Horton", bucket="Immobilien & Hausbau", kind="Aktie", signal="pruefen",
-         becker="Alpha-Watchlist KW42: steht mit Lennar 'ganz oben' bei den Profiteuren fallender Zinsen – Absicht, kein Kauf."),
+         inputgeber="Alpha-Watchlist KW42: steht mit Lennar 'ganz oben' bei den Profiteuren fallender Zinsen – Absicht, kein Kauf."),
     dict(t="LEN", name="Lennar", bucket="Immobilien & Hausbau", kind="Aktie", signal="pruefen",
-         becker="Alpha-Watchlist KW42: wie D.R. Horton – Rotation in alles, was von fallenden Zinsen profitiert."),
+         inputgeber="Alpha-Watchlist KW42: wie D.R. Horton – Rotation in alles, was von fallenden Zinsen profitiert."),
     dict(t="GEV", name="GE Vernova", bucket="Strom & Netzinfrastruktur", kind="Aktie", signal="pruefen",
-         becker="Alpha-Watchlist Versorger & Netze: Strom- und Netzanschlüsse könnten der nächste Engpass im KI-Thema werden."),
+         inputgeber="Alpha-Watchlist Versorger & Netze: Strom- und Netzanschlüsse könnten der nächste Engpass im KI-Thema werden."),
     dict(t="ETN", name="Eaton", bucket="Strom & Netzinfrastruktur", kind="Aktie", signal="pruefen",
-         becker="Alpha-Watchlist Versorger & Netze: Elektrifizierung und Rechenzentrums-Stromversorgung."),
+         inputgeber="Alpha-Watchlist Versorger & Netze: Elektrifizierung und Rechenzentrums-Stromversorgung."),
     dict(t="NVO", name="Novo Nordisk", bucket="Gesundheit / Biotech", kind="Aktie", signal="pruefen",
-         becker="Healthcare: deutliche Zuflüsse – Becker prüft, ob er den Sektor über einen Healthcare- oder Biotech-ETF spielt (Einzelwerte-Watchlist KW41: NVO, VRTX)."),
+         inputgeber="Healthcare: deutliche Zuflüsse – Inputgeber prüft, ob er den Sektor über einen Healthcare- oder Biotech-ETF spielt (Einzelwerte-Watchlist KW41: NVO, VRTX)."),
     dict(t="TER", name="Teradyne", bucket="Robotik & Automatisierung", kind="Aktie", signal="warten",
-         becker="Alpha (KW41): geplante dritte Robotics-Position – Becker wartet auf einen günstigeren Einstieg. Robotics will er in die Schwäche hinein ausbauen."),
+         inputgeber="Alpha (KW41): geplante dritte Robotics-Position – Inputgeber wartet auf einen günstigeren Einstieg. Robotics will er in die Schwäche hinein ausbauen."),
     dict(t="V", name="Visa", bucket="Finanzen & Zahlungsverkehr", kind="Aktie", signal="pruefen",
-         becker="2030-Watchlist (KW41, antizyklisch beobachtet) – Käufe erst nach dem McDonald's-Abbau."),
+         inputgeber="2030-Watchlist (KW41, antizyklisch beobachtet) – Käufe erst nach dem McDonald's-Abbau."),
     dict(t="PLTR", name="Palantir", bucket="Software & Cybersecurity", kind="Aktie", signal="pruefen",
-         becker="KW41: 'eine der führenden Aktien des Marktes' (Leading Stock) – auf der Watchlist, nicht gekauft."),
+         inputgeber="KW41: 'eine der führenden Aktien des Marktes' (Leading Stock) – auf der Watchlist, nicht gekauft."),
     dict(t="MU", name="Micron Technology", bucket="Halbleiter", kind="Aktie", signal="nein",
-         becker="Alpha: am 13.10. über die Stop-Marke verkauft (zuvor 17 %, größte Position) – Thema Speicher fällt weg."),
+         inputgeber="Alpha: am 13.10. über die Stop-Marke verkauft (zuvor 17 %, größte Position) – Thema Speicher fällt weg."),
     dict(t="LITE", name="Lumentum", bucket="Halbleiter", kind="Aktie", signal="nein",
-         becker="Alpha: am 14.10. verkauft, acht Tage nach dem Kauf – Ausbruch auf neue Hochs negiert."),
+         inputgeber="Alpha: am 14.10. verkauft, acht Tage nach dem Kauf – Ausbruch auf neue Hochs negiert."),
     dict(t="XOM", name="Exxon Mobil", bucket="Energie & Öl", kind="Aktie", signal="nein",
-         becker="Ölaktien meidet Becker bewusst – der Ölpreis ist ihm 'deutlich zu hoch' und hängt an einem möglichen Ukraine-Deal."),
+         inputgeber="Ölaktien meidet Inputgeber bewusst – der Ölpreis ist ihm 'deutlich zu hoch' und hängt an einem möglichen Ukraine-Deal."),
 ]
 
-# Kurzfassung der Becker-Reports für die datierte Kaufempfehlung (Paraphrase, Beckers Meinung)
-BECKER_SUMMARY = [
+# Kurzfassung der Inputgeber-Reports für die datierte Kaufempfehlung (Paraphrase, Inputgebers Meinung)
+INPUTGEBER_SUMMARY = [
     "Rotation aus KI in defensive Werte: Gleichgewichteter S&P, Dividenden-ETF, lange Anleihen und McDonald's steigen, gehypte KI-Aktien werden abgestraft.",
     "Alpha-Depot: Micron und Corning (13.10.) sowie Lumentum (14.10.) über Stop-Marken verkauft – Cash springt von 11 auf 38 %. Keine Neukäufe, bis sich eine Gelegenheit konkretisiert.",
     "Beta- und 2030-Depot ohne Transaktion: Beta im Plus (Berkshire, Markel, NOBL, RSP, TLT), 2030 stabil über McDonald's (32 %), das jetzt in die Stärke hinein abgebaut wird.",
-    "Zinsen: Höhepunkt laut Becker gesehen, Dollar schwächer. Liquidität erstmals leicht gefallen, aber noch ausreichend. Viel Angst (Fear & Greed 25) stützt die Jahresendrallye.",
+    "Zinsen: Höhepunkt laut Inputgeber gesehen, Dollar schwächer. Liquidität erstmals leicht gefallen, aber noch ausreichend. Viel Angst (Fear & Greed 25) stützt die Jahresendrallye.",
     "Nächste Richtungen: Halbleiter-Gegenbewegung und Zinssenkungs-Profiteure (Lennar, D.R. Horton, Versorger, Healthcare); im 2030-Depot Rocket Lab, Royal Gold, Credo.",
     "Wichtigster Termin: Capex-Aussagen der Hyperscaler in der Berichtssaison. Dazu Bitcoin-Zone 80.000 USD, Stichwahl Brasilien 25.10., US-Midterms 03.11.",
 ]
@@ -172,17 +172,17 @@ def analyst_view(c, q, h):
 
 
 def score(c, q, h, web, today):
-    becker_age = age(BECKER_DATE, today)
-    f_becker = 1.0 if becker_age <= MAX_AGE else 0.5
-    sb = SIGNAL_SCORE[c["signal"]] * f_becker
+    inputgeber_age = age(INPUTGEBER_DATE, today)
+    f_inputgeber = 1.0 if inputgeber_age <= MAX_AGE else 0.5
+    sb = SIGNAL_SCORE[c["signal"]] * f_inputgeber
     sa, alabel = analyst_view(c, q, h)
     sw = sum({"+": 0.4, "−": -0.4, "0": 0}[w["tone"]] for w in web)
     v = h.get("vsMa200")
-    # Beckers Trendfilter: Kauf nahe/über der 200T-Linie, keine überdehnten Werte jagen
+    # Inputgebers Trendfilter: Kauf nahe/über der 200T-Linie, keine überdehnten Werte jagen
     st = 0 if v is None else 0.8 if -8 <= v <= 20 else -1.0 if v > 40 else -0.6 if v < -20 else 0.2
-    return {"total": round(sb + sa + sw + st, 2), "becker": round(sb, 2), "analyst": round(sa, 2),
-            "web": round(sw, 2), "trend": st, "analystLabel": alabel, "beckerAge": becker_age,
-            "beckerFresh": becker_age <= MAX_AGE}
+    return {"total": round(sb + sa + sw + st, 2), "inputgeber": round(sb, 2), "analyst": round(sa, 2),
+            "web": round(sw, 2), "trend": st, "analystLabel": alabel, "inputgeberAge": inputgeber_age,
+            "inputgeberFresh": inputgeber_age <= MAX_AGE}
 
 
 def agreement(c, sc, q):
@@ -283,10 +283,10 @@ def momentum_view(h, spy):
 
 
 def opinion_votes(c, q, sc, fs, ms):
-    """+1/0/-1 je Meinung: Becker, Analysten, Fundamental, Momentum."""
+    """+1/0/-1 je Meinung: Inputgeber, Analysten, Fundamental, Momentum."""
     b = {"kaufen": 1, "pruefen": 1, "halten": 0, "warten": 0, "nein": -1}[c["signal"]]
     if q and q.get("mean"):
         a = 1 if q["mean"] <= 2.2 else -1 if q["mean"] >= 3 else 0
     else:
         a = 1 if sc["analyst"] >= 1 else 0
-    return {"becker": b, "analysten": a, "fundamental": fs, "momentum": ms}
+    return {"inputgeber": b, "analysten": a, "fundamental": fs, "momentum": ms}

@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 3 % | 3 % | – | 3 % | 2 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Zyklischer Edelmetall-Baustein mit höherem Beta zur Industrieaktivität; bei Ausverkauf antizyklisch interessant.
 - **Risiko:** Deutlich volatiler als Gold; Industriezyklus-Schwäche belastet.
 - **Wochenstatus:** KW42: fällt von 3 auf 2 %.
@@ -27,7 +27,7 @@
 - **Circle of Competence:** Der ETF hält physisches Silber. Silber ist halb Edelmetall, halb Industriemetall (Solar, Elektronik). Deshalb schwankt es stärker als Gold.
 - **Management & Verschuldung:** Kein operatives Management. Relevant sind Kostenquote (TER), Replikationsmethode und Emittentenrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Hoch – Geldentwertung plus Industriezyklus.
 - **Asymmetrisches Risikoprofil:** Mittel – höherer Hebel als Gold.
 - **Antizyklischer Status:** Neutral.

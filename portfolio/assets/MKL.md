@@ -15,17 +15,17 @@
 |---|---|---|---|---|
 | 14 % | 14 % | – | 14 % | 14 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Defensives Konglomerat mit Berkshire-ähnlichem Modell (Versicherung + Beteiligungen 'Markel Ventures').
 - **Risiko:** Macht wie Berkshire den letzten Teil eines Bullenmarkts oft nicht mit; geringere Liquidität als BRK.B.
-- **Wochenstatus:** KW42: Status Einsteigen – an den roten Tagen im Plus; Becker würde hier einsteigen.
+- **Wochenstatus:** KW42: Status Einsteigen – an den roten Tagen im Plus; Inputgeber würde hier einsteigen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Spezialversicherung in Nischen mit Preissetzungsmacht; Ventures-Portfolio kleiner und weniger dominant als bei Berkshire. (Bewertung: **Mittel**)
 - **Circle of Competence:** Markel versichert Nischenrisiken (z. B. Spezialhaftpflicht), die Standardversicherer meiden. Die Prämien werden langfristig in Aktien und Firmenbeteiligungen angelegt. Ziel ist ein 'Baby-Berkshire'.
 - **Management & Verschuldung:** Langfristig orientiert, konservativ. Moderate Verschuldung. Schwächere Underwriting-Ergebnisse in einzelnen Sparten zuletzt.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Gering bis mittel.
 - **Asymmetrisches Risikoprofil:** Nein.
 - **Antizyklischer Status:** Sicherer Hafen der Abverkaufswoche.

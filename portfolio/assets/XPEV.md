@@ -15,17 +15,17 @@
 |---|---|---|---|---|
 | 4 % | – | – | 3 % | 4 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Vom E-Auto-Hersteller zum KI-/Autonomous-Driving-Unternehmen; VW ist erster Kunde der nächsten VLA-Generation, Robotaxi-Tests laufen.
-- **Risiko:** Brutaler Preiskampf im China-EV-Markt, regulatorische Unsicherheit. Laut Becker eine 'China-Frustrationsaktie' – wird massiv abverkauft.
-- **Wochenstatus:** KW42: China-Block (10 %) hielt im Abverkauf; Becker kauft nicht nach, hält XPeng für Einsteiger aber ausdrücklich für kaufbar.
+- **Risiko:** Brutaler Preiskampf im China-EV-Markt, regulatorische Unsicherheit. Laut Inputgeber eine 'China-Frustrationsaktie' – wird massiv abverkauft.
+- **Wochenstatus:** KW42: China-Block (10 %) hielt im Abverkauf; Inputgeber kauft nicht nach, hält XPeng für Einsteiger aber ausdrücklich für kaufbar.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Software-/Autonomie-Know-how und VW-Partnerschaft – im EV-Preiskampf aber kaum Preissetzungsmacht. (Bewertung: **Schwach**)
 - **Circle of Competence:** XPeng baut Elektroautos mit Fokus auf Fahrassistenz-Software. Zusätzlich lizenziert es Technologie an Volkswagen. Robotaxis und humanoide Roboter sind die Zukunftswetten.
 - **Management & Verschuldung:** Gründergeführt, verlustreich, hohe Cash-Reserven durch Kapitalerhöhungen.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Sehr hoch – China-Liquidität und Growth-Beta.
 - **Asymmetrisches Risikoprofil:** Ja – hohes Upside bei China-Stimulus, aber hohes Verlustrisiko.
 - **Antizyklischer Status:** Abverkauft – antizyklisch, aber 'fallendes Messer'.

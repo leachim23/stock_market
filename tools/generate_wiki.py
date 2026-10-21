@@ -61,7 +61,7 @@ def asset_md(a):
         "|---|---|---|---|---|",
         "| " + " | ".join(a["hist"]) + " |",
         "",
-        "## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)",
+        "## 🗣️ Einschätzung Inputgeber (Quelle: PDF)",
         f"- **Chance:** {a['chance']}",
         f"- **Risiko:** {a['risiko']}",
         f"- **Wochenstatus:** {a['woche']}",
@@ -71,7 +71,7 @@ def asset_md(a):
         f"- **Circle of Competence:** {a['circle']}",
         f"- **Management & Verschuldung:** {mgmt}",
         "",
-        "## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)",
+        "## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)",
         f"- **Korrelation mit Globaler Liquidität:** {a['liq']}",
         f"- **Asymmetrisches Risikoprofil:** {a['asym']}",
         f"- **Antizyklischer Status:** {a['anti']}",
@@ -92,16 +92,16 @@ def asset_md(a):
 
 def index_md():
     out = [
-        "# 📈 Portfolio-Wiki – Balthasar Becker Depots",
+        "# 📈 Portfolio-Wiki – Inputgeber Depots",
         "",
-        f"**Stichtag:** {STAND} · **Quellen:** Becker-PDFs in `PDF_input/` und `pdf/` (Depot-Reports KW38-42, Weekly Recaps KW38-42)",
+        f"**Stichtag:** {STAND} · **Quellen:** Inputgeber-PDFs in `PDF_input/` und `pdf/` (Depot-Reports KW38-42, Weekly Recaps KW38-42)",
         "",
         "**Gesamtwert:** n/a – die Reports weisen ausschließlich prozentuale Gewichtungen je Depot aus, keine Stückzahlen oder Euro-Beträge.",
         "",
         "> 👤 **Eigene Depots:** " + " · ".join(f"[{d.name}](depots/{d.name}.md) ([Kaufempfehlung](depots/{d.name}_kaufempfehlung.md))"
                                           for d in sorted((ROOT / "input").iterdir()) if d.is_dir()),
         "",
-        "## 🏋️ Core-Satellite-Architektur (Becker Barbell)",
+        "## 🏋️ Core-Satellite-Architektur (Inputgeber Barbell)",
         "",
         "| Depot | Rolle | Cash | Struktur |",
         "|---|---|---|---|",
@@ -131,7 +131,7 @@ def index_md():
             out.append(f"| {a['name']} | {a['t']} | {a['block']} | {alloc_str(a)} | {a.get('pl') or '–'} | {moat} | [{a['t']}](assets/{a['t']}.md) |")
     out += [
         "",
-        "> Alle Anteile und Alpha-Performance (Einstieg → Kurs) laut Depot-Reports KW42 vom 16.10.2026. Status je Position jetzt in allen drei Depots (im Beta laut Becker nur begrenzt aussagekräftig).",
+        "> Alle Anteile und Alpha-Performance (Einstieg → Kurs) laut Depot-Reports KW42 vom 16.10.2026. Status je Position jetzt in allen drei Depots (im Beta laut Inputgeber nur begrenzt aussagekräftig).",
         "",
         "## 🌐 Makro- & Sentiment-Check",
         "",
@@ -143,7 +143,7 @@ def index_md():
         "",
         "**Steigende Zentralbank-Liquidität (Zinssenkungen, steile Kurve):** Stärkster Hebel im Alpha-Depot (Metaplanet, SharpLink, GDXJ, Robotics-Small-Caps, China) und im 2030-Depot (SoFi, Robinhood, Alibaba). Im Beta profitieren IBIT, TLT, RSP und NOBL. Die Barbell ist hier klar offensiv.",
         "",
-        "**Fallende Liquidität / Zinsschock:** KW42 hat es vorgeführt – Alpha im Minus (drei Stop-Verkäufe: MU, GLW, LITE), 2030 stabil über McDonald's, Beta im Plus (BRK-B, MKL, NOBL, RSP, TLT). Puffer: Alpha-Cash 38 %, Beta-Liquidität 21 %, Gold. Becker kauft Panik-Rücksetzer mit der Reserve – antizyklisch sieht er derzeit noch keine starke Gelegenheit (VIX ohne Panik).",
+        "**Fallende Liquidität / Zinsschock:** KW42 hat es vorgeführt – Alpha im Minus (drei Stop-Verkäufe: MU, GLW, LITE), 2030 stabil über McDonald's, Beta im Plus (BRK-B, MKL, NOBL, RSP, TLT). Puffer: Alpha-Cash 38 %, Beta-Liquidität 21 %, Gold. Inputgeber kauft Panik-Rücksetzer mit der Reserve – antizyklisch sieht er derzeit noch keine starke Gelegenheit (VIX ohne Panik).",
         "",
         "**Klumpenrisiken:** McDonald's 32 % im 2030-Depot (Cash 0 %) · Geldentwertung 18 % größter Block im Alpha (Metaplanet 9 % größte Einzelposition) · Krypto-Hebel hängen an der Bitcoin-Zone 80.000 USD (Struktur beendet unter 75.000 USD).",
         "",
@@ -159,7 +159,7 @@ def index_md():
         "|---|---|---|---|---|",
     ]
     out += [f"| {t} | {n} | {d} | {w} | {g} |" for t, n, d, w, g in SOLD]
-    out += ["", "---", f"*Keine Anlageberatung. Alle Einschätzungen in den Abschnitten 'Einschätzung Balthasar Becker' geben dessen Meinung aus den PDFs wieder; Buffett-/Becker-Checks sind eigene Einordnungen. Stand: {STAND}*", ""]
+    out += ["", "---", f"*Keine Anlageberatung. Alle Einschätzungen in den Abschnitten 'Einschätzung Inputgeber' geben dessen Meinung aus den PDFs wieder; Buffett-/Inputgeber-Checks sind eigene Einordnungen. Stand: {STAND}*", ""]
     return "\n".join(out)
 
 

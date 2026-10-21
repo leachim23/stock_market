@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 19 % | 14 % | ≈ 9 % | 8 % | 9 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Verzinstes Parken der EUR-Liquidität zum €STR, täglich verfügbar, minimales Kursrisiko – Munition für den finalen Ausverkauf.
 - **Risiko:** Sehr geringe Realverzinsung; sinkt bei fallenden EUR-Zinsen.
 - **Wochenstatus:** KW42: 9 % – Stück für Stück in US-Anleihen (TLT, TIP, eventuell kürzere Laufzeiten).
@@ -27,7 +27,7 @@
 - **Circle of Competence:** Der ETF bildet den täglichen Euro-Interbankenzins (€STR) ab. Er verhält sich wie ein verzinstes Tagesgeldkonto. Er dient als 'Pulver' für Käufe in Krisen.
 - **Management & Verschuldung:** Kein operatives Management. Relevant sind Kostenquote (TER), Replikationsmethode und Emittentenrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Gering – Cash-Äquivalent.
 - **Asymmetrisches Risikoprofil:** Nein – Optionswert liegt im späteren Einsatz.
 - **Antizyklischer Status:** n/a.

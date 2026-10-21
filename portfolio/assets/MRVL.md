@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | – | neu | 6 % | 5 % | 5 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Sitzt mit maßgeschneiderten KI-Chips (ASICs), Hochgeschwindigkeits-Netzwerken und optischer Übertragung an mehreren KI-Engpässen gleichzeitig. Bereits ausgebrochen.
 - **Risiko:** Abhängig von wenigen Hyperscaler-Custom-Chip-Aufträgen; hohe Bewertungsschwankungen.
 - **Wochenstatus:** KW42: stand am 13.10. zur Stop-Entscheidung und blieb – dreht von +4 auf −10 %; nächster Stop-Kandidat.
@@ -25,7 +25,7 @@
 - **Circle of Competence:** Marvell entwickelt Spezialchips für Rechenzentren: Netzwerk-, Speicher- und kundenspezifische KI-Chips. Große Cloud-Anbieter lassen ihre eigenen KI-Beschleuniger von Marvell designen. Optische DSPs verbinden die Server.
 - **Management & Verschuldung:** Moderate Verschuldung (Verschuldung/EBITDA ~1-2), Fokus auf Rechenzentrum nach Portfolio-Umbau.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Hoch – KI-Capex-Beta.
 - **Asymmetrisches Risikoprofil:** Mittel.
 - **Antizyklischer Status:** Ausbruch – Momentum-Kauf mit engem Ausstieg.

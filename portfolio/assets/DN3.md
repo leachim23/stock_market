@@ -15,9 +15,9 @@
 |---|---|---|---|---|
 | 7 % | – | 9 % | 8 % | 9 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Hält Bitcoin in der Bilanz und finanziert Käufe über Kapitalmaßnahmen – gehebelter Bitcoin-Proxy. BTC nach ~50 % Korrektur in einer Bullenflagge.
-- **Risiko:** Sehr hohe Volatilität und Verwässerung durch Kapitalerhöhungen. Fällt Bitcoin unter 75.000 USD, ist die positive Struktur für Becker beendet.
+- **Risiko:** Sehr hohe Volatilität und Verwässerung durch Kapitalerhöhungen. Fällt Bitcoin unter 75.000 USD, ist die positive Struktur für Inputgeber beendet.
 - **Wochenstatus:** KW42: auf 9 % gewachsen, größte Einzelposition. Bitcoin hält sich im Abverkauf 'erstaunlich gut' – die Zone um 80.000 USD soll halten.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
@@ -25,14 +25,14 @@
 - **Circle of Competence:** Metaplanet ist ein japanisches Unternehmen, das fast ausschließlich Bitcoin kauft und hält. Es gibt neue Aktien/Anleihen aus, um mehr Bitcoin zu kaufen. Der Aktienkurs bewegt sich gehebelt zum Bitcoin-Preis.
 - **Management & Verschuldung:** Aggressive Kapitalpolitik, Verwässerungsrisiko. Klassische Verschuldungskennzahlen nicht aussagekräftig.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Extrem hoch – Bitcoin mit Hebel.
 - **Asymmetrisches Risikoprofil:** Ja – 'kleine Bombe' mit klar definiertem Stop.
 - **Antizyklischer Status:** Nach BTC-Korrektur auf Ausbruch positioniert.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* n/a
-- *Nachkaufmarke bei Liquiditäts-Dip:* Ausstieg: Bitcoin unter 75.000 USD (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Ausstieg: Bitcoin unter 75.000 USD (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

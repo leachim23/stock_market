@@ -15,8 +15,8 @@
 |---|---|---|---|---|
 | 3 % | 3 % | 3 % | 3 % | 3 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
-- **Chance:** Zentraler Pick-and-Shovel-Profiteur des Halbleiterausbaus: nahezu monopolistisches EUV/High-NA-EUV-Geschäft. Einstieg war laut Becker sehr gut getimt.
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
+- **Chance:** Zentraler Pick-and-Shovel-Profiteur des Halbleiterausbaus: nahezu monopolistisches EUV/High-NA-EUV-Geschäft. Einstieg war laut Inputgeber sehr gut getimt.
 - **Risiko:** Die zweite Tranche hängt – der erhoffte Rücksetzer kam nicht. Aktuell nicht der beste Nachkauf.
 - **Wochenstatus:** KW42: erholt sich nach dem Abverkauf leicht – Status Aufbauen.
 
@@ -25,14 +25,14 @@
 - **Circle of Competence:** ASML baut die Belichtungsmaschinen, mit denen moderne Chips hergestellt werden. Ohne diese Maschinen kann kein Hersteller die neuesten Chips fertigen. ASML verdient zusätzlich an Wartung und Upgrades der installierten Basis.
 - **Management & Verschuldung:** Konservative Bilanz, Netto-Cash, Dividende + Rückkäufe. Risiko: Exportbeschränkungen nach China.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel – zyklischer Halbleiter-Capex reagiert auf Zinsen und Konjunktur.
 - **Asymmetrisches Risikoprofil:** Nein – Qualitäts-Compounder, kein 5-10x-Kandidat.
-- **Antizyklischer Status:** Kein Rücksetzer erfolgt – Becker wartet auf tiefere Kurse.
+- **Antizyklischer Status:** Kein Rücksetzer erfolgt – Inputgeber wartet auf tiefere Kurse.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]
-- *Nachkaufmarke bei Liquiditäts-Dip:* Zweite Tranche erst bei Rücksetzer (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Zweite Tranche erst bei Rücksetzer (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

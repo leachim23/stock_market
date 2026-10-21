@@ -118,7 +118,7 @@ def page(title, body, root="", extra_head=""):
 <main>
 {body}
 </main>
-<footer>Keine Anlageberatung · Daten aus Balthasar-Becker-Reports KW38–42/2026 · generiert aus <code>portfolio/*.md</code></footer>
+<footer>Keine Anlageberatung · Daten aus Inputgeber-Reports KW38–42/2026 · generiert aus <code>portfolio/*.md</code></footer>
 <script>
 function toggleTheme(){{
   var r=document.documentElement, cur=r.getAttribute('data-theme');
@@ -167,7 +167,7 @@ def price_card(ticker, q, fetched, depot):
     series = {k: q[k] for k in ("ticker", "currency", "dates", "close", "sma200")}
     return f"""<section class="card depot-{depot}">
   <h2>Kursverlauf <span class="live" id="live">Stand {html.escape(fetched or '')}</span></h2>
-  <p class="cap">Tagesschlusskurse von Yahoo Finance mit 200-Tage-Linie – Beckers zentrale Marke für Ein- und Ausstiege.</p>
+  <p class="cap">Tagesschlusskurse von Yahoo Finance mit 200-Tage-Linie – Inputgebers zentrale Marke für Ein- und Ausstiege.</p>
   <div class="stats">{tiles}</div>
   <div id="chart"></div>
 </section>
@@ -183,7 +183,7 @@ liveQuotes([{json.dumps(ticker)}], d => {{
 
 
 def votes_html(r):
-    names = {"becker": "Becker", "analysten": "Analysten", "fundamental": "Fundamental", "momentum": "Momentum"}
+    names = {"inputgeber": "Inputgeber", "analysten": "Analysten", "fundamental": "Fundamental", "momentum": "Momentum"}
     dots = "".join(f'<i class="vd v{v}" title="{names[k]}: {"positiv" if v > 0 else "negativ" if v < 0 else "neutral"}"></i>' for k, v in r["votes"].items())
     neg = f' · {r["votesNeg"]} negativ' if r["votesNeg"] else ""
     return f'<span class="votes">{dots}<b>{r["votesPos"]}/4 positiv</b>{neg}</span>'
@@ -198,7 +198,7 @@ def buy_page(b, wiki, dep):
     rows = {r["t"]: r for r in b["rows"]}
     link = lambda t: f"assets/{t}.html" if t in wiki else f"https://finance.yahoo.com/quote/{t}"
     sc = lambda i: f"c{i + 1}"
-    stale_becker = b["beckerAge"] > b["maxAge"]
+    stale_inputgeber = b["inputgeberAge"] > b["maxAge"]
 
     before = "".join(f'<span class="chip-s">{esc(k)} <small>{dec(v)} %</small></span>'
                      for k, v in sorted(dep["bucketWeights"].items(), key=lambda x: -x[1]))
@@ -228,7 +228,7 @@ def buy_page(b, wiki, dep):
                        f'<a href="{w["url"]}" target="_blank" rel="noopener">{esc(w["source"])}</a></p>')
         agree_cls = {"Übereinstimmung": "pos", "Divergenz": "neg"}.get(r["agree"], "")
         tech = f'<p class="note">Sektor heute im Depot: {dec(r["bucketWeight"])} % · Familie {esc(r["family"])}: {dec(r["familyWeight"])} %</p>'
-        becker_age = f'{de(b["beckerDate"])} · {b["beckerAge"]} Tage' + (" – veraltet" if stale_becker else "")
+        inputgeber_age = f'{de(b["inputgeberDate"])} · {b["inputgeberAge"]} Tage' + (" – veraltet" if stale_inputgeber else "")
         s_ = r["score"]
         cards += f"""<article class="buy-card {sc(i % 5)}">
   <header>
@@ -237,10 +237,10 @@ def buy_page(b, wiki, dep):
   </header>
   <div class="trend">{num(r['price'])} {r['currency']} · <span class="{'pos' if (r['vsMa200'] or 0) > 0 else 'neg'}">{pct(r['vsMa200'])} vs. 200T</span> · <span data-spark="{json.dumps(r['spark'])}"></span></div>
   <div class="vs">
-    <section class="op becker">
-      <h4>1 · Becker</h4>
-      <div class="op-head"><b>{esc(r['signalLabel'])}</b><span class="age {'stale' if stale_becker else 'ok'}">{becker_age}</span></div>
-      <p>{esc(r['becker'])}</p>
+    <section class="op inputgeber">
+      <h4>1 · Inputgeber</h4>
+      <div class="op-head"><b>{esc(r['signalLabel'])}</b><span class="age {'stale' if stale_inputgeber else 'ok'}">{inputgeber_age}</span></div>
+      <p>{esc(r['inputgeber'])}</p>
     </section>
     <section class="op second">
       <h4>2 · Analysten &amp; Web</h4>
@@ -257,7 +257,7 @@ def buy_page(b, wiki, dep):
       <ul class="kz">{"".join(f"<li>{esc(x)}</li>" for x in r['mom']['details'])}</ul>
     </section>
   </div>
-  <footer>{votes_html(r)}<span class="agree {agree_cls}">Becker vs. Analysten: {esc(r['agree'])}</span> <span class="muted">Wertung {dec(s_['total'])} = Becker {dec(s_['becker'])} · Analysten {dec(s_['analyst'])} · Web {dec(s_['web'])} · Trend {dec(s_['trend'])} · Fundamental {dec(round(s_['fundamental'], 2))} · Momentum {dec(round(s_['momentum'], 2))}</span>{tech}</footer>
+  <footer>{votes_html(r)}<span class="agree {agree_cls}">Inputgeber vs. Analysten: {esc(r['agree'])}</span> <span class="muted">Wertung {dec(s_['total'])} = Inputgeber {dec(s_['inputgeber'])} · Analysten {dec(s_['analyst'])} · Web {dec(s_['web'])} · Trend {dec(s_['trend'])} · Fundamental {dec(round(s_['fundamental'], 2))} · Momentum {dec(round(s_['momentum'], 2))}</span>{tech}</footer>
 </article>"""
       return cards
 
@@ -292,8 +292,8 @@ def buy_page(b, wiki, dep):
     stale_web = "".join(f'<li><span class="age stale">{de(w["date"])}</span> {esc(w["source"])} – ignoriert (älter als {b["maxAge"]} Tage)</li>'
                         for w in b["staleWeb"])
     warn = ""
-    if stale_becker:
-        warn = (f'<div class="banner warn">⚠️ <b>Becker-Signale veraltet:</b> letzter Report vom {de(b["beckerDate"])} ({b["beckerAge"]} Tage). '
+    if stale_inputgeber:
+        warn = (f'<div class="banner warn">⚠️ <b>Inputgeber-Signale veraltet:</b> letzter Report vom {de(b["inputgeberDate"])} ({b["inputgeberAge"]} Tage). '
                 'Sie zählen nur halb. Neue PDFs nach <code>pdf/</code> legen und <code>python website/serve.py</code> ausführen.</div>')
 
     bbi = dep.get("barbell", {}).get("ist", {})
@@ -303,7 +303,7 @@ def buy_page(b, wiki, dep):
 <section class="hero">
   <h1>Kaufempfehlung {esc(dep['label'])} vom {de(b['generated'])}</h1>
   <p class="tabs"><a href="depot-{dep['id']}.html">Depot {esc(dep['label'])}</a><b>Kaufempfehlung {de(b['generated'])}</b></p>
-  <p>Erstellt am <b>{de(b['generated'])}</b>, gültig bis <b>{de(b['validUntil'])}</b> (max. {b['maxAge']} Tage). Vier Meinungen je Titel: Becker, Analysten (Yahoo + datierte Webquellen), Fundamentaldaten nach Buffett-Kennzahlen und Momentum/relative Stärke – gefiltert auf Diversifikation zum Depot {esc(dep['label'])}. Keine Anlageberatung.</p>
+  <p>Erstellt am <b>{de(b['generated'])}</b>, gültig bis <b>{de(b['validUntil'])}</b> (max. {b['maxAge']} Tage). Vier Meinungen je Titel: Inputgeber, Analysten (Yahoo + datierte Webquellen), Fundamentaldaten nach Buffett-Kennzahlen und Momentum/relative Stärke – gefiltert auf Diversifikation zum Depot {esc(dep['label'])}. Keine Anlageberatung.</p>
 </section>
 {warn}
 {compare}
@@ -316,8 +316,8 @@ def buy_page(b, wiki, dep):
 {blocks}
 <section class="card">
   <h2>Nicht empfohlen</h2>
-  <p class="cap">Alle geprüften Kandidaten aus Beckers Depots und Watchlists mit dem Grund für den Ausschluss.</p>
-  <div class="table-wrap"><table><thead><tr><th>Titel</th><th>Sektor</th><th>Becker</th><th>Analysten</th><th>Fundamental</th><th>Momentum</th><th class="num">Wertung</th><th>Grund Szenario A</th><th>Grund Szenario B</th></tr></thead><tbody>{excl}</tbody></table></div>
+  <p class="cap">Alle geprüften Kandidaten aus Inputgebers Depots und Watchlists mit dem Grund für den Ausschluss.</p>
+  <div class="table-wrap"><table><thead><tr><th>Titel</th><th>Sektor</th><th>Inputgeber</th><th>Analysten</th><th>Fundamental</th><th>Momentum</th><th class="num">Wertung</th><th>Grund Szenario A</th><th>Grund Szenario B</th></tr></thead><tbody>{excl}</tbody></table></div>
 </section>
 <section class="card">
   <h2>Marktstimmung aus dem Web</h2>
@@ -363,19 +363,19 @@ def compare_html(d, wiki):
             for t in sv["picks"])
         return (f'<section class="op"><h4>{esc(sv["title"])}</h4><p class="cap">{esc(short[sv["id"]])}</p>'
                 f'<div class="wbar">{bar}</div>'
-                f'<div class="table-wrap"><table><thead><tr><th>Titel</th><th>Sektor · Rolle</th><th>Becker</th><th>Meinungen</th><th class="num">Anteil</th></tr></thead>'
+                f'<div class="table-wrap"><table><thead><tr><th>Titel</th><th>Sektor · Rolle</th><th>Inputgeber</th><th>Meinungen</th><th class="num">Anteil</th></tr></thead>'
                 f'<tbody>{trs or "<tr><td colspan=5 class=empty>Keine Empfehlung</td></tr>"}</tbody></table></div></section>')
 
     bb, acts = d["barbell"]["ist"], d.get("actions", {})
     first = " · ".join(f'{k}: {", ".join(acts[k])}' for k in ("Verkaufen", "Trimmen") if acts.get(k)) or "keine Verkäufe oder Trimmungen"
     summary = "".join(f"<li>{esc(x)}</li>" for x in d["buy"].get("summary", []))
-    becker = (f'<section class="card"><h2>Becker – das Wichtigste aus den Reports</h2>'
-              f'<p class="cap">Stand {esc(d["buy"].get("beckerStand", ""))}. Zusammenfassung von Balthasar Beckers Einschätzung – seine Meinung, keine geprüften Fakten.</p>'
+    inputgeber = (f'<section class="card"><h2>Inputgeber – das Wichtigste aus den Reports</h2>'
+              f'<p class="cap">Stand {esc(d["buy"].get("inputgeberStand", ""))}. Zusammenfassung der Einschätzung des Inputgebers – seine Meinung, keine geprüften Fakten.</p>'
               f'<ul class="ana">{summary}</ul></section>') if summary else ""
-    return becker + f"""<section class="card">
+    return inputgeber + f"""<section class="card">
   <h2>Mit und ohne Barbell</h2>
   <p class="cap">Auf Basis des aktuellen Portfolios ({len(d['holdings'])} Positionen). Barbell heute: Anker {dec(round(bb.get('Anker', 0)))} % · Satellit {dec(round(bb.get('Satellit', 0)))} % · Mitte {dec(round(bb.get('Mitte', 0)))} % (Ziel 85 / 15 / 0).
-  Becker-Grundsatz: erst verkaufen und trimmen, dann gestaffelt kaufen – {esc(first)}.</p>
+  Inputgeber-Grundsatz: erst verkaufen und trimmen, dann gestaffelt kaufen – {esc(first)}.</p>
   <div class="vs">{"".join(col(sv) for sv in d["buy"]["scenarios"])}</div>
   <p class="note">Details zu jedem Titel (vier Meinungen, Wertung) und die Ausschlussgründe stehen weiter unten.</p>
 </section>"""
@@ -386,7 +386,7 @@ def md_inline(x):
 
 
 def dots(h):
-    names = {"becker": "Becker", "analysten": "Analysten", "fundamental": "Fundamental", "momentum": "Momentum"}
+    names = {"inputgeber": "Inputgeber", "analysten": "Analysten", "fundamental": "Fundamental", "momentum": "Momentum"}
     v = h.get("votes") or {}
     if not v:
         return "–"
@@ -450,8 +450,8 @@ def depot_page(d, wiki):
         price = f'{num(h.get("price"))} <small>{h.get("currency", "")}</small>' if h.get("price") is not None else "–"
         if h.get("currency") not in (None, "EUR") and h.get("priceEUR") is not None:
             price += f'<div class="sub">{num(h["priceEUR"])} €</div>'
-        bk = h["becker"]
-        btxt = {"held": "Im Becker-Depot", "sold": "Von Becker verkauft", "watch": "Becker-Watchlist", "none": "–"}[bk["kind"]]
+        bk = h["inputgeber"]
+        btxt = {"held": "Im Inputgeber-Depot", "sold": "Von Inputgeber verkauft", "watch": "Inputgeber-Watchlist", "none": "–"}[bk["kind"]]
         rows += (f'<tr><td><a class="tk" href="{link(h["t"], h.get("symbol"))}">{esc(h["t"])}</a><div class="sub">{esc(h["name"])}</div></td>'
                  f'<td>{esc(h["bucket"])}<div class="sub"><span class="role role-{(h.get("role") or "").lower()}">{esc(h.get("role") or "–")}</span> · {esc(h.get("style") or "")}</div></td>'
                  f'<td class="num">{price}</td>{perf_td}'
@@ -489,12 +489,12 @@ def depot_page(d, wiki):
 <section class="hero">
   <h1>Depot {esc(d['label'])}</h1>
   <p class="tabs"><b>Depot {esc(d['label'])}</b><a href="kaufempfehlung-{d['id']}.html">Kaufempfehlung {d['buy']['generated'][8:]}.{d['buy']['generated'][5:7]}.{d['buy']['generated'][:4]}</a></p>
-  <p>{len(hs)} Positionen aus <code>input/{esc(d['id'])}/</code> · Kurse Yahoo Finance vom {d['generated'][8:]}.{d['generated'][5:7]}.{d['generated'][:4]} · bewertet nach Beckers Regelwerk (Status, 200-Tage-Linie) und Analystenkonsens. Keine Anlageberatung.</p>
+  <p>{len(hs)} Positionen aus <code>input/{esc(d['id'])}/</code> · Kurse Yahoo Finance vom {d['generated'][8:]}.{d['generated'][5:7]}.{d['generated'][:4]} · bewertet nach Inputgebers Regelwerk (Status, 200-Tage-Linie) und Analystenkonsens. Keine Anlageberatung.</p>
 </section>
 {unres}
 <section class="card">
   <h2>Aktionsplan</h2>
-  <p class="cap">Eine Entscheidung je Position aus Barbell-Rolle (Anker/Satellit/Mitte), Steuerung (prozyklisch mit Stop, antizyklisch mit Cost Average), Becker-Status, vier Meinungen und 200-Tage-Linie. Reihenfolge: erst verkaufen, dann Mitte abbauen (Priorität „hoch“ zuerst), dann gestaffelt in den Anker. Keine Anlageberatung.</p>
+  <p class="cap">Eine Entscheidung je Position aus Barbell-Rolle (Anker/Satellit/Mitte), Steuerung (prozyklisch mit Stop, antizyklisch mit Cost Average), Inputgeber-Status, vier Meinungen und 200-Tage-Linie. Reihenfolge: erst verkaufen, dann Mitte abbauen (Priorität „hoch“ zuerst), dann gestaffelt in den Anker. Keine Anlageberatung.</p>
   <div class="plan">{plan}</div>
 </section>
 <section class="card">
@@ -514,12 +514,12 @@ def depot_page(d, wiki):
 {perf_card}
 <section class="card">
   <h2>Abstand zur 200-Tage-Linie</h2>
-  <p class="cap"><i class="sw sw-up"></i>darüber · <i class="sw sw-down"></i>darunter. Beckers zentrale Marke für Stopps.</p>
+  <p class="cap"><i class="sw sw-up"></i>darüber · <i class="sw sw-down"></i>darunter. Inputgebers zentrale Marke für Stopps.</p>
   <div id="ma200"></div>
 </section>
 <section class="table-wrap">
 <table class="dep">
-<thead><tr><th>Position</th><th>Sektor · Rolle</th><th class="num">Kurs</th>{'<th class="num">seit Kauf</th>' if has_buy else ''}<th class="num">vs. 200T</th><th>Becker</th><th>4 Meinungen</th><th>Entscheidung</th></tr></thead>
+<thead><tr><th>Position</th><th>Sektor · Rolle</th><th class="num">Kurs</th>{'<th class="num">seit Kauf</th>' if has_buy else ''}<th class="num">vs. 200T</th><th>Inputgeber</th><th>4 Meinungen</th><th>Entscheidung</th></tr></thead>
 <tbody>{rows}</tbody>
 </table>
 </section>
@@ -552,8 +552,8 @@ def build():
     for f in sorted((SRC / "assets").glob("*.md")):
         md = f.read_text(encoding="utf-8")
         meta = read_meta(md)
-        becker = section(md, "🗣️")
-        meta["chance"] = becker.get("Chance", "")
+        inputgeber = section(md, "🗣️")
+        meta["chance"] = inputgeber.get("Chance", "")
         meta["href"] = f"assets/{f.stem}.html"
         meta["mine"] = sorted(set(held_by.get(f.stem, [])))
         q = P.get(f.stem)
@@ -600,7 +600,7 @@ def build():
     dash = f"""
 <section class="hero">
   <h1>Depot-Steckbriefe</h1>
-  <p>{len(assets)} Steckbriefe aus Beckers drei Depots und den eigenen Depots, analysiert nach Buffett (Value) und Becker (Makro &amp; Asymmetrie). Stand {html.escape(stand)}.</p>
+  <p>{len(assets)} Steckbriefe aus Inputgebers drei Depots und den eigenen Depots, analysiert nach Buffett (Value) und Inputgeber (Makro &amp; Asymmetrie). Stand {html.escape(stand)}.</p>
 </section>
 <section class="kpis">{cards}</section>
 <section class="toolbar">

@@ -15,10 +15,10 @@
 |---|---|---|---|---|
 | 2 % | 2 % | – | 2 % | 2 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Kostenfreies deutsches Gold-ETC (0 % TER) mit physischer Besicherung – EU-Alternative zu GLD.
 - **Risiko:** Goldpreis-Schwankungen; Emittentenrisiko der Zertifikatsstruktur.
-- **Wochenstatus:** KW42: Becker würde das Produkt 'längst verkaufen und umschichten' – aus der Gruppe vorgeschlagen: Xetra-Gold (4GLD), Becker: 'das kann sein'.
+- **Wochenstatus:** KW42: Inputgeber würde das Produkt 'längst verkaufen und umschichten' – aus der Gruppe vorgeschlagen: Xetra-Gold (4GLD), Inputgeber: 'das kann sein'.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -27,7 +27,7 @@
 - **Circle of Competence:** Ein Inhaberpapier der Börse Stuttgart, das je Stück durch physisches Gold gedeckt ist. Anleger haben einen Lieferanspruch. Keine laufenden Kosten.
 - **Management & Verschuldung:** Kein operatives Management. Relevant sind Kostenquote (TER), Replikationsmethode und Emittentenrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Hoch – wie Gold.
 - **Asymmetrisches Risikoprofil:** Nein.
 - **Antizyklischer Status:** Wie GLD.

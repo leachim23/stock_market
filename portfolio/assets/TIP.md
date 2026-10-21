@@ -15,9 +15,9 @@
 |---|---|---|---|---|
 | 6 % | 6 % | – | 5 % | 5 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Inflationsgeschützte US-Staatsanleihen – Nennwert steigt mit der Inflation; monatliche Ausschüttung.
-- **Risiko:** Realzins-/Durationsrisiko (~6 Jahre). Becker erwartet keine steigenden Inflationserwartungen mehr.
+- **Risiko:** Realzins-/Durationsrisiko (~6 Jahre). Inputgeber erwartet keine steigenden Inflationserwartungen mehr.
 - **Wochenstatus:** KW42: hielt sich im Abverkauf im Plus; Euro-Liquidität soll schrittweise in TLT und TIP wandern.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
@@ -27,7 +27,7 @@
 - **Circle of Competence:** Der ETF hält US-Staatsanleihen, deren Rückzahlungsbetrag an die Inflation gekoppelt ist. Steigt die Inflation, steigt der Wert. Steigen die Realzinsen, fällt der Kurs.
 - **Management & Verschuldung:** Kein operatives Management. Relevant sind Kostenquote (TER), Replikationsmethode und Emittentenrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel – profitiert von fallenden Realzinsen.
 - **Asymmetrisches Risikoprofil:** Nein.
 - **Antizyklischer Status:** Hielt sich im Abverkauf im Plus.

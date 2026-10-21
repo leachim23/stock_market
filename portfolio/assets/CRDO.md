@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 4 % | – | – | 5 % | 4 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Hochgeschwindigkeits-Verkabelung (AEC) für KI-Rechenzentren – je größer die GPU-Cluster, desto mehr Bandbreite. Laut Recap KW40 die stärkste Position im Thema.
 - **Risiko:** Drei Hyperscaler mit je >10 % Umsatzanteil; extrem empfindlich auf Quartalszahlen. Im 2030-Depot geschriebene Puts verfallen voraussichtlich wertlos.
 - **Wochenstatus:** KW42: Buchgewinn halbiert (+57 → +28 %), weiterhin stärkster Wert im Depot; zusätzlich Neuaufnahme-Kandidat im 2030-Depot.
@@ -25,7 +25,7 @@
 - **Circle of Competence:** Credo entwickelt Chips und Kabel, die Daten in Rechenzentren extrem schnell zwischen Servern übertragen. Je mehr GPUs verbunden werden, desto mehr Credo-Produkte werden gebraucht. Kunden sind vor allem die großen Hyperscaler.
 - **Management & Verschuldung:** Schnell wachsend, Netto-Cash, keine relevanten Schulden. Kundenkonzentration als Hauptrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Hoch – KI-Capex-Beta.
 - **Asymmetrisches Risikoprofil:** Ja – Small/Mid-Cap mit Mehrfach-Potenzial bei weiterem KI-Ausbau.
 - **Antizyklischer Status:** Starker Lauf – Momentum, nicht antizyklisch.

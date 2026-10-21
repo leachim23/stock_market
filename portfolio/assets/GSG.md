@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | 2 % | 2 % | – | 2 % | 2 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Breiter Rohstoffkorb (Energie, Metalle, Agrar) als Inflations-Diversifier.
 - **Risiko:** Hoher Ölanteil; Rohstoffe laufen langfristig seitwärts.
 - **Wochenstatus:** KW42: laufen lassen, nicht mehr aggressiv nachkaufen – Rohstoffe toppen zuletzt im Zyklus.
@@ -27,7 +27,7 @@
 - **Circle of Competence:** Der Trust bildet den S&P-GSCI-Rohstoffindex über Futures ab. Energie (Öl, Gas) dominiert den Index. Er ist eine Wette auf steigende Rohstoffpreise/Inflation.
 - **Management & Verschuldung:** Kein operatives Management. Relevant sind Kostenquote (TER), Replikationsmethode und Emittentenrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel.
 - **Asymmetrisches Risikoprofil:** Mittel – Inflationsschub-Hebel.
 - **Antizyklischer Status:** Gut gelaufen – bereits Gewinne mitgenommen.

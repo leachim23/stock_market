@@ -15,24 +15,24 @@
 |---|---|---|---|---|
 | 1 % | – | – | 1 % | 0 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Weltraum als Zukunftsthema, durch SpaceX-IPO kurzfristig abgewürgt; Aktie ~60 % vom Hoch korrigiert bei steigendem Umsatz. ~5x Chance gegen 1 % Einsatz. Laut KW40 solide im Plus.
 - **Risiko:** Bewusste YOLO-Wette mit kurzer Laufzeit (Jan 2027). Totalverlust möglich.
-- **Wochenstatus:** KW42: −81 %, auf 0 % abgerundet – Zeitwert verfällt bis Januar. Die Aktie selbst gefällt Becker nach dem Abverkauf sehr gut (2030: geschriebener Put, Strike 66).
+- **Wochenstatus:** KW42: −81 %, auf 0 % abgerundet – Zeitwert verfällt bis Januar. Die Aktie selbst gefällt Inputgeber nach dem Abverkauf sehr gut (2030: geschriebener Put, Strike 66).
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Zweiter verlässlicher US-Launch-Anbieter nach SpaceX, vertikal integrierte Satellitenkomponenten. (Bewertung: **Mittel**)
 - **Circle of Competence:** Rocket Lab startet kleine Satelliten mit der Electron-Rakete und baut die größere Neutron. Zusätzlich fertigt es Satelliten-Komponenten und ganze Satelliten. Kunden sind Staaten, Militär und Raumfahrtfirmen.
 - **Management & Verschuldung:** Gründergeführt (Peter Beck), noch defizitär, finanziert über Kapitalerhöhungen/Wandelanleihen.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Sehr hoch – spekulativer Growth-Wert.
 - **Asymmetrisches Risikoprofil:** Ja – Paradebeispiel: 1 % Einsatz, ~5x Upside.
 - **Antizyklischer Status:** Nach 60 % Korrektur antizyklisch gekauft.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]
-- *Nachkaufmarke bei Liquiditäts-Dip:* Hälfte verkaufen vor Laufzeitende (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Hälfte verkaufen vor Laufzeitende (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

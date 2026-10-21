@@ -15,9 +15,9 @@
 |---|---|---|---|---|
 | – | neu | 5 % | 5 % | 4 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Hält Ethereum in der Bilanz – wirkt wie ein gehebelter Ether-Proxy.
-- **Risiko:** Fällt Bitcoin unter sein Ausbruchsniveau zurück, wertet Becker es als Bullenfalle und verkauft.
+- **Risiko:** Fällt Bitcoin unter sein Ausbruchsniveau zurück, wertet Inputgeber es als Bullenfalle und verkauft.
 - **Wochenstatus:** KW42: −10 → −20 %, schwächster Wert im Block; hängt vollständig an der Bitcoin-Struktur.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
@@ -25,14 +25,14 @@
 - **Circle of Competence:** SharpLink war ein Sportwetten-Marketing-Unternehmen und hat sich zur Ethereum-Treasury-Firma gewandelt. Es kauft und staked Ether. Der Kurs folgt gehebelt dem Ether-Preis.
 - **Management & Verschuldung:** Kapitalmarktfinanziertes Modell mit Verwässerungsrisiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Extrem hoch.
 - **Asymmetrisches Risikoprofil:** Ja – gehebelter Krypto-Call mit definiertem Ausstieg.
 - **Antizyklischer Status:** Auf Ausbruch positioniert.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* n/a
-- *Nachkaufmarke bei Liquiditäts-Dip:* Verkauf, wenn Bitcoin unter 75.000 USD fällt (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Verkauf, wenn Bitcoin unter 75.000 USD fällt (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

@@ -15,8 +15,8 @@
 |---|---|---|---|---|
 | 10 % | 9 % | 10 % | 10 % | 10 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
-- **Chance:** KI-Profiteur über Gemini und Google Cloud bei dominanter Suche und YouTube. Aktuell Beckers interessantester Nachkauf – die Aktie hat sich an der 200-Tage-Linie bewegt.
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
+- **Chance:** KI-Profiteur über Gemini und Google Cloud bei dominanter Suche und YouTube. Aktuell Inputgebers interessantester Nachkauf – die Aktie hat sich an der 200-Tage-Linie bewegt.
 - **Risiko:** Zieht der Markt noch einmal unter die 200-Tage-Linie, wäre das ein weiterer Einstiegspunkt – kurzfristig Luft nach unten.
 - **Wochenstatus:** KW42: mit Amazon der interessanteste Wert im Depot – Status Aufbauen.
 
@@ -25,14 +25,14 @@
 - **Circle of Competence:** Google organisiert das Wissen im Internet und verkauft Werbeplätze neben Suchergebnissen und Videos. Google Cloud vermietet Rechenleistung und KI-Modelle. Weitere Wetten (Waymo) laufen im Hintergrund.
 - **Management & Verschuldung:** Massive Aktienrückkäufe und erstmals Dividende; Netto-Cash-Position (Verschuldung/EBITDA ≈ 0). Kartellverfahren sind das größte Governance-Risiko.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel bis hoch – Werbezyklus und Tech-Bewertung hängen an Liquidität.
 - **Asymmetrisches Risikoprofil:** Nein – Mega-Cap. Begrenztes Downside durch Cashflow, aber kein 5-10x.
-- **Antizyklischer Status:** Konsolidiert an der 200-Tage-Linie – laut Becker gutes Nachkaufniveau.
+- **Antizyklischer Status:** Konsolidiert an der 200-Tage-Linie – laut Inputgeber gutes Nachkaufniveau.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]
-- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf an/unter der 200-Tage-Linie (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf an/unter der 200-Tage-Linie (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

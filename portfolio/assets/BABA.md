@@ -15,18 +15,18 @@
 |---|---|---|---|---|
 | 5 % | 5 % | 5 % | 5 % | 5 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
-- **Chance:** China-Plattform mit E-Commerce und schnell wachsendem Cloud-/KI-Geschäft, niedrig bewertet. Becker würde 'alles darauf wetten', dass China die Liquidität ausweiten muss.
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
+- **Chance:** China-Plattform mit E-Commerce und schnell wachsendem Cloud-/KI-Geschäft, niedrig bewertet. Inputgeber würde 'alles darauf wetten', dass China die Liquidität ausweiten muss.
 - **Risiko:** Genau das passiert gerade nicht – die Aktie ist 'super schwach'. Politische Eingriffe und ADR-Delisting-Risiko.
-- **Wochenstatus:** KW42: führt laut Becker 'ein Eigenleben'; China lag im Plus, während der Rest abverkauft wurde.
+- **Wochenstatus:** KW42: führt laut Inputgeber 'ein Eigenleben'; China lag im Plus, während der Rest abverkauft wurde.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Dominanter Marktplatz (Taobao/Tmall) und führende China-Cloud – aber durch PDD, Douyin und staatliche Eingriffe angreifbar. (Bewertung: **Mittel**)
 - **Circle of Competence:** Alibaba betreibt Chinas größte Online-Marktplätze und verdient an Händlergebühren und Werbung. Alibaba Cloud vermietet Rechenleistung und KI-Modelle. Dazu kommen Logistik und internationale Plattformen.
 - **Management & Verschuldung:** Hohe Netto-Cash-Position, große Rückkaufprogramme. Governance-Risiko durch VIE-Struktur und Staatseinfluss.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
-- **Korrelation mit Globaler Liquidität:** Sehr hoch – direkter Hebel auf PBoC-Liquidität (Beckers Kernthese).
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
+- **Korrelation mit Globaler Liquidität:** Sehr hoch – direkter Hebel auf PBoC-Liquidität (Inputgebers Kernthese).
 - **Asymmetrisches Risikoprofil:** Teilweise – niedrige Bewertung bietet 50-100 % Re-Rating-Potenzial, aber kein klassisches 5-10x.
 - **Antizyklischer Status:** Abgestraft und ignoriert – klassisch antizyklisch, solange China nicht stimuliert.
 

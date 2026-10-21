@@ -1,6 +1,6 @@
 # Portfolio-Wiki
 
-Depot-Steckbriefe, eigene Depotbewertung und Kaufempfehlung auf Basis der wöchentlichen Pure-Alpha-Reports (Balthasar Becker), ergänzt um Kursdaten und Analystenkonsens von Yahoo Finance. Keine Anlageberatung.
+Depot-Steckbriefe, eigene Depotbewertung und Kaufempfehlung auf Basis der wöchentlichen Pure-Alpha-Reports (Inputgeber), ergänzt um Kursdaten und Analystenkonsens von Yahoo Finance. Keine Anlageberatung.
 
 ## Webseite ansehen
 

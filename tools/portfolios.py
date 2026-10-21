@@ -103,7 +103,7 @@ RESOLVE = [
     (r"IONQ", "IONQ", "IONQ", "IonQ", "Quantencomputing", "Aktie"),
     (r"TERRESTRIAL|TERRESTIAL", "IMSR", "IMSR", "Terrestrial Energy", "Kernenergie & Uran", "Aktie"),
 ]
-# UCITS-Pendants zu Becker-Positionen (für Becker-Bezug und Doppelungs-Check)
+# UCITS-Pendants zu Inputgeber-Positionen (für Inputgeber-Bezug und Doppelungs-Check)
 EQUIV = {"2B70": "IBB", "G2XJ": "GDXJ", "SPYD": "NOBL", "IBB": "IBB"}
 FAMILY_EXTRA = {"KI-Hardware & Netzwerk": "Technologie", "Quantencomputing": "Technologie", "Tech-ETF": "Technologie", "Halbleiter": "Technologie",
                 "Breiter Markt (Welt)": "US-Aktien breit", "Krypto & Rechenzentren": "Krypto"}
@@ -160,30 +160,30 @@ def parse(path):
     return out
 
 
-# --------------------------------------------------------------------------- Becker-Bezug
-BECKER = {a["t"]: a for a in ASSETS if a["depot"] != "mein"}
+# --------------------------------------------------------------------------- Inputgeber-Bezug
+INPUTGEBER = {a["t"]: a for a in ASSETS if a["depot"] != "mein"}
 SOLD_MAP = {t: (n, d, w, g) for t, n, d, w, g in SOLD}
 SOLD_MAP.update({"ALM": ("Almonty Industries", "Alpha", "KW39", "Momentum fehlte – Kapital ging in Marvell."),
                  "MP": ("MP Materials", "Alpha", "KW39", "lief monatelang seitwärts – Kapital ging in Corning.")})
 CAND = {c["t"]: c for c in br.CANDIDATES}
-BECKER_DEPOT = {a["t"]: {"beta": "Beta", "2030": "2030", "alpha": "Alpha"}[a["depot"]] for a in ASSETS if a["depot"] != "mein"}
+INPUTGEBER_DEPOT = {a["t"]: {"beta": "Beta", "2030": "2030", "alpha": "Alpha"}[a["depot"]] for a in ASSETS if a["depot"] != "mein"}
 
 
-def becker_info(t):
+def inputgeber_info(t):
     key = EQUIV.get(t, t)
     if key in SOLD_MAP:
         n, dep, w, g = SOLD_MAP[key]
-        return {"kind": "sold", "text": f"Von Becker im {dep}-Depot in {w} verkauft: {g}"}
-    if key in BECKER:
-        a = BECKER[key]
+        return {"kind": "sold", "text": f"Von Inputgeber im {dep}-Depot in {w} verkauft: {g}"}
+    if key in INPUTGEBER:
+        a = INPUTGEBER[key]
         dep = {"beta": "Beta", "2030": "2030", "alpha": "Alpha"}[a["depot"]]
         alloc = f"{a['alloc']} %" if a.get("alloc") is not None else "–"
         return {"kind": "held", "status": a.get("status") or "", "depot": dep, "alloc": alloc, "block": a.get("block", ""),
                 "text": f"{dep}-Depot {alloc}" + (f", Status {a['status']}" if a.get("status") else "") + f". {a['woche']}"}
     if key in CAND:
         c = CAND[key]
-        return {"kind": "watch", "signal": c["signal"], "text": c["becker"]}
-    return {"kind": "none", "text": "Kein Bezug in Beckers Reports."}
+        return {"kind": "watch", "signal": c["signal"], "text": c["inputgeber"]}
+    return {"kind": "none", "text": "Kein Bezug in Inputgebers Reports."}
 
 
 # --------------------------------------------------------------------------- Bewertung je Position
@@ -192,27 +192,27 @@ def pct(v):
 
 
 def hold_reco(h):
-    b, v, perf, q = h["becker"], h.get("vsMa200"), h.get("perf"), h.get("consensus") or {}
+    b, v, perf, q = h["inputgeber"], h.get("vsMa200"), h.get("perf"), h.get("consensus") or {}
     t = h["t"]
     if t == "LULU":
-        return ("Stop setzen", "reduzieren", "Deutlich unter der 200-Tage-Linie, kein Becker-Bezug; Beckers Analogie Nike-Calls liegt bei −22 % (KW42, zuvor −44 %), Berenberg stuft Nike auf Sell. Nicht verbilligen, Stop knapp unter dem 52-Wochen-Tief.")
+        return ("Stop setzen", "reduzieren", "Deutlich unter der 200-Tage-Linie, kein Inputgeber-Bezug; Inputgebers Analogie Nike-Calls liegt bei −22 % (KW42, zuvor −44 %), Berenberg stuft Nike auf Sell. Nicht verbilligen, Stop knapp unter dem 52-Wochen-Tief.")
     if t == "NKE":
-        return ("Stop setzen", "reduzieren", "Becker spielt Nike nur über kleine Calls (KW42: −22 %, zuvor −44 %); Berenberg am 06.10. Abstufung auf Sell (Ziel 27,50 USD). Nicht nachkaufen.")
+        return ("Stop setzen", "reduzieren", "Inputgeber spielt Nike nur über kleine Calls (KW42: −22 %, zuvor −44 %); Berenberg am 06.10. Abstufung auf Sell (Ziel 27,50 USD). Nicht nachkaufen.")
     if b["kind"] == "sold":
-        return ("Verkauf prüfen", "reduzieren", b["text"] + " Wer Beckers Regelwerk folgt, löst die Position ebenfalls auf oder setzt einen engen Stop.")
+        return ("Verkauf prüfen", "reduzieren", b["text"] + " Wer Inputgebers Regelwerk folgt, löst die Position ebenfalls auf oder setzt einen engen Stop.")
     if perf is not None and perf > 100:
-        return ("Teilgewinn sichern", "reduzieren", f"{pct(perf)} seit Kauf – Beckers Regel: Gewinne aus spekulativen Positionen regelmäßig in den stabilen Teil umschichten. Etwa ein Drittel verkaufen, Rest mit Stop an der 200-Tage-Linie.")
+        return ("Teilgewinn sichern", "reduzieren", f"{pct(perf)} seit Kauf – Inputgebers Regel: Gewinne aus spekulativen Positionen regelmäßig in den stabilen Teil umschichten. Etwa ein Drittel verkaufen, Rest mit Stop an der 200-Tage-Linie.")
     st = b.get("status", "")
     if b["kind"] == "held" and st == "REDUZIEREN":
-        return ("Reduzieren (in Erholung)", "reduzieren", f"Becker: Status REDUZIEREN – in die Erholung hinein abbauen, nicht in die Schwäche. {pct(v)} zur 200-Tage-Linie.")
+        return ("Reduzieren (in Erholung)", "reduzieren", f"Inputgeber: Status REDUZIEREN – in die Erholung hinein abbauen, nicht in die Schwäche. {pct(v)} zur 200-Tage-Linie.")
     if b["kind"] == "held" and st == "AUFBAUEN":
-        return ("Halten / Aufbauen", "kaufen", f"Becker: Status AUFBAUEN. {pct(v)} zur 200-Tage-Linie.")
+        return ("Halten / Aufbauen", "kaufen", f"Inputgeber: Status AUFBAUEN. {pct(v)} zur 200-Tage-Linie.")
     if b["kind"] == "held" and b["depot"] == "Alpha":
         if v is not None and v < 0:
-            return ("Stop prüfen", "reduzieren", f"Becker hält die Position im Alpha-Depot mit engen Stopps; aktuell {pct(v)} unter der 200-Tage-Linie – Ausstieg definieren.")
-        return ("Halten mit Stop", "halten", f"Becker-Alpha-Position, Stop an der 200-Tage-Linie ({pct(v)} Abstand).")
+            return ("Stop prüfen", "reduzieren", f"Inputgeber hält die Position im Alpha-Depot mit engen Stopps; aktuell {pct(v)} unter der 200-Tage-Linie – Ausstieg definieren.")
+        return ("Halten mit Stop", "halten", f"Inputgeber-Alpha-Position, Stop an der 200-Tage-Linie ({pct(v)} Abstand).")
     if b["kind"] == "held":
-        return ("Halten", "halten", f"Becker: {b['depot']}-Depot, {('Status ' + st) if st else 'unverändert'}. {pct(v)} zur 200-Tage-Linie.")
+        return ("Halten", "halten", f"Inputgeber: {b['depot']}-Depot, {('Status ' + st) if st else 'unverändert'}. {pct(v)} zur 200-Tage-Linie.")
     if h["kind"] == "ETF":
         if v is not None and v < -10:
             return ("Halten, beobachten", "halten", f"Basisbaustein, aber {pct(v)} unter der 200-Tage-Linie.")
@@ -222,12 +222,12 @@ def hold_reco(h):
     if v is None:
         return ("Halten mit Stop", "halten", "Junge Aktie ohne 200-Tage-Linie (zu kurze Kurshistorie) – Stop unter dem bisherigen Tief setzen.")
     if v < -25:
-        return ("Stop setzen", "reduzieren", f"{pct(v)} unter der 200-Tage-Linie ohne Becker-Unterstützung – Ausstieg definieren. (Becker: 'Ob du im Plus oder Minus bist, ist keine Information' – entscheidend ist der Trend.)")
+        return ("Stop setzen", "reduzieren", f"{pct(v)} unter der 200-Tage-Linie ohne Inputgeber-Unterstützung – Ausstieg definieren. (Inputgeber: 'Ob du im Plus oder Minus bist, ist keine Information' – entscheidend ist der Trend.)")
     if v < -15:
         return ("Stop prüfen", "reduzieren", f"{pct(v)} unter der 200-Tage-Linie – Trend negativ, Ausstiegsmarke festlegen.")
     if q.get("mean") and q["mean"] >= 3:
         return ("Reduzieren prüfen", "reduzieren", f"Analysten zurückhaltend (Note {q['mean']:.1f}).")
-    return ("Halten", "halten", f"Kein Becker-Bezug; Trend {pct(v)} zur 200-Tage-Linie" + (f", Analysten: {br.analyst_view({}, q, {})[1]}" if q.get("mean") else "") + ".")
+    return ("Halten", "halten", f"Kein Inputgeber-Bezug; Trend {pct(v)} zur 200-Tage-Linie" + (f", Analysten: {br.analyst_view({}, q, {})[1]}" if q.get("mean") else "") + ".")
 
 
 def fx_rates():
@@ -290,7 +290,7 @@ def analyse(holdings, fx, spy):
     with ThreadPoolExecutor(8) as ex:
         holdings = list(ex.map(one, holdings))
     for h in holdings:
-        h["becker"] = becker_info(h["t"]) if h["resolved"] else {"kind": "none", "text": "–"}
+        h["inputgeber"] = inputgeber_info(h["t"]) if h["resolved"] else {"kind": "none", "text": "–"}
         if h["resolved"] and "price" in h:
             h["aktion"], h["cls"], h["warum"] = hold_reco(h)
         else:
@@ -333,7 +333,7 @@ def buy_for(holdings, bw, fw, today, loaded, spy, bb):
                      "fund": {"score": fs, "label": flabel, "details": fdet, "date": (fund or {}).get("date", today.isoformat())},
                      "mom": {"score": ms, "label": mlabel, "details": mdet, "date": hist["dates"][-1] if hist.get("dates") else today.isoformat()},
                      "votes": votes, "votesPos": sum(v > 0 for v in votes.values()), "votesNeg": sum(v < 0 for v in votes.values()),
-                     "role": decision.role_of(c["t"], c["kind"], c["bucket"], BECKER_DEPOT.get(c["t"]), fund)})
+                     "role": decision.role_of(c["t"], c["kind"], c["bucket"], INPUTGEBER_DEPOT.get(c["t"]), fund)})
     rows.sort(key=lambda r: -r["score"]["total"])
     # ---- Barbell-Auswahl (SKILL.md Abschnitt 0)
     # 1. Anker: je fehlendem Baustein der bestbewertete Kandidat
@@ -356,7 +356,7 @@ def buy_for(holdings, bw, fw, today, loaded, spy, bb):
                 why = f"Anker-Baustein „{part}“ schon mit einem besser bewerteten Titel belegt"
         else:  # Satellit
             if r["signal"] == "nein":
-                why = "Becker: nicht einsteigen"
+                why = "Inputgeber: nicht einsteigen"
             elif not sat_open:
                 why = f"Satellit im Depot schon {sat_ist:.0f} % (Ziel 15 %) – neues Kapital nur in den Anker"
             elif r["bucketWeight"] >= BUCKET_MAX:
@@ -366,7 +366,7 @@ def buy_for(holdings, bw, fw, today, loaded, spy, bb):
             elif r["bucket"] in used or r["family"] in used_fam:
                 why = "Sektor/Familie in der Empfehlung schon belegt"
             elif r["agree"] == "Divergenz" and r["signal"] != "kaufen":
-                why = "Becker und Zweitmeinung uneinig"
+                why = "Inputgeber und Zweitmeinung uneinig"
             elif r["score"]["total"] < 2:
                 why = "Gesamtwertung zu niedrig"
             elif n_sat >= 2:
@@ -406,7 +406,7 @@ def select_offensive(rows, holdings):
             continue
         sl = br.slot(r)
         if r["signal"] == "nein":
-            why = "Becker: nicht einsteigen"
+            why = "Inputgeber: nicht einsteigen"
         elif r["bucketWeight"] >= BUCKET_MAX:
             why = f"Sektor im Depot schon {pct(r['bucketWeight']).lstrip('+')} ({r['bucket']})"
         elif r["familyWeight"] >= FAMILY_MAX:
@@ -414,7 +414,7 @@ def select_offensive(rows, holdings):
         elif r["bucket"] in used or r["family"] in used_fam:
             why = "Sektor/Familie in der Empfehlung schon belegt"
         elif r["agree"] == "Divergenz" and r["signal"] != "kaufen":
-            why = "Becker und Zweitmeinung uneinig"
+            why = "Inputgeber und Zweitmeinung uneinig"
         elif r["score"]["total"] < 2:
             why = "Gesamtwertung zu niedrig"
         elif filled[sl] >= slots[sl]:
@@ -443,7 +443,7 @@ def de(d):
 def write_md(pid, label, holdings, bw, buy, analysis):
     OUT_MD.mkdir(parents=True, exist_ok=True)
     L = [f"# 👤 Depot {label} – Bewertung", "",
-         f"**Quelle:** `input/{pid}/` · **Kurse:** Yahoo Finance {de(buy['generated'])} · **Becker:** {STAND}", "",
+         f"**Quelle:** `input/{pid}/` · **Kurse:** Yahoo Finance {de(buy['generated'])} · **Inputgeber:** {STAND}", "",
          "> Keine Anlageberatung. Ohne Stückzahlen wird jede Position gleich gewichtet. Kaufkurse in der Depot-Datei werden als EUR interpretiert.", "",
          "## 🧭 Gesamtanalyse", ""] + [f"- {x}" for x in analysis] + ["",
          "## 📋 Entscheidung je Position", "",
@@ -467,13 +467,13 @@ def buy_md(label, buy):
     """Markdown der Kaufempfehlung (Szenario A und B, vier Meinungen, Ausschlüsse)."""
     rows = {r["t"]: r for r in buy["rows"]}
     K = [f"# 🛒 Kaufempfehlung {label}", "", f"**Erstellt:** {de(buy['generated'])} · **Gültig bis:** {de(buy['validUntil'])} · "
-         f"**Becker-Stand:** {de(buy['beckerDate'])} ({buy['beckerAge']} Tage)", "",
+         f"**Inputgeber-Stand:** {de(buy['inputgeberDate'])} ({buy['inputgeberAge']} Tage)", "",
          "> Barbell-Regeln: Neues Kapital zuerst in fehlende Anker-Bausteine (Geldmarkt, kurzlaufende AAA-Staatsanleihen, physisches Gold, "
          "höchstens ein Welt-ETF). Satelliten nur, solange der Satellit unter 15 % liegt. Kandidaten der Mitte werden ausgeschlossen. Keine Anlageberatung.", ""]
     if buy.get("summary"):
-        K += [f"## Becker – das Wichtigste aus den Reports ({buy['beckerStand']})", ""] + [f"- {x}" for x in buy["summary"]] + [""]
+        K += [f"## Inputgeber – das Wichtigste aus den Reports ({buy['inputgeberStand']})", ""] + [f"- {x}" for x in buy["summary"]] + [""]
     K += [f"## {buy['scenarios'][0]['title']}", "",
-         "| # | Titel | Barbell-Rolle | Sektor (Gewicht heute) | Anteil | 1 Becker | 2 Analysten | 3 Fundamental | 4 Momentum | Meinungsbild |",
+         "| # | Titel | Barbell-Rolle | Sektor (Gewicht heute) | Anteil | 1 Inputgeber | 2 Analysten | 3 Fundamental | 4 Momentum | Meinungsbild |",
          "|---|---|---|---|---|---|---|---|---|---|"]
     for i, t in enumerate(buy["picks"], 1):
         r = rows[t]
@@ -488,7 +488,7 @@ def buy_md(label, buy):
     for t in dict.fromkeys(buy["picks"] + sb["picks"]):
         r = rows[t]
         K += [f"### {r['name']} ({t})", "",
-              f"1. **Becker ({de(buy['beckerDate'])}):** {r['signalLabel']} – {r['becker']}",
+              f"1. **Inputgeber ({de(buy['inputgeberDate'])}):** {r['signalLabel']} – {r['inputgeber']}",
               f"2. **Analysten (Yahoo, {de(buy['generated'])}):** {r['score']['analystLabel']}",
               f"3. **Fundamental ({de(r['fund']['date'])}):** {r['fund']['label']} – " + "; ".join(r["fund"]["details"]),
               f"4. **Momentum ({de(r['mom']['date'])}):** {r['mom']['label']} – " + "; ".join(r["mom"]["details"]), ""]
@@ -501,7 +501,7 @@ def buy_md(label, buy):
 def buy_dict(today, rows, picks, picks_b):
     """Kaufempfehlung mit beiden Szenarien als Daten für Webseite und Markdown."""
     return {"generated": today.isoformat(), "validUntil": (today + timedelta(days=br.MAX_AGE)).isoformat(), "maxAge": br.MAX_AGE,
-            "beckerDate": br.BECKER_DATE, "beckerAge": br.age(br.BECKER_DATE, today), "picks": [r["t"] for r in picks], "rows": rows,
+            "inputgeberDate": br.INPUTGEBER_DATE, "inputgeberAge": br.age(br.INPUTGEBER_DATE, today), "picks": [r["t"] for r in picks], "rows": rows,
             "scenarios": [
                 {"id": "A", "title": "Szenario A · Mit Barbell (strikt)", "allocKey": "alloc", "excludedKey": "excluded",
                  "picks": [r["t"] for r in picks],
@@ -515,7 +515,7 @@ def buy_dict(today, rows, picks, picks_b):
                          "Weicht bewusst von der verbindlichen Barbell-Strategie ab – kein Krisenpuffer, höheres Risiko, höhere Renditechance."}],
             "market": br.fresh_web("*", today),
             "staleWeb": [dict(date=d, text=x, source=s[0]) for d, x, _, s in br.WEB.get("*", []) if br.age(d, today) > br.MAX_AGE],
-            "beckerStand": STAND, "summary": br.BECKER_SUMMARY}
+            "inputgeberStand": STAND, "summary": br.INPUTGEBER_SUMMARY}
 
 
 def run():
@@ -550,7 +550,7 @@ def run():
         bw, fw = weights(holdings)
         for h in holdings:
             if h["resolved"]:
-                h["role"] = decision.role_of(h["t"], h["kind"], h["bucket"], h["becker"].get("depot"), h.get("fundRaw"))
+                h["role"] = decision.role_of(h["t"], h["kind"], h["bucket"], h["inputgeber"].get("depot"), h.get("fundRaw"))
                 h["style"] = decision.style_of(h, h["role"])
         bb = decision.barbell(holdings)
         for h in holdings:

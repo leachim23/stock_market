@@ -3,9 +3,9 @@
 
 Rahmen (SKILL.md Abschnitt 0 und 0b):
   - Barbell: 85 % Anker / 15 % Satellit / 0 % Mitte. Die Mitte wird abgebaut.
-  - Becker-Makro: prozyklische Positionen über den Stop steuern, antizyklische über
+  - Inputgeber-Makro: prozyklische Positionen über den Stop steuern, antizyklische über
     Cost Average und Positionsgröße (kein harter Stop). 8 % Geldentwertung als Hürde.
-Darin verknüpft: Beckers Status, vier Meinungen (Becker, Analysten, Fundamental, Momentum),
+Darin verknüpft: Inputgebers Status, vier Meinungen (Inputgeber, Analysten, Fundamental, Momentum),
 200-Tage-Linie, Sektor-/Familiengewichte.
 """
 FAMILY_MAX = 25.0      # % – ab hier kein Nachkauf in derselben Familie
@@ -17,7 +17,7 @@ TARGET = {"Anker": 85.0, "Satellit": 15.0, "Mitte": 0.0}
 SAT_HARD_STOP = 10.0   # % – darunter: nicht blind nachkaufen, Thesen prüfen
 SAT_TAKE_PROFIT = 25.0  # % – darüber: Gewinne in den Anker umschichten
 
-# Makro-Stand laut Becker (Weekly Recap KW42 / Makro-Crashkurs Session 02)
+# Makro-Stand laut Inputgeber (Weekly Recap KW42 / Makro-Crashkurs Session 02)
 MAKRO = {
     "date": "2026-10-16",
     "debasement": 8.0,          # % Geldentwertung p. a. (Crashkurs; KW41: 8–10 %)
@@ -25,7 +25,7 @@ MAKRO = {
     "debtLiqCritical": 2.2,
     "liqGrowth": "erstmals leicht gefallen, aber noch ausreichend (KW42)",
     "sentiment": "Fear & Greed 25, 42 % Bären unter Kleinanlegern, kein Panik-VIX – historisch ein Kontraindikator",
-    "rates": "Höhepunkt laut Becker gesehen – 2- und 10-jährige fallen, Dollar schwächer; kritisch ab ~6 % Zehnjahresrendite",
+    "rates": "Höhepunkt laut Inputgeber gesehen – 2- und 10-jährige fallen, Dollar schwächer; kritisch ab ~6 % Zehnjahresrendite",
     "scenario": "Rotation aus KI in defensive Werte, Jahresendrallye bleibt möglich",
 }
 
@@ -46,15 +46,15 @@ ROLE_OVERRIDE = {
 LABEL_ROLE = {"Anker": "Anker (defensiv)", "Satellit": "Satellit (aggressiv)", "Mitte": "Mitte (abbauen)"}
 
 
-def role_of(t, kind, bucket, becker_depot=None, fund=None):
-    """Barbell-Rolle. Aktien: Satellit bei Becker-Alpha, Wachstumsbranche, Beta ≥ 1,6 oder Börsenwert < 50 Mrd. bei Beta ≥ 1,0 – sonst Mitte."""
+def role_of(t, kind, bucket, inputgeber_depot=None, fund=None):
+    """Barbell-Rolle. Aktien: Satellit bei Inputgeber-Alpha, Wachstumsbranche, Beta ≥ 1,6 oder Börsenwert < 50 Mrd. bei Beta ≥ 1,0 – sonst Mitte."""
     if t in ROLE_OVERRIDE:
         return ROLE_OVERRIDE[t]
     if bucket in ANCHOR_BUCKETS:
         return "Anker"
     if kind == "ETF":
         return "Satellit" if bucket in SAT_BUCKETS else "Mitte"
-    if becker_depot == "Alpha" or bucket in SAT_BUCKETS:
+    if inputgeber_depot == "Alpha" or bucket in SAT_BUCKETS:
         return "Satellit"
     f = fund or {}
     mcap, beta = f.get("mcap"), f.get("beta")
@@ -68,7 +68,7 @@ def role_of(t, kind, bucket, becker_depot=None, fund=None):
 
 def style_of(h, role):
     """antizyklisch (Cost Average statt Stop) oder prozyklisch (Stop an der 200-Tage-Linie)."""
-    b = h.get("becker", {})
+    b = h.get("inputgeber", {})
     if role == "Anker":
         return "antizyklisch"
     if b.get("kind") == "held" and (b.get("depot") == "Beta" or str(b.get("block", "")).startswith("C")):
@@ -101,7 +101,7 @@ def pct(v):
     return "–" if v is None else f"{'+' if v > 0 else '−' if v < 0 else ''}{abs(v):.1f} %".replace(".", ",")
 
 
-def becker_vote(b):
+def inputgeber_vote(b):
     if b["kind"] == "sold":
         return -1
     if b["kind"] == "held":
@@ -128,17 +128,17 @@ def decide(h, bw, fw, family, bb):
         h.update(entscheidung="Daten nachtragen", ecls="halten", egrund=h.get("hint") or h.get("error", "keine Kursdaten"),
                  gruende=[], votes={}, prio="")
         return h["entscheidung"]
-    t, b, v, perf = h["t"], h["becker"], h.get("vsMa200"), h.get("perf")
+    t, b, v, perf = h["t"], h["inputgeber"], h.get("vsMa200"), h.get("perf")
     role, style = h["role"], h["style"]
     sat = bb["ist"]["Satellit"]
     fam = family(h["bucket"])
     famw, bucketw = fw.get(fam, 0.0), bw.get(h["bucket"], 0.0)
-    votes = {"becker": becker_vote(b), "analysten": analyst_vote(h.get("consensus")),
+    votes = {"inputgeber": inputgeber_vote(b), "analysten": analyst_vote(h.get("consensus")),
              "fundamental": (h.get("fund") or {}).get("score", 0), "momentum": (h.get("mom") or {}).get("score", 0)}
     pos, neg = sum(x > 0 for x in votes.values()), sum(x < 0 for x in votes.values())
     m = votes["momentum"]
     g = [f"Barbell-Rolle: {LABEL_ROLE[role]} · Steuerung {style} ({'Stop an der 200-Tage-Linie' if style == 'prozyklisch' else 'Cost Average und Positionsgröße statt Stop'})",
-         f"Becker: {b['text']}",
+         f"Inputgeber: {b['text']}",
          f"Analysten: {(h.get('consensus') or {}).get('rating') or 'kein Konsens'}"
          + (f" (Note {h['consensus']['mean']:.2f})".replace(".", ",") if (h.get('consensus') or {}).get('mean') else ""),
          f"Fundamental: {(h.get('fund') or {}).get('label', '–')}",
@@ -156,17 +156,17 @@ def decide(h, bw, fw, family, bb):
 
     # ---------------- Verkaufen (These gebrochen)
     if b["kind"] == "sold":
-        return out("Verkaufen", f"Becker hat die Position verkauft ({b['text'].split(': ', 1)[-1]}). Ohne Becker-These fehlt der Grund zum Halten.", "hoch")
+        return out("Verkaufen", f"Inputgeber hat die Position verkauft ({b['text'].split(': ', 1)[-1]}). Ohne Inputgeber-These fehlt der Grund zum Halten.", "hoch")
     if t in ("LULU", "NKE"):
-        return out("Verkaufen", "Sportartikel-Turnaround ohne Bestätigung: deutlich unter der 200-Tage-Linie. Beckers Nike-Calls haben sich "
+        return out("Verkaufen", "Sportartikel-Turnaround ohne Bestätigung: deutlich unter der 200-Tage-Linie. Inputgebers Nike-Calls haben sich "
                                 "in KW42 zwar erholt (−44 → −22 %), er spielt die Branche aber nur über kleine Optionen, nicht über die Aktie. "
                                 "Berenberg stuft Nike auf Sell. Zudem Barbell-Mitte.", "hoch")
-    if style == "prozyklisch" and v is not None and v < -20 and m <= 0 and votes["becker"] <= 0:
+    if style == "prozyklisch" and v is not None and v < -20 and m <= 0 and votes["inputgeber"] <= 0:
         extra = " Fundamental günstig – Wiedereinstieg erst, wenn die Aktie die 200-Tage-Linie zurückerobert." if votes["fundamental"] > 0 else ""
         return out("Verkaufen", f"Prozyklische Position mit gebrochenem Trend: {pct(v)} unter der 200-Tage-Linie, kein positives Momentum, "
-                                f"keine Becker-Unterstützung – der Stop greift.{extra}", "hoch")
+                                f"keine Inputgeber-Unterstützung – der Stop greift.{extra}", "hoch")
     if neg >= 3 and b["kind"] != "held":
-        return out("Verkaufen", f"{neg} von 4 Meinungen negativ, kein Becker-Rückhalt.", "hoch")
+        return out("Verkaufen", f"{neg} von 4 Meinungen negativ, kein Inputgeber-Rückhalt.", "hoch")
 
     # ---------------- Antizyklisch tief im Minus: kein Stop, Cost Average / Positionsgröße
     if style == "antizyklisch" and v is not None and v < -20:
@@ -177,11 +177,11 @@ def decide(h, bw, fw, family, bb):
 
     # ---------------- Trimmen
     if b.get("status") == "REDUZIEREN":
-        return out("Trimmen", "Becker-Status REDUZIEREN – in Erholungen hinein abbauen, nicht in die Schwäche.", "hoch")
+        return out("Trimmen", "Inputgeber-Status REDUZIEREN – in Erholungen hinein abbauen, nicht in die Schwäche.", "hoch")
     if neg >= 3:
-        return out("Trimmen", f"{neg} von 4 Meinungen negativ, Becker hält die Position aber noch – reduzieren statt komplett verkaufen.", "hoch")
+        return out("Trimmen", f"{neg} von 4 Meinungen negativ, Inputgeber hält die Position aber noch – reduzieren statt komplett verkaufen.", "hoch")
     if perf is not None and perf > 100:
-        return out("Trimmen", f"{pct(perf)} seit Kauf – Gewinne in den Anker umschichten (Becker: Alpha-Gewinne ins Beta). "
+        return out("Trimmen", f"{pct(perf)} seit Kauf – Gewinne in den Anker umschichten (Inputgeber: Alpha-Gewinne ins Beta). "
                               "Etwa ein Drittel verkaufen, Rest mit Stop an der 200-Tage-Linie.", "hoch")
     if role == "Satellit" and sat > SAT_TAKE_PROFIT and ((v or 0) > 10 or (perf or 0) > 30):
         return out("Trimmen", f"Take-Profit-Regel: Satellit macht {sat:.0f} % des Depots aus (Grenze {SAT_TAKE_PROFIT:.0f} %). "
@@ -191,23 +191,23 @@ def decide(h, bw, fw, family, bb):
                               f"Position {pct(v)} über der 200-Tage-Linie – Gewinne teilweise in den Anker umschichten.", "hoch")
     if role == "Mitte":
         prio = "hoch" if weak else "niedrig"
-        becker_note = " Becker baut die Aktie zwar auf – im Barbell-Modell gehört sie aber weder in den Anker noch in den Satellit." if votes["becker"] > 0 else ""
+        inputgeber_note = " Inputgeber baut die Aktie zwar auf – im Barbell-Modell gehört sie aber weder in den Anker noch in den Satellit." if votes["inputgeber"] > 0 else ""
         return out("Trimmen", f"Barbell: ignorierte Mitte – schrittweise in Erholungen abbauen und in den Anker umschichten "
-                              f"({'zuerst' if prio == 'hoch' else 'zuletzt'} abbauen: {pos}/4 Meinungen positiv, Trend {pct(v)}).{becker_note}", prio)
-    if v is not None and v > 60 and votes["becker"] <= 0:
-        return out("Trimmen", f"Starke Übertreibung ({pct(v)} über der 200-Tage-Linie) ohne aktive Becker-Unterstützung – Teilgewinne sichern.", "mittel")
+                              f"({'zuerst' if prio == 'hoch' else 'zuletzt'} abbauen: {pos}/4 Meinungen positiv, Trend {pct(v)}).{inputgeber_note}", prio)
+    if v is not None and v > 60 and votes["inputgeber"] <= 0:
+        return out("Trimmen", f"Starke Übertreibung ({pct(v)} über der 200-Tage-Linie) ohne aktive Inputgeber-Unterstützung – Teilgewinne sichern.", "mittel")
 
     # ---------------- Nachkaufen (nur Anker oder Satellit, Ende unter Ziel)
     healthy = v is not None and -10 <= v <= 25
     if role == "Anker" and bb["ist"]["Anker"] < TARGET["Anker"]:
         return out("Nachkaufen", f"Anker-Baustein, Anker erst {bb['ist']['Anker']:.0f} % von {TARGET['Anker']:.0f} % – "
                                  "neues Kapital und Erlöse aus der Mitte hierhin (antizyklisch, gestaffelt).")
-    if role == "Satellit" and votes["becker"] > 0 and pos >= 3 and healthy and bucketw < BUCKET_FULL and famw < FAMILY_MAX:
+    if role == "Satellit" and votes["inputgeber"] > 0 and pos >= 3 and healthy and bucketw < BUCKET_FULL and famw < FAMILY_MAX:
         if sat < SAT_HARD_STOP:
             return out("Halten", f"Gute Satellit-Position ({pos}/4 positiv), aber Hard-Stop-Regel: Satellit unter {SAT_HARD_STOP:.0f} % – "
                                  "erst Thesen prüfen, nicht blind nachkaufen.")
         if sat < TARGET["Satellit"]:
-            return out("Nachkaufen", f"{pos} von 4 Meinungen positiv, Becker positiv, Trend gesund ({pct(v)}) und Satellit unter 15 %.")
+            return out("Nachkaufen", f"{pos} von 4 Meinungen positiv, Inputgeber positiv, Trend gesund ({pct(v)}) und Satellit unter 15 %.")
         return out("Halten", f"Starke Satellit-Position ({pos}/4 positiv) – Satellit aber schon {sat:.0f} % (Ziel 15 %), kein Nachkauf.")
 
     # ---------------- Halten
@@ -226,12 +226,12 @@ def decide(h, bw, fw, family, bb):
 
 # --------------------------------------------------------------------------- Gesamtanalyse
 def synthesis(label, holdings, bw, fw, picks, family, bb):
-    """Gesamtanalyse: Barbell × Becker-Makro (Crashkurs + KW41) × Depotstruktur × Aktionen."""
+    """Gesamtanalyse: Barbell × Inputgeber-Makro (Crashkurs + KW41) × Depotstruktur × Aktionen."""
     res = [h for h in holdings if h.get("resolved") and "price" in h]
     n = len(res) or 1
     below = [h for h in res if (h.get("vsMa200") or 0) < 0]
-    sold = [h["t"] for h in res if h["becker"]["kind"] == "sold"]
-    overlap = [h for h in res if h["becker"]["kind"] in ("held", "watch")]
+    sold = [h["t"] for h in res if h["inputgeber"]["kind"] == "sold"]
+    overlap = [h for h in res if h["inputgeber"]["kind"] in ("held", "watch")]
     anti = [h["t"] for h in res if h.get("style") == "antizyklisch"]
     acts = {}
     for h in holdings:
@@ -242,26 +242,26 @@ def synthesis(label, holdings, bw, fw, picks, family, bb):
     L = [
         f"**Barbell (Ziel 85 / 15 / 0):** Anker {dec(ist['Anker'])} % · Satellit {dec(ist['Satellit'])} % · Mitte {dec(ist['Mitte'])} %. "
         + " · ".join(bb["status"]) + ".",
-        f"**Becker-Makro ({MAKRO['date'][8:]}.{MAKRO['date'][5:7]}.):** Szenario {MAKRO['scenario']}. Verhältnis Schulden- zu Liquiditätswachstum "
+        f"**Inputgeber-Makro ({MAKRO['date'][8:]}.{MAKRO['date'][5:7]}.):** Szenario {MAKRO['scenario']}. Verhältnis Schulden- zu Liquiditätswachstum "
         f"{str(MAKRO['debtLiqRatio']).replace('.', ',')} (kritisch ab {str(MAKRO['debtLiqCritical']).replace('.', ',')}), Liquidität {MAKRO['liqGrowth']}, "
-        f"Zinsen {MAKRO['rates']}. Sentiment: {MAKRO['sentiment']}. Bullenmarkt-Ende laut Becker, wenn 2- und 10-jährige Renditen weiter steigen oder der Dollar ausbricht.",
-        f"**8-%-Hürde:** Becker rechnet mit rund {dec(MAKRO['debasement'])} % Geldentwertung pro Jahr. Geldmarkt und kurzlaufende Bundesanleihen im Anker "
+        f"Zinsen {MAKRO['rates']}. Sentiment: {MAKRO['sentiment']}. Bullenmarkt-Ende laut Inputgeber, wenn 2- und 10-jährige Renditen weiter steigen oder der Dollar ausbricht.",
+        f"**8-%-Hürde:** Inputgeber rechnet mit rund {dec(MAKRO['debasement'])} % Geldentwertung pro Jahr. Geldmarkt und kurzlaufende Bundesanleihen im Anker "
         "bringen nominal nur rund 2–3 % und verlieren daran gemessen real Kaufkraft – der Preis für Kapitalerhalt im Crash. "
         "Physisches Gold im Anker ist deshalb kein Beiwerk, sondern der Schutz gegen Geldentwertung.",
         f"**Struktur:** {len(res)} bewertete Positionen, größte Familie {topfam[0]} mit {str(topfam[1]).replace('.', ',')} %. "
         f"{len(below)} Positionen ({round(len(below) / n * 100)} %) unter der 200-Tage-Linie. "
         f"{len(anti)} antizyklisch gesteuert (Cost Average statt Stop), {len(res) - len(anti)} prozyklisch (Stop an der 200-Tage-Linie).",
-        f"**Becker-Abgleich:** {len(overlap)} Positionen in Beckers Depots oder auf seiner Watchlist"
+        f"**Inputgeber-Abgleich:** {len(overlap)} Positionen in Inputgebers Depots oder auf seiner Watchlist"
         + (f"; {len(sold)} hat er verkauft ({', '.join(sold)})." if sold else "."),
     ]
     if topfam[1] >= FAMILY_TRIM:
-        L.append(f"**Klumpenrisiko {topfam[0]}:** {str(topfam[1]).replace('.', ',')} % des Depots. Becker spielt den KI-Boom nur im Alpha- und "
+        L.append(f"**Klumpenrisiko {topfam[0]}:** {str(topfam[1]).replace('.', ',')} % des Depots. Inputgeber spielt den KI-Boom nur im Alpha- und "
                  "2030-Depot und hält seinen stabilen Teil bewusst frei davon.")
     plan = [f"{k}: {', '.join(acts[k])}" for k in ("Verkaufen", "Trimmen", "Nachkaufen") if acts.get(k)]
     if picks:
         plan.append(f"Neu kaufen: {', '.join(picks)}")
     L.append("**Aktionsplan:** " + " · ".join(plan) + f" · Halten: {len(acts.get('Halten', []))} Positionen.")
-    L.append("**Reihenfolge (Becker, Barbell):** 1. Verkäufe mit gebrochener These. 2. Mitte und REDUZIEREN-Positionen in Erholungen abbauen – "
+    L.append("**Reihenfolge (Inputgeber, Barbell):** 1. Verkäufe mit gebrochener These. 2. Mitte und REDUZIEREN-Positionen in Erholungen abbauen – "
              "Priorität „hoch“ zuerst. 3. Erlöse und neues Kapital gestaffelt in den Anker. Rebalancing quartalsweise; Rücksetzer im Anker sind "
              "Kaufgelegenheiten, kein Verkaufsgrund.")
     return L, acts

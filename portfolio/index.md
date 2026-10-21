@@ -1,12 +1,12 @@
-# 📈 Portfolio-Wiki – Balthasar Becker Depots
+# 📈 Portfolio-Wiki – Inputgeber Depots
 
-**Stichtag:** 16.10.2026 (KW 42) · **Quellen:** Becker-PDFs in `PDF_input/` und `pdf/` (Depot-Reports KW38-42, Weekly Recaps KW38-42)
+**Stichtag:** 16.10.2026 (KW 42) · **Quellen:** Inputgeber-PDFs in `PDF_input/` und `pdf/` (Depot-Reports KW38-42, Weekly Recaps KW38-42)
 
 **Gesamtwert:** n/a – die Reports weisen ausschließlich prozentuale Gewichtungen je Depot aus, keine Stückzahlen oder Euro-Beträge.
 
 > 👤 **Eigene Depots:** [michi_g](depots/michi_g.md) ([Kaufempfehlung](depots/michi_g_kaufempfehlung.md)) · [michi_h](depots/michi_h.md) ([Kaufempfehlung](depots/michi_h_kaufempfehlung.md))
 
-## 🏋️ Core-Satellite-Architektur (Becker Barbell)
+## 🏋️ Core-Satellite-Architektur (Inputgeber Barbell)
 
 | Depot | Rolle | Cash | Struktur |
 |---|---|---|---|
@@ -84,29 +84,29 @@
 | Nike (Long Calls) | NKE | Satellite · Optionen | 2 % | −22 % | Stark | [NKE](assets/NKE.md) |
 | Rocket Lab (Long Calls) | RKLB | Satellite · Optionen | 0 % | −81 % | Mittel | [RKLB](assets/RKLB.md) |
 
-> Alle Anteile und Alpha-Performance (Einstieg → Kurs) laut Depot-Reports KW42 vom 16.10.2026. Status je Position jetzt in allen drei Depots (im Beta laut Becker nur begrenzt aussagekräftig).
+> Alle Anteile und Alpha-Performance (Einstieg → Kurs) laut Depot-Reports KW42 vom 16.10.2026. Status je Position jetzt in allen drei Depots (im Beta laut Inputgeber nur begrenzt aussagekräftig).
 
 ## 🌐 Makro- & Sentiment-Check
 
 **Regime:** Defensiv (Alpha KW42, Cash 38 %) · Rotation aus KI in defensive Werte · Fear & Greed 25, 42 % Bären unter Kleinanlegern
 
 - **Produzentenpreis-Schock:** PPI September 6,3 % (erwartet 5,3 %), Kernrate 5,0 % (erwartet 4,4 %). Treiber ist Energie – schlägt verzögert auf die Verbraucherpreise durch.
-- **Zinsen:** Becker hält den Höhepunkt für gesehen – 2- und 10-jährige zuletzt gefallen, Dollar schwächer. BofA-Studie: Oberhalb von ~6 % Zehnjahresrendite bekommen Aktien ernste Probleme.
+- **Zinsen:** Inputgeber hält den Höhepunkt für gesehen – 2- und 10-jährige zuletzt gefallen, Dollar schwächer. BofA-Studie: Oberhalb von ~6 % Zehnjahresrendite bekommen Aktien ernste Probleme.
 - **KI-Finanzierung:** Anleihen für KI-Investitionen verlieren deutlich an Wert, Rechenzentrumsbetreiber haben Refinanzierungsprobleme – der Markt glaubt kurzfristig nicht an KI-Profitabilität. Dazu der Schweinezyklus bei Halbleitern.
 - **Liquidität:** erstmals gefallen, aber nur leicht – kein Gießkannensystem. Sorgen erst, wenn mehr als doppelt so viele Schulden wie Liquidität im System sind. Bankreserven ok, Spreads steigen.
-- **Sentiment als Kontraindikator:** Fear & Greed 25, 42 % Bären, aber keine Panik im VIX – für Becker eine günstige Mischung für die Jahresendrallye.
+- **Sentiment als Kontraindikator:** Fear & Greed 25, 42 % Bären, aber keine Panik im VIX – für Inputgeber eine günstige Mischung für die Jahresendrallye.
 - **Playbook:** Erst toppen die Zinsen (geschehen), dann die Aktien, zuletzt die Rohstoffe – diesmal schneller als früher.
 - **Nächste Trigger:** Capex-Aussagen von Amazon, Alphabet und Meta in der Berichtssaison (kappen sie, leidet das Alpha, das 2030-Depot profitiert), Ölpreis/Ukraine-Deal, Bitcoin-Zone 80.000 USD, Stichwahl Brasilien 25.10., US-Midterms 03.11.
 
 **Steigende Zentralbank-Liquidität (Zinssenkungen, steile Kurve):** Stärkster Hebel im Alpha-Depot (Metaplanet, SharpLink, GDXJ, Robotics-Small-Caps, China) und im 2030-Depot (SoFi, Robinhood, Alibaba). Im Beta profitieren IBIT, TLT, RSP und NOBL. Die Barbell ist hier klar offensiv.
 
-**Fallende Liquidität / Zinsschock:** KW42 hat es vorgeführt – Alpha im Minus (drei Stop-Verkäufe: MU, GLW, LITE), 2030 stabil über McDonald's, Beta im Plus (BRK-B, MKL, NOBL, RSP, TLT). Puffer: Alpha-Cash 38 %, Beta-Liquidität 21 %, Gold. Becker kauft Panik-Rücksetzer mit der Reserve – antizyklisch sieht er derzeit noch keine starke Gelegenheit (VIX ohne Panik).
+**Fallende Liquidität / Zinsschock:** KW42 hat es vorgeführt – Alpha im Minus (drei Stop-Verkäufe: MU, GLW, LITE), 2030 stabil über McDonald's, Beta im Plus (BRK-B, MKL, NOBL, RSP, TLT). Puffer: Alpha-Cash 38 %, Beta-Liquidität 21 %, Gold. Inputgeber kauft Panik-Rücksetzer mit der Reserve – antizyklisch sieht er derzeit noch keine starke Gelegenheit (VIX ohne Panik).
 
 **Klumpenrisiken:** McDonald's 32 % im 2030-Depot (Cash 0 %) · Geldentwertung 18 % größter Block im Alpha (Metaplanet 9 % größte Einzelposition) · Krypto-Hebel hängen an der Bitcoin-Zone 80.000 USD (Struktur beendet unter 75.000 USD).
 
 ## 🔭 Watchlist
 
-- **Alpha:** Halbleiter-Gegenbewegung – Sektor für Becker zu stark abverkauft; spielbar über Nachkäufe, geschriebene Puts oder einen 3x-Sektor-ETF (kein neues Allzeithoch erwartet)
+- **Alpha:** Halbleiter-Gegenbewegung – Sektor für Inputgeber zu stark abverkauft; spielbar über Nachkäufe, geschriebene Puts oder einen 3x-Sektor-ETF (kein neues Allzeithoch erwartet)
 - **Alpha:** Zinssenkungs-Profiteure: Lennar (LEN) und D.R. Horton (DHI) ganz oben, dazu Versorger und Healthcare/Biotech-ETF – Absichten, keine Käufe
 - **Alpha:** Gold: neben GDXJ jetzt auch der großkapitalisierte GDX; Brasilien erst nach der Stichwahl am 25.10.
 - **2030:** Neuaufnahmen: Rocket Lab (geschriebener Put Strike 66, effektiv ~60), Royal Gold (RGLD), Credo (CRDO)
@@ -131,4 +131,4 @@
 | LITE | Lumentum | Alpha | KW42 | Am 14.10. verkauft, acht Tage nach dem Kauf – Ausbruch auf neue Hochs negiert. |
 
 ---
-*Keine Anlageberatung. Alle Einschätzungen in den Abschnitten 'Einschätzung Balthasar Becker' geben dessen Meinung aus den PDFs wieder; Buffett-/Becker-Checks sind eigene Einordnungen. Stand: 16.10.2026 (KW 42)*
+*Keine Anlageberatung. Alle Einschätzungen in den Abschnitten 'Einschätzung Inputgeber' geben dessen Meinung aus den PDFs wieder; Buffett-/Inputgeber-Checks sind eigene Einordnungen. Stand: 16.10.2026 (KW 42)*

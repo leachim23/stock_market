@@ -15,17 +15,17 @@
 |---|---|---|---|---|
 | 17 % | 18 % | – | 18 % | 18 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Massive Cash-Reserven (>30 % der Bilanz) für antizyklische Akquisitionen; historisch Outperformance in Krisen (2000-2003, 2008-2009).
 - **Risiko:** Macht den letzten Teil eines Bullenmarkts typischerweise nicht mit; Einzeltitel-Konzentration statt Diversifikation.
-- **Wochenstatus:** KW42: Status Einsteigen – an den Abverkaufstagen im Plus. Nach dem starken Anstieg würde Becker für einen Einstieg den nächsten Rücksetzer abwarten.
+- **Wochenstatus:** KW42: Status Einsteigen – an den Abverkaufstagen im Plus. Nach dem starken Anstieg würde Inputgeber für einen Einstieg den nächsten Rücksetzer abwarten.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Versicherungs-Float als günstige Finanzierung, Portfolio aus Monopol-ähnlichen Tochterfirmen (BNSF, BHE, GEICO) und Reputation als bevorzugter Käufer. (Bewertung: **Stark**)
 - **Circle of Competence:** Berkshire ist eine Holding: Versicherungen sammeln Prämien ein, die bis zur Schadenszahlung investiert werden. Damit kauft Berkshire ganze Unternehmen und Aktienpakete. Gewinne werden reinvestiert statt ausgeschüttet.
 - **Management & Verschuldung:** Buffett-Erbe unter Greg Abel; extrem konservative Bilanz mit Netto-Cash. Rückkäufe nur unter innerem Wert.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Gering – profitiert eher von Krisen (kann dann günstig kaufen) als von Liquiditätsschüben.
 - **Asymmetrisches Risikoprofil:** Nein – Kapitalerhalt mit Krisen-Option.
 - **Antizyklischer Status:** Sicherer Hafen der Abverkaufswoche; zuletzt stark gestiegen – Rücksetzer abwarten.

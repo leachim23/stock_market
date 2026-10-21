@@ -15,17 +15,17 @@
 |---|---|---|---|---|
 | 7 % | 6 % | 7 % | 6 % | 6 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Profitiert von hohem Handelsvolumen, Krypto und der jüngeren Anlegergeneration. Auf 7 % gewachsen – laufen lassen.
-- **Risiko:** Laut Becker 'unglaubliche' Volatilität mit brutalen Tagesbewegungen.
-- **Wochenstatus:** KW42: Risk-on-Wert mit extremer Volatilität – Becker erwägt, regelmäßig Prämie über geschriebene Calls einzunehmen.
+- **Risiko:** Laut Inputgeber 'unglaubliche' Volatilität mit brutalen Tagesbewegungen.
+- **Wochenstatus:** KW42: Risk-on-Wert mit extremer Volatilität – Inputgeber erwägt, regelmäßig Prämie über geschriebene Calls einzunehmen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Starke Marke bei jungen Anlegern und günstige Kostenbasis, aber niedrige Wechselkosten im Broker-Geschäft. (Bewertung: **Schwach**)
 - **Circle of Competence:** Robinhood ist eine App, über die Privatanleger Aktien, Optionen und Krypto handeln. Geld verdient es an Order-Flow, Zinsen auf Kundengelder und Abos (Gold). Je mehr gehandelt wird, desto mehr verdient es.
 - **Management & Verschuldung:** Gründergeführt, inzwischen profitabel, Rückkäufe gestartet. Kaum operative Schulden. Regulatorisches Risiko (Payment for Order Flow).
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Extrem hoch – Broker und Krypto sind der Paradefall für Liquiditäts-Beta.
 - **Asymmetrisches Risikoprofil:** Ja (historisch) – das 5x+ wurde bereits geliefert; jetzt Gewinner laufen lassen.
 - **Antizyklischer Status:** Starker Lauf, hohe Volatilität – kein antizyklischer Einstieg.

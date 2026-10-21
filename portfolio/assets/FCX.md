@@ -15,9 +15,9 @@
 |---|---|---|---|---|
 | 5 % | – | – | 6 % | 6 % |
 
-## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
+## 🗣️ Einschätzung Inputgeber (Quelle: PDF)
 - **Chance:** Einer der größten Kupferproduzenten – Grundstoff für Stromnetze, Rechenzentren und Elektrifizierung.
-- **Risiko:** Zyklisch – Konjunkturabkühlung durch hohe Zehnjahreszinsen trifft den Kupferpreis. Becker 'läuft die Geduld aus' (KW40).
+- **Risiko:** Zyklisch – Konjunkturabkühlung durch hohe Zehnjahreszinsen trifft den Kupferpreis. Inputgeber 'läuft die Geduld aus' (KW40).
 - **Wochenstatus:** KW42: Kupfer 'weiterhin recht stark' – laufen lassen bis zur Stopp-Marke (200-Tage-Linie); Rohstoffe toppen zuletzt im Zyklus.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
@@ -25,14 +25,14 @@
 - **Circle of Competence:** Freeport betreibt riesige Kupfer- und Goldminen in Indonesien und Amerika. Es verkauft Kupferkonzentrat zum Weltmarktpreis. Der Gewinn hängt fast vollständig vom Kupferpreis ab.
 - **Management & Verschuldung:** Bilanz deutlich entschuldet, Verschuldung/EBITDA < 1. Politisches Risiko Indonesien.
 
-## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
+## 🌊 Der Inputgeber Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel bis hoch – China und Industriezyklus.
 - **Asymmetrisches Risikoprofil:** Mittel.
 - **Antizyklischer Status:** Im Plus, aber seitwärts – Wackelkandidat.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]
-- *Nachkaufmarke bei Liquiditäts-Dip:* Auflösung erwogen (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* Auflösung erwogen (Inputgeber)
 
 ---
 [⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*
