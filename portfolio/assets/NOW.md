@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 8 % | 8 % | 8 % | 9 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 8 % | 8 % | 8 % | 9 % | 9 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Workflow-Plattform für Großkonzerne mit sehr hoher Kundenbindung und klarem KI-Anwendungsfall. Ursprünglich antizyklisch gekauft, nach Block B aufgestiegen.
 - **Risiko:** Mit 8 % hoch gewichtet; nach dem starken Software-Lauf bleibt die Bewertung anspruchsvoll.
-- **Wochenstatus:** KW41: nächster Kandidat zum Trimmen – ab 10 % auf ~6 % reduzieren und Gewinne sichern.
+- **Wochenstatus:** KW42: unter besonderer Beobachtung – die Position ist groß, der Ausbruch ist nicht gelungen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Tief in IT-, HR- und Kundenservice-Prozesse integriert – sehr hohe Wechselkosten, Retention ~98 %. (Bewertung: **Stark**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

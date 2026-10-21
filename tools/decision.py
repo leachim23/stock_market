@@ -17,16 +17,16 @@ TARGET = {"Anker": 85.0, "Satellit": 15.0, "Mitte": 0.0}
 SAT_HARD_STOP = 10.0   # % – darunter: nicht blind nachkaufen, Thesen prüfen
 SAT_TAKE_PROFIT = 25.0  # % – darüber: Gewinne in den Anker umschichten
 
-# Makro-Stand laut Becker (Weekly Recap KW41 / Makro-Crashkurs Session 02)
+# Makro-Stand laut Becker (Weekly Recap KW42 / Makro-Crashkurs Session 02)
 MAKRO = {
-    "date": "2026-10-09",
+    "date": "2026-10-16",
     "debasement": 8.0,          # % Geldentwertung p. a. (Crashkurs; KW41: 8–10 %)
-    "debtLiqRatio": 1.8,        # Verhältnis Schulden- zu Liquiditätswachstum, kritisch ab 2,2
+    "debtLiqRatio": 1.8,        # Verhältnis Schulden- zu Liquiditätswachstum, kritisch ab 2,2 (letzter genannter Wert: KW41)
     "debtLiqCritical": 2.2,
-    "liqGrowth": "3M 4,5 % · 1J 6,3 %",
-    "sentiment": "Angstbereich (Fear & Greed), Konsumentenvertrauen schwach – historisch ein Kontraindikator",
-    "rates": "2-jährige ~4,8 %, Langläufer ~5,3 %",
-    "scenario": "60 % Jahresendrallye / 40 % baldiger Crash",
+    "liqGrowth": "erstmals leicht gefallen, aber noch ausreichend (KW42)",
+    "sentiment": "Fear & Greed 25, 42 % Bären unter Kleinanlegern, kein Panik-VIX – historisch ein Kontraindikator",
+    "rates": "Höhepunkt laut Becker gesehen – 2- und 10-jährige fallen, Dollar schwächer; kritisch ab ~6 % Zehnjahresrendite",
+    "scenario": "Rotation aus KI in defensive Werte, Jahresendrallye bleibt möglich",
 }
 
 # --------------------------------------------------------------------------- Rollen
@@ -39,7 +39,7 @@ ROLE_OVERRIDE = {
     "TLT": "Mitte", "TIP": "Mitte", "NOBL": "Mitte", "SPYD": "Mitte", "RSP": "Mitte", "IS3S": "Mitte", "XDEM": "Mitte",
     "QDVE": "Mitte", "LYPG": "Mitte", "XDWT": "Mitte", "XNAS": "Mitte", "QDVG": "Mitte", "2B70": "Mitte", "IBB": "Mitte",
     "HLT": "Mitte", "IQQQ": "Mitte", "CHIP": "Mitte", "G2XJ": "Mitte", "GDXJ": "Mitte", "GSG": "Mitte", "0D7Z": "Mitte",
-    "SLV": "Mitte",
+    "SLV": "Mitte", "GDX": "Mitte",
     # Satellit
     "IBIT": "Satellit",
 }
@@ -158,7 +158,8 @@ def decide(h, bw, fw, family, bb):
     if b["kind"] == "sold":
         return out("Verkaufen", f"Becker hat die Position verkauft ({b['text'].split(': ', 1)[-1]}). Ohne Becker-These fehlt der Grund zum Halten.", "hoch")
     if t in ("LULU", "NKE"):
-        return out("Verkaufen", "Sportartikel-Turnaround ohne Bestätigung: deutlich unter der 200-Tage-Linie, Beckers Nike-Calls −44 %, "
+        return out("Verkaufen", "Sportartikel-Turnaround ohne Bestätigung: deutlich unter der 200-Tage-Linie. Beckers Nike-Calls haben sich "
+                                "in KW42 zwar erholt (−44 → −22 %), er spielt die Branche aber nur über kleine Optionen, nicht über die Aktie. "
                                 "Berenberg stuft Nike auf Sell. Zudem Barbell-Mitte.", "hoch")
     if style == "prozyklisch" and v is not None and v < -20 and m <= 0 and votes["becker"] <= 0:
         extra = " Fundamental günstig – Wiedereinstieg erst, wenn die Aktie die 200-Tage-Linie zurückerobert." if votes["fundamental"] > 0 else ""

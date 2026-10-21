@@ -1,4 +1,4 @@
-<!-- meta: {"ticker": "FCX", "name": "Freeport-McMoRan", "depot": "alpha", "block": "Rohstoffe", "alloc": 6, "last": "6 %", "typ": "Aktie", "pl": "+23 %", "moat": "Mittel", "status": "LAUFEN LASSEN"} -->
+<!-- meta: {"ticker": "FCX", "name": "Freeport-McMoRan", "depot": "alpha", "block": "Rohstoffe", "alloc": 6, "last": "6 %", "typ": "Aktie", "pl": "+18 %", "moat": "Mittel", "status": "LAUFEN LASSEN"} -->
 # Freeport-McMoRan (FCX)
 
 > **Alpha-Depot** · Rohstoffe · Aktie · Status: `LAUFEN LASSEN`
@@ -6,19 +6,19 @@
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 6 % im Alpha-Depot (Klassifizierung: Alpha-Satellit)
 - **Positionswert:** n/a (Anzahl: n/a × Kurs: n/a) – die PDFs enthalten nur Gewichtungen
-- **Einstieg → Kurs (laut PDF) / Performance:** 60 → 74 / +23 %
+- **Einstieg → Kurs (laut PDF) / Performance:** 60 → 71 / +18 %
 - **WKN / ISIN:** 896476 / US35671D8570
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 5 % | – | – | 6 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 5 % | – | – | 6 % | 6 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Einer der größten Kupferproduzenten – Grundstoff für Stromnetze, Rechenzentren und Elektrifizierung.
 - **Risiko:** Zyklisch – Konjunkturabkühlung durch hohe Zehnjahreszinsen trifft den Kupferpreis. Becker 'läuft die Geduld aus' (KW40).
-- **Wochenstatus:** KW41: laufen lassen bis zur Stopp-Marke (200-Tage-Linie).
+- **Wochenstatus:** KW42: Kupfer 'weiterhin recht stark' – laufen lassen bis zur Stopp-Marke (200-Tage-Linie); Rohstoffe toppen zuletzt im Zyklus.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Kostengünstige Weltklasse-Lagerstätten (Grasberg) – aber Preisnehmer am Kupfermarkt. (Bewertung: **Mittel**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Auflösung erwogen (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

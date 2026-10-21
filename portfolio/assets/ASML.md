@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 3 % | 3 % | 3 % | 3 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 3 % | 3 % | 3 % | 3 % | 3 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Zentraler Pick-and-Shovel-Profiteur des Halbleiterausbaus: nahezu monopolistisches EUV/High-NA-EUV-Geschäft. Einstieg war laut Becker sehr gut getimt.
 - **Risiko:** Die zweite Tranche hängt – der erhoffte Rücksetzer kam nicht. Aktuell nicht der beste Nachkauf.
-- **Wochenstatus:** KW41: Status Aufbauen – sollte weiter von KI profitieren.
+- **Wochenstatus:** KW42: erholt sich nach dem Abverkauf leicht – Status Aufbauen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Faktisches Monopol bei EUV-Lithografie, jahrzehntelanger Technologievorsprung, extrem hohe Markteintrittsbarrieren. (Bewertung: **Stark**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Zweite Tranche erst bei Rücksetzer (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

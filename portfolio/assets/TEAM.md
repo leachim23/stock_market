@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 2 % | 2 % | 2 % | 2 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 2 % | 2 % | 2 % | 2 % | 2 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Standardwerkzeuge für Softwareteams (Jira, Confluence) mit hoher Kundenbindung. Position zweimal halbiert, Rest läuft.
 - **Risiko:** Verhaltener Ausblick auf 2027; der Software-Sektor ist deutlich gelaufen.
-- **Wochenstatus:** KW41: Status Reduzieren.
+- **Wochenstatus:** KW42: 'eigentlich sehr, sehr stark' – Rücksetzer mit dem breiten Software-Abverkauf.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Jira/Confluence sind Industriestandard mit hohen Wechselkosten – KI-Coding-Tools könnten das Seat-Modell aber unter Druck setzen. (Bewertung: **Mittel**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

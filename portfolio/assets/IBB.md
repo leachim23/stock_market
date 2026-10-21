@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 4 % | 4 % | 4 % | 4 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 4 % | 4 % | 4 % | 4 % | 4 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Breiter Zugang zum US-Biotech-Sektor. These: Biotech profitiert langfristig stark von KI, weil sich Wirkstoffforschung und Studien beschleunigen.
 - **Risiko:** Biotech schwankt deutlich stärker als der Gesundheitssektor; einzelne Studienergebnisse bewegen den Sektor.
-- **Wochenstatus:** KW41: Halten. UCITS-Alternative 2B70 (IE00BYXG2H39).
+- **Wochenstatus:** KW42: profitiert von starken Healthcare-Zuflüssen – an den roten Tagen lag der Sektor im Plus.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -37,4 +37,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

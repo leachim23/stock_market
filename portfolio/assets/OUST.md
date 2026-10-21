@@ -1,4 +1,4 @@
-<!-- meta: {"ticker": "OUST", "name": "Ouster", "depot": "alpha", "block": "Robotics", "alloc": 2, "last": "2 %", "typ": "Aktie", "pl": "−13 %", "moat": "Schwach", "status": "EINSTEIGEN"} -->
+<!-- meta: {"ticker": "OUST", "name": "Ouster", "depot": "alpha", "block": "Robotics", "alloc": 2, "last": "2 %", "typ": "Aktie", "pl": "−35 %", "moat": "Schwach", "status": "EINSTEIGEN"} -->
 # Ouster (OUST)
 
 > **Alpha-Depot** · Robotics · Aktie · Status: `EINSTEIGEN`
@@ -6,19 +6,19 @@
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 2 % im Alpha-Depot (Klassifizierung: Alpha-Satellit)
 - **Positionswert:** n/a (Anzahl: n/a × Kurs: n/a) – die PDFs enthalten nur Gewichtungen
-- **Einstieg → Kurs (laut PDF) / Performance:** 46 → 40 / −13 %
+- **Einstieg → Kurs (laut PDF) / Performance:** 46 → 30 / −35 %
 - **WKN / ISIN:** A3ECDT / US68989M2026
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 2 % | – | – | 2 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 2 % | – | – | 2 % | 2 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Digital-Lidar – die 'Augen' autonomer Systeme. Robotics ist für Becker der nächste große Trend; Aktie hat sich erholt (KW40).
 - **Risiko:** Sehr hohe Volatilität, deutliche Buchverluste. Aufbau in 1-2 %-Schritten statt Stop-Loss.
-- **Wochenstatus:** KW41: Robotics als Nächstes ausbauen.
+- **Wochenstatus:** KW42: −13 → −35 %. Robotics bleibt der nächste große Trend – Ausbau in die Schwäche geplant.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Digital-Lidar-Patente, aber Preisdruck durch chinesische Anbieter (Hesai). (Bewertung: **Schwach**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Aufbau in 1-2 %-Schritten (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

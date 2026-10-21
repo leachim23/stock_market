@@ -1,7 +1,7 @@
-<!-- meta: {"ticker": "GLD", "name": "SPDR Gold Shares", "depot": "beta", "block": "Gold · Inflations-Hedge", "alloc": 14, "last": "14 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": ""} -->
+<!-- meta: {"ticker": "GLD", "name": "SPDR Gold Shares", "depot": "beta", "block": "Gold · Inflations-Hedge", "alloc": 14, "last": "14 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": "EINSTEIGEN"} -->
 # SPDR Gold Shares (GLD)
 
-> **Beta-Depot** · Gold · Inflations-Hedge · ETF
+> **Beta-Depot** · Gold · Inflations-Hedge · ETF · Status: `EINSTEIGEN`
 
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 14 % im Beta-Depot (Klassifizierung: Beta-Core)
@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 15 % | 15 % | – | 14 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 15 % | 15 % | – | 14 % | 14 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Liquide US-Gold-Position, Kern-Hedge gegen Fiat-Entwertung. Zentralbanken kaufen weltweit Gold, USA weiten Schulden alle 70 Tage um 1 Bio. USD aus.
 - **Risiko:** Steigende Realzinsen belasten; zuletzt unter der 200-Tage-Linie. Test der 4.000 USD möglich.
-- **Wochenstatus:** KW41: Nachkauf bei deutlicher Schwäche; Tausch gegen gebührengünstigeres Produkt geplant.
+- **Wochenstatus:** KW42: auf Zielallokation; Gold findet Becker langfristig 'wieder sehr attraktiv'. Tausch in ein günstigeres Produkt geplant.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -37,4 +37,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Gold-Test bei 4.000 USD = Kaufmoment (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

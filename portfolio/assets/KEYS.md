@@ -1,24 +1,24 @@
-<!-- meta: {"ticker": "KEYS", "name": "Keysight Technologies", "depot": "alpha", "block": "KI Next-Gen Connectivity", "alloc": 5, "last": "5 %", "typ": "Aktie", "pl": "−2 %", "moat": "Stark", "status": "NEU KW41"} -->
+<!-- meta: {"ticker": "KEYS", "name": "Keysight Technologies", "depot": "alpha", "block": "KI Next-Gen Connectivity", "alloc": 5, "last": "5 %", "typ": "Aktie", "pl": "−10 %", "moat": "Stark", "status": "EINSTEIGEN"} -->
 # Keysight Technologies (KEYS)
 
-> **Alpha-Depot** · KI Next-Gen Connectivity · Aktie · Status: `NEU KW41`
+> **Alpha-Depot** · KI Next-Gen Connectivity · Aktie · Status: `EINSTEIGEN`
 
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 5 % im Alpha-Depot (Klassifizierung: Alpha-Satellit)
 - **Positionswert:** n/a (Anzahl: n/a × Kurs: n/a) – die PDFs enthalten nur Gewichtungen
-- **Einstieg → Kurs (laut PDF) / Performance:** 386 → 380 / −2 %
+- **Einstieg → Kurs (laut PDF) / Performance:** 386 → 348 / −10 %
 - **WKN / ISIN:** A12B6J / US49338L1035
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| – | – | – | 5 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| – | – | – | 5 % | 5 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Mess- und Prüftechnik für Hochgeschwindigkeits-Datenübertragung. Am 06.10. als Ausbruchskauf aufgenommen – Kandidat aus dem Update der Vorwoche.
 - **Risiko:** Ausbruchskauf mit sehr engem Ausstieg; Becker rechnet offen damit, ausgestoppt werden zu können.
-- **Wochenstatus:** KW41: neu mit 5 %. KI-Infrastruktur wächst damit auf 27 % des Alpha-Depots.
+- **Wochenstatus:** KW42: −10 %. Reiner Chart-Trade – wird der Ausbruch negiert, lässt sich Becker schnell ausstoppen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Marktführer bei Oszilloskopen, Netzwerk- und 5G/6G-Testsystemen; tiefe Integration in Entwicklungsprozesse der Chip- und Telekomindustrie. (Bewertung: **Stark**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Enger Stop unter dem Ausbruchsniveau (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

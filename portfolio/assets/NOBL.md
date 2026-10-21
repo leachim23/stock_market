@@ -1,7 +1,7 @@
-<!-- meta: {"ticker": "NOBL", "name": "ProShares S&P 500 Dividend Aristocrats ETF", "depot": "beta", "block": "Aktien · Defensiver Wachstums-Baustein", "alloc": 5, "last": "5 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": ""} -->
+<!-- meta: {"ticker": "NOBL", "name": "ProShares S&P 500 Dividend Aristocrats ETF", "depot": "beta", "block": "Aktien · Defensiver Wachstums-Baustein", "alloc": 5, "last": "5 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": "LAUFEN LASSEN"} -->
 # ProShares S&P 500 Dividend Aristocrats ETF (NOBL)
 
-> **Beta-Depot** · Aktien · Defensiver Wachstums-Baustein · ETF
+> **Beta-Depot** · Aktien · Defensiver Wachstums-Baustein · ETF · Status: `LAUFEN LASSEN`
 
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 5 % im Beta-Depot (Klassifizierung: Beta-Core)
@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| – | 5 % | 5 % | 5 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| – | 5 % | 5 % | 5 % | 5 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** S&P-500-Werte mit ≥25 Jahren Dividendensteigerung, gleichgewichtet, Sektorkappung 30 %. Durch gestiegene Zinsen stark gefallen – Becker erwartet keine dauerhaft hohen Zinsen.
 - **Risiko:** Zinsempfindlich; bleibt in tech-getriebenen Rallys zurück (im Beta gewollt).
-- **Wochenstatus:** KW41: ausdrücklicher Ausbaukandidat – Catch-up-Trade der Marktbreite bei fallenden Zinsen.
+- **Wochenstatus:** KW42: antizyklischer Kauf aufgegangen – 'für einen so langweiligen ETF eine ziemlich starke Entwicklung'. Nachkauf erst beim nächsten Rücksetzer.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -34,7 +34,7 @@
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* n/a (ETF)
-- *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
+- *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf erst beim nächsten Rücksetzer (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

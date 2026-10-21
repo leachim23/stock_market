@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 5 % | 5 % | 5 % | 5 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 5 % | 5 % | 5 % | 5 % | 5 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** China-Plattform mit E-Commerce und schnell wachsendem Cloud-/KI-Geschäft, niedrig bewertet. Becker würde 'alles darauf wetten', dass China die Liquidität ausweiten muss.
 - **Risiko:** Genau das passiert gerade nicht – die Aktie ist 'super schwach'. Politische Eingriffe und ADR-Delisting-Risiko.
-- **Wochenstatus:** KW41: entwickelt sich unbefriedigend, Chart schwach – Unternehmen bleibt für Becker sehr solide.
+- **Wochenstatus:** KW42: führt laut Becker 'ein Eigenleben'; China lag im Plus, während der Rest abverkauft wurde.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Dominanter Marktplatz (Taobao/Tmall) und führende China-Cloud – aber durch PDD, Douyin und staatliche Eingriffe angreifbar. (Bewertung: **Mittel**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Aufstocken bei sichtbarer PBoC-Liquiditätsausweitung
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

@@ -1,24 +1,24 @@
-<!-- meta: {"ticker": "BE", "name": "Bloom Energy", "depot": "alpha", "block": "KI-Energie", "alloc": 7, "last": "7 %", "typ": "Aktie", "pl": "+29 %", "moat": "Mittel", "status": "EINSTEIGEN"} -->
+<!-- meta: {"ticker": "BE", "name": "Bloom Energy", "depot": "alpha", "block": "KI-Energie", "alloc": 6, "last": "6 %", "typ": "Aktie", "pl": "+8 %", "moat": "Mittel", "status": "EINSTEIGEN"} -->
 # Bloom Energy (BE)
 
 > **Alpha-Depot** · KI-Energie · Aktie · Status: `EINSTEIGEN`
 
 ## 📊 Depot-Kennzahlen
-- **Depot-Anteil:** 7 % im Alpha-Depot (Klassifizierung: Alpha-Satellit)
+- **Depot-Anteil:** 6 % im Alpha-Depot (Klassifizierung: Alpha-Satellit)
 - **Positionswert:** n/a (Anzahl: n/a × Kurs: n/a) – die PDFs enthalten nur Gewichtungen
-- **Einstieg → Kurs (laut PDF) / Performance:** 213 → 274 / +29 %
+- **Einstieg → Kurs (laut PDF) / Performance:** 213 → 230 / +8 %
 - **WKN / ISIN:** A2JQTG / US0937121079
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 7 % | – | – | 7 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 7 % | – | – | 7 % | 6 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Stationäre Brennstoffzellen erzeugen Strom direkt vor Ort – unabhängig von Netzanschlüssen, dem Engpass beim Bau von KI-Rechenzentren.
 - **Risiko:** Sehr hohe Bewertung nach starkem Lauf, extreme Volatilität.
-- **Wochenstatus:** KW41: laufen lassen – nachhaltiger Bruch der 200-Tage-Linie heißt verkaufen.
+- **Wochenstatus:** KW42: +29 → +8 %. Ausstieg bei nachhaltigem Bruch der 200-Tage-Linie; Strom- und Netzanschlüsse als möglicher nächster KI-Engpass.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Technologie- und Lieferfähigkeit bei Feststoffoxid-Brennstoffzellen; schnell installierbar – Wettbewerb durch Gasturbinen. (Bewertung: **Mittel**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf bei tieferem Rücksetzer (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

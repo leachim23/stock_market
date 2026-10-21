@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 3 % | 3 % | 3 % | 3 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 3 % | 3 % | 3 % | 3 % | 3 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Gegenwette im Block: keine großen KI-Investitionen, dafür gewaltige Kriegskasse. Bekommen die KI-Investoren die Quittung, sollte Apple gut laufen.
 - **Risiko:** Becker hält Apple bewertungsseitig für zu teuer. Hohe Abhängigkeit vom iPhone und vom chinesischen Markt.
-- **Wochenstatus:** KW41: eher Hedge – teuer, ohne große KI-Investitionen. Auflösung zugunsten Amazon wird erwogen.
+- **Wochenstatus:** KW42: der stabilere Wert, der oft im Plus steht, wenn die anderen fallen – genau so eingetreten.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Markenstärke, Ökosystem-Lock-in (iOS, iCloud, Services) und Preissetzungsmacht im Premium-Segment. (Bewertung: **Stark**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf auf der Liste, sobald Cash frei (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

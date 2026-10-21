@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 10 % | 9 % | 10 % | 9 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 10 % | 9 % | 10 % | 9 % | 9 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Digitalbank mit laut Becker 'super starkem' Wachstum. Er erwartet, dass die Aktie wie Robinhood wieder anzieht – und will dann reduzieren.
 - **Risiko:** Kurs im unteren Korridor. Ein Bruch unter 14,90 USD (tiefere Tiefs) wäre 'richtig böse'. Steigende Zinsen bleiben das Grundproblem.
-- **Wochenstatus:** KW41: Reduzieren in die Erholung hinein; bei Anstieg Calls auf ein Drittel schreiben.
+- **Wochenstatus:** KW42: Sheet-Status 'reduzieren' gilt für Block C – Becker lässt SoFi laufen: fundamental 'sehr, sehr gut', der Abverkauf kommt von den Zinsen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Banklizenz und Cross-Selling-Ökosystem (Kredit, Konto, Invest) – im Wettbewerb mit Großbanken und Neobrokern aber kaum Preissetzungsmacht. (Bewertung: **Schwach**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Warnsignal: Bruch unter 14,90 USD (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

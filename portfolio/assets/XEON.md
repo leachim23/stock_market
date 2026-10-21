@@ -1,24 +1,24 @@
-<!-- meta: {"ticker": "XEON", "name": "Xtrackers EUR Overnight Rate Swap (Geldmarkt)", "depot": "beta", "block": "Liquidität · Geldmarkt", "alloc": 8, "last": "8 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": ""} -->
+<!-- meta: {"ticker": "XEON", "name": "Xtrackers EUR Overnight Rate Swap (Geldmarkt)", "depot": "beta", "block": "Liquidität · Geldmarkt", "alloc": 9, "last": "9 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": "EINSTEIGEN"} -->
 # Xtrackers EUR Overnight Rate Swap (Geldmarkt) (XEON)
 
-> **Beta-Depot** · Liquidität · Geldmarkt · ETF
+> **Beta-Depot** · Liquidität · Geldmarkt · ETF · Status: `EINSTEIGEN`
 
 ## 📊 Depot-Kennzahlen
-- **Depot-Anteil:** 8 % im Beta-Depot (Klassifizierung: Beta-Core)
+- **Depot-Anteil:** 9 % im Beta-Depot (Klassifizierung: Beta-Core)
 - **Positionswert:** n/a (Anzahl: n/a × Kurs: n/a) – die PDFs enthalten nur Gewichtungen
 - **Einstieg → Kurs (laut PDF) / Performance:** n/a / n/a (PDF ohne Einstandskurs)
 - **WKN / ISIN:** DBX0AN / LU0290358497
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 19 % | 14 % | ≈ 9 % | 8 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 19 % | 14 % | ≈ 9 % | 8 % | 9 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Verzinstes Parken der EUR-Liquidität zum €STR, täglich verfügbar, minimales Kursrisiko – Munition für den finalen Ausverkauf.
 - **Risiko:** Sehr geringe Realverzinsung; sinkt bei fallenden EUR-Zinsen.
-- **Wochenstatus:** KW41: 8 % – sollen schrittweise in TLT umgeschichtet werden.
+- **Wochenstatus:** KW42: 9 % – Stück für Stück in US-Anleihen (TLT, TIP, eventuell kürzere Laufzeiten).
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -37,4 +37,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* n/a
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 15 % | 17 % | 11 % | 11 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 15 % | 17 % | 11 % | 11 % | 11 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Größte Werbeplattform der Welt mit enormem Cashflow. Die geschriebenen Covered Calls haben ein Drittel der Position ausgebucht – Gewinne realisiert.
 - **Risiko:** Rest läuft bewusst weiter, aktuell kein Nachkauf. Als Hyperscaler bleibt Meta vom KI-Capex abhängig; die antizyklische Chance ist vorbei.
-- **Wochenstatus:** KW41: Laufen lassen, kein Nachkauf – schon sehr gut gelaufen.
+- **Wochenstatus:** KW42: Laufen lassen – nach dem massiven Anstieg ist eine Konsolidierung für Becker in Ordnung, die Aktie aber riskanter als Amazon und Alphabet.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Netzwerkeffekte über >3 Mrd. tägliche Nutzer (Facebook, Instagram, WhatsApp) und datengetriebene Werbe-Targeting-Maschine – schwer kopierbar. (Bewertung: **Stark**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Kein Nachkauf geplant (Becker); eigene Marke: [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

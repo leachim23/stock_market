@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 7 % | 6 % | 7 % | 7 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 7 % | 6 % | 7 % | 7 % | 7 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** AWS ist der größte Cloud-Anbieter und direkter KI-Profiteur. Steht ganz oben auf Beckers Nachkaufliste.
 - **Risiko:** Nachkäufe vorerst blockiert: Durch die eingebuchten McDonald's-Puts ist das gesamte Cash des Depots gebunden.
-- **Wochenstatus:** KW41: 'sehr interessant' – Status Aufbauen. Becker erwägt, die Apple-Position zugunsten von Amazon aufzulösen.
+- **Wochenstatus:** KW42: mit Alphabet am interessantesten – 'außergewöhnlich gut aufgestellt', sollte sich auch in einem größeren Abverkauf sehr gut halten.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Skaleneffekte in Logistik und Cloud, hohe Wechselkosten bei AWS, Prime-Ökosystem als Kundenbindung. (Bewertung: **Stark**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf, sobald Cash frei (Becker); eigene Marke: [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

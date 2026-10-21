@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 10 % | 9 % | 10 % | 10 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 10 % | 9 % | 10 % | 10 % | 10 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** KI-Profiteur über Gemini und Google Cloud bei dominanter Suche und YouTube. Aktuell Beckers interessantester Nachkauf – die Aktie hat sich an der 200-Tage-Linie bewegt.
 - **Risiko:** Zieht der Markt noch einmal unter die 200-Tage-Linie, wäre das ein weiterer Einstiegspunkt – kurzfristig Luft nach unten.
-- **Wochenstatus:** KW41: gefällt Becker derzeit am besten, er ist 'ausdrücklich bullisch' – Status Aufbauen.
+- **Wochenstatus:** KW42: mit Amazon der interessanteste Wert im Depot – Status Aufbauen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Quasi-Monopol in der Suche, YouTube-Reichweite, Android-Ökosystem und eigene KI-Chips (TPU) – Daten- und Distributionsvorteil. (Bewertung: **Stark**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf an/unter der 200-Tage-Linie (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

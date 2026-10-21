@@ -1,4 +1,4 @@
-<!-- meta: {"ticker": "GDXJ", "name": "VanEck Junior Gold Miners ETF", "depot": "alpha", "block": "Geldentwertung", "alloc": 4, "last": "4 %", "typ": "ETF", "pl": "−14 %", "moat": "n/a", "status": "EINSTEIGEN"} -->
+<!-- meta: {"ticker": "GDXJ", "name": "VanEck Junior Gold Miners ETF", "depot": "alpha", "block": "Geldentwertung", "alloc": 4, "last": "4 %", "typ": "ETF", "pl": "−15 %", "moat": "n/a", "status": "EINSTEIGEN"} -->
 # VanEck Junior Gold Miners ETF (GDXJ)
 
 > **Alpha-Depot** · Geldentwertung · ETF · Status: `EINSTEIGEN`
@@ -6,19 +6,19 @@
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 4 % im Alpha-Depot (Klassifizierung: Alpha-Satellit)
 - **Positionswert:** n/a (Anzahl: n/a × Kurs: n/a) – die PDFs enthalten nur Gewichtungen
-- **Einstieg → Kurs (laut PDF) / Performance:** 131 → 113 / −14 %
+- **Einstieg → Kurs (laut PDF) / Performance:** 131 → 111 / −15 %
 - **WKN / ISIN:** A2AHFT / US92189F7915
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 4 % | – | ≈ 4 % | 4 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 4 % | – | ≈ 4 % | 4 % | 4 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Kleinere Gold- und Silberminen als Hebel auf den Goldpreis (fixe Förderkosten). Becker fundamental sehr bullisch auf Gold.
 - **Risiko:** Deutlich volatiler als Gold; Gold kann historisch bis auf Produzentenkosten zurücklaufen.
-- **Wochenstatus:** KW41: Thema Geldentwertung 17 %.
+- **Wochenstatus:** KW42: Becker 'relativ bullisch' auf Minen – beim aktuellen Goldpreis verdienen sie 'einen Haufen Geld'. Erwägt zusätzlich den großen GDX.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -37,4 +37,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Nachkauf bei Gold-Rücksetzer (Becker)
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

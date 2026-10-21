@@ -195,9 +195,9 @@ def hold_reco(h):
     b, v, perf, q = h["becker"], h.get("vsMa200"), h.get("perf"), h.get("consensus") or {}
     t = h["t"]
     if t == "LULU":
-        return ("Stop setzen", "reduzieren", "Deutlich unter der 200-Tage-Linie, kein Becker-Bezug; Beckers Analogie Nike-Calls liegt bei −44 %, Berenberg stuft Nike auf Sell. Nicht verbilligen, Stop knapp unter dem 52-Wochen-Tief.")
+        return ("Stop setzen", "reduzieren", "Deutlich unter der 200-Tage-Linie, kein Becker-Bezug; Beckers Analogie Nike-Calls liegt bei −22 % (KW42, zuvor −44 %), Berenberg stuft Nike auf Sell. Nicht verbilligen, Stop knapp unter dem 52-Wochen-Tief.")
     if t == "NKE":
-        return ("Stop setzen", "reduzieren", "Becker spielt Nike nur über kleine Calls (−44 %, 'zu früh dran'); Berenberg am 06.10. Abstufung auf Sell (Ziel 27,50 USD). Nicht nachkaufen.")
+        return ("Stop setzen", "reduzieren", "Becker spielt Nike nur über kleine Calls (KW42: −22 %, zuvor −44 %); Berenberg am 06.10. Abstufung auf Sell (Ziel 27,50 USD). Nicht nachkaufen.")
     if b["kind"] == "sold":
         return ("Verkauf prüfen", "reduzieren", b["text"] + " Wer Beckers Regelwerk folgt, löst die Position ebenfalls auf oder setzt einen engen Stop.")
     if perf is not None and perf > 100:
@@ -459,12 +459,20 @@ def write_md(pid, label, holdings, bw, buy, analysis):
         L += [f"### {h['t']} – {h['entscheidung']}", "", f"{h['egrund']}", ""] + [f"- {x}" for x in h.get("gruende", [])] + [""]
     L += ["", "---", f"[🛒 Kaufempfehlung]({pid}_kaufempfehlung.md) | [⬅️ Dashboard](../index.md)", ""]
     (OUT_MD / f"{pid}.md").write_text("\n".join(L), encoding="utf-8")
+    K = buy_md(f"{label} vom {de(buy['generated'])}", buy) + ["", "---", f"[👤 Depot {label}]({pid}.md) | [⬅️ Dashboard](../index.md)", ""]
+    (OUT_MD / f"{pid}_kaufempfehlung.md").write_text("\n".join(K), encoding="utf-8")
 
+
+def buy_md(label, buy):
+    """Markdown der Kaufempfehlung (Szenario A und B, vier Meinungen, Ausschlüsse)."""
     rows = {r["t"]: r for r in buy["rows"]}
     K = [f"# 🛒 Kaufempfehlung {label}", "", f"**Erstellt:** {de(buy['generated'])} · **Gültig bis:** {de(buy['validUntil'])} · "
          f"**Becker-Stand:** {de(buy['beckerDate'])} ({buy['beckerAge']} Tage)", "",
          "> Barbell-Regeln: Neues Kapital zuerst in fehlende Anker-Bausteine (Geldmarkt, kurzlaufende AAA-Staatsanleihen, physisches Gold, "
-         "höchstens ein Welt-ETF). Satelliten nur, solange der Satellit unter 15 % liegt. Kandidaten der Mitte werden ausgeschlossen. Keine Anlageberatung.", "",
+         "höchstens ein Welt-ETF). Satelliten nur, solange der Satellit unter 15 % liegt. Kandidaten der Mitte werden ausgeschlossen. Keine Anlageberatung.", ""]
+    if buy.get("summary"):
+        K += [f"## Becker – das Wichtigste aus den Reports ({buy['beckerStand']})", ""] + [f"- {x}" for x in buy["summary"]] + [""]
+    K += [f"## {buy['scenarios'][0]['title']}", "",
          "| # | Titel | Barbell-Rolle | Sektor (Gewicht heute) | Anteil | 1 Becker | 2 Analysten | 3 Fundamental | 4 Momentum | Meinungsbild |",
          "|---|---|---|---|---|---|---|---|---|---|"]
     for i, t in enumerate(buy["picks"], 1):
@@ -487,8 +495,27 @@ def write_md(pid, label, holdings, bw, buy, analysis):
     K += ["## Nicht empfohlen", "", "| Titel | Meinungsbild | Grund Szenario A | Grund Szenario B |", "|---|---|---|---|"]
     K += [f"| {r['name']} ({r['t']}) | {r['votesPos']}/4 positiv | {r['excluded'] or 'empfohlen'} | {r.get('excludedB') or 'empfohlen'} |"
           for r in buy["rows"] if r["excluded"] or r.get("excludedB")]
-    K += ["", "---", f"[👤 Depot {label}]({pid}.md) | [⬅️ Dashboard](../index.md)", ""]
-    (OUT_MD / f"{pid}_kaufempfehlung.md").write_text("\n".join(K), encoding="utf-8")
+    return K
+
+
+def buy_dict(today, rows, picks, picks_b):
+    """Kaufempfehlung mit beiden Szenarien als Daten für Webseite und Markdown."""
+    return {"generated": today.isoformat(), "validUntil": (today + timedelta(days=br.MAX_AGE)).isoformat(), "maxAge": br.MAX_AGE,
+            "beckerDate": br.BECKER_DATE, "beckerAge": br.age(br.BECKER_DATE, today), "picks": [r["t"] for r in picks], "rows": rows,
+            "scenarios": [
+                {"id": "A", "title": "Szenario A · Mit Barbell (strikt)", "allocKey": "alloc", "excludedKey": "excluded",
+                 "picks": [r["t"] for r in picks],
+                 "text": "Verbindliche Barbell-Strategie: neues Kapital zuerst in fehlende Anker-Bausteine (85 %, bzw. 100 %, solange der "
+                         "Satellit über 15 % liegt). Kandidaten der Mitte sind ausgeschlossen."},
+                {"id": "B", "title": "Szenario B · Ohne Barbell (offensiv)",
+                 "allocKey": "allocB", "excludedKey": "excludedB", "picks": [r["t"] for r in picks_b],
+                 "text": "Kein Barbell-Anteil: Geldmarkt, kurzlaufende Staatsanleihen, physisches Gold und Welt-ETF sind ausgeschlossen. "
+                         "100 % des neuen Kapitals in die diversifizierte Auswahl mit vier Meinungen: bis zu 3 Einzelaktien und 2 Kern-Bausteine "
+                         "(Gewicht 2:1), max. ein Titel je Sektor/Familie, keine Sektoren ≥ 10 % bzw. Familien ≥ 25 %, Mitte erlaubt. "
+                         "Weicht bewusst von der verbindlichen Barbell-Strategie ab – kein Krisenpuffer, höheres Risiko, höhere Renditechance."}],
+            "market": br.fresh_web("*", today),
+            "staleWeb": [dict(date=d, text=x, source=s[0]) for d, x, _, s in br.WEB.get("*", []) if br.age(d, today) > br.MAX_AGE],
+            "beckerStand": STAND, "summary": br.BECKER_SUMMARY}
 
 
 def run():
@@ -536,21 +563,7 @@ def run():
         analysis.insert(-1, "**Szenario B (offensiv, ohne Barbell-Anker):** " + ", ".join(f"{r['t']} {r['allocB']} %" for r in picks_b)
                         + " – Alternative zur strikten Barbell-Aufteilung mit höherem Risiko.")
         perfs = [h["perf"] for h in holdings if h.get("perf") is not None]
-        buy = {"generated": today.isoformat(), "validUntil": (today + timedelta(days=br.MAX_AGE)).isoformat(), "maxAge": br.MAX_AGE,
-               "beckerDate": br.BECKER_DATE, "beckerAge": br.age(br.BECKER_DATE, today), "picks": [r["t"] for r in picks], "rows": rows,
-               "scenarios": [
-                   {"id": "A", "title": "Szenario A · Barbell strikt", "allocKey": "alloc", "excludedKey": "excluded",
-                    "picks": [r["t"] for r in picks],
-                    "text": "Verbindliche Barbell-Strategie: neues Kapital zuerst in fehlende Anker-Bausteine (85 %, bzw. 100 %, solange der "
-                            "Satellit über 15 % liegt). Kandidaten der Mitte sind ausgeschlossen."},
-                   {"id": "B", "title": "Szenario B · Offensiv (ohne Barbell-Anker)",
-                    "allocKey": "allocB", "excludedKey": "excludedB", "picks": [r["t"] for r in picks_b],
-                    "text": "Kein Barbell-Anteil: Geldmarkt, kurzlaufende Staatsanleihen, physisches Gold und Welt-ETF sind ausgeschlossen. "
-                            "100 % des neuen Kapitals in die diversifizierte Auswahl mit vier Meinungen: bis zu 3 Einzelaktien und 2 Kern-Bausteine "
-                            "(Gewicht 2:1), max. ein Titel je Sektor/Familie, keine Sektoren ≥ 10 % bzw. Familien ≥ 25 %, Mitte erlaubt. "
-                            "Weicht bewusst von der verbindlichen Barbell-Strategie ab – kein Krisenpuffer, höheres Risiko, höhere Renditechance."}],
-               "market": br.fresh_web("*", today),
-               "staleWeb": [dict(date=d, text=x, source=s[0]) for d, x, _, s in br.WEB.get("*", []) if br.age(d, today) > br.MAX_AGE]}
+        buy = buy_dict(today, rows, picks, picks_b)
         data = {"id": pid, "label": label, "generated": today.isoformat(), "holdings": holdings, "bucketWeights": bw, "familyWeights": fw,
                 "perf": round(sum(perfs) / len(perfs), 1) if perfs else None, "perfCount": len(perfs), "buy": buy,
                 "unresolved": [h["raw"] for h in holdings if not h["resolved"]], "analysis": analysis, "actions": acts, "barbell": bb}

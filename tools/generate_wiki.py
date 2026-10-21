@@ -57,8 +57,8 @@ def asset_md(a):
         "",
         "**Gewichtungsverlauf**",
         "",
-        "| KW 38 | KW 39 | KW 40 | KW 41 |",
-        "|---|---|---|---|",
+        "| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |",
+        "|---|---|---|---|---|",
         "| " + " | ".join(a["hist"]) + " |",
         "",
         "## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)",
@@ -94,7 +94,7 @@ def index_md():
     out = [
         "# 📈 Portfolio-Wiki – Balthasar Becker Depots",
         "",
-        f"**Stichtag:** {STAND} · **Quellen:** 14 PDFs in `PDF_input/` und `PDF_input/09102026/` (Depot-Reports KW38-41, Weekly Recaps KW38-41)",
+        f"**Stichtag:** {STAND} · **Quellen:** Becker-PDFs in `PDF_input/` und `pdf/` (Depot-Reports KW38-42, Weekly Recaps KW38-42)",
         "",
         "**Gesamtwert:** n/a – die Reports weisen ausschließlich prozentuale Gewichtungen je Depot aus, keine Stückzahlen oder Euro-Beträge.",
         "",
@@ -131,7 +131,7 @@ def index_md():
             out.append(f"| {a['name']} | {a['t']} | {a['block']} | {alloc_str(a)} | {a.get('pl') or '–'} | {moat} | [{a['t']}](assets/{a['t']}.md) |")
     out += [
         "",
-        "> Alle Anteile und Alpha-Performance (Einstieg → Kurs) laut Depot-Reports KW41 vom 09.10.2026. Neu im 2030-Depot: Status je Position (Halten / Aufbauen / Reduzieren).",
+        "> Alle Anteile und Alpha-Performance (Einstieg → Kurs) laut Depot-Reports KW42 vom 16.10.2026. Status je Position jetzt in allen drei Depots (im Beta laut Becker nur begrenzt aussagekräftig).",
         "",
         "## 🌐 Makro- & Sentiment-Check",
         "",
@@ -143,9 +143,9 @@ def index_md():
         "",
         "**Steigende Zentralbank-Liquidität (Zinssenkungen, steile Kurve):** Stärkster Hebel im Alpha-Depot (Metaplanet, SharpLink, GDXJ, Robotics-Small-Caps, China) und im 2030-Depot (SoFi, Robinhood, Alibaba). Im Beta profitieren IBIT, TLT, RSP und NOBL. Die Barbell ist hier klar offensiv.",
         "",
-        "**Fallende Liquidität / Zinsschock:** Alpha und 2030 tragen das Risiko (KI-Block im Alpha ~51 %: MU/CRDO/MRVL/GLW/LITE/KEYS/BE; SoFi). Puffer: Beta-Liquidität 20 %, Berkshire (Netto-Cash), Gold und McDonald's als defensive Cashflow-Titel. Becker würde einen Panik-Rücksetzer mit der Beta-Reserve kaufen.",
+        "**Fallende Liquidität / Zinsschock:** KW42 hat es vorgeführt – Alpha im Minus (drei Stop-Verkäufe: MU, GLW, LITE), 2030 stabil über McDonald's, Beta im Plus (BRK-B, MKL, NOBL, RSP, TLT). Puffer: Alpha-Cash 38 %, Beta-Liquidität 21 %, Gold. Becker kauft Panik-Rücksetzer mit der Reserve – antizyklisch sieht er derzeit noch keine starke Gelegenheit (VIX ohne Panik).",
         "",
-        "**Klumpenrisiken:** McDonald's 31 % im 2030-Depot (Cash 0 %) · Micron 17 % im Alpha · KI-Block ~51 % des Alpha-Depots · Krypto-Hebel hängen an der Bitcoin-200-Tage-Linie (~70-71 Tsd. USD).",
+        "**Klumpenrisiken:** McDonald's 32 % im 2030-Depot (Cash 0 %) · Geldentwertung 18 % größter Block im Alpha (Metaplanet 9 % größte Einzelposition) · Krypto-Hebel hängen an der Bitcoin-Zone 80.000 USD (Struktur beendet unter 75.000 USD).",
         "",
         "## 🔭 Watchlist",
         "",
@@ -153,7 +153,7 @@ def index_md():
     out += [f"- **{d}:** {t}" for d, t in WATCH]
     out += [
         "",
-        "## 🗃️ Verkaufte Positionen (KW38-41)",
+        "## 🗃️ Verkaufte Positionen (KW38-42)",
         "",
         "| Ticker | Name | Depot | Woche | Grund |",
         "|---|---|---|---|---|",

@@ -1,7 +1,7 @@
-<!-- meta: {"ticker": "GSG", "name": "iShares S&P GSCI Commodity-Indexed Trust", "depot": "beta", "block": "Rohstoffe · Late-Cycle Diversifier", "alloc": 2, "last": "2 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": ""} -->
+<!-- meta: {"ticker": "GSG", "name": "iShares S&P GSCI Commodity-Indexed Trust", "depot": "beta", "block": "Rohstoffe · Late-Cycle Diversifier", "alloc": 2, "last": "2 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": "LAUFEN LASSEN"} -->
 # iShares S&P GSCI Commodity-Indexed Trust (GSG)
 
-> **Beta-Depot** · Rohstoffe · Late-Cycle Diversifier · ETF
+> **Beta-Depot** · Rohstoffe · Late-Cycle Diversifier · ETF · Status: `LAUFEN LASSEN`
 
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 2 % im Beta-Depot (Klassifizierung: Beta-Core)
@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 2 % | 2 % | – | 2 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 2 % | 2 % | – | 2 % | 2 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Breiter Rohstoffkorb (Energie, Metalle, Agrar) als Inflations-Diversifier.
 - **Risiko:** Hoher Ölanteil; Rohstoffe laufen langfristig seitwärts.
-- **Wochenstatus:** KW41: Rohstoffblock wird abgebaut.
+- **Wochenstatus:** KW42: laufen lassen, nicht mehr aggressiv nachkaufen – Rohstoffe toppen zuletzt im Zyklus.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -37,4 +37,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 0 % (2030) | raus (2030) | – | Watchlist (2030) |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 0 % (2030) | raus (2030) | – | Watchlist (2030) | – |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Becker (2030-Depot KW38): führende Cloud-Security-Plattform und 'einer der Titel, die er am liebsten zurückkaufen würde'. Er hatte die Position verkauft, weil sie zu stark gestiegen war.
 - **Risiko:** Ab KW39 auf Beckers Liste 'Nicht mehr einsteigen': Die Aktie ist ihm 'inzwischen zu stark gelaufen'. Gleiche Einordnung wie Palantir.
-- **Wochenstatus:** KW41: wieder auf der 2030-Watchlist für Block B ('möglicher neuer Top-Performer') – in KW39 noch 'nicht mehr einsteigen'.
+- **Wochenstatus:** KW42: in den Reports nicht erwähnt; zuletzt (KW41) auf der 2030-Watchlist für Block B.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Falcon-Plattform mit einem einzigen Agenten für viele Sicherheitsmodule, hohe Wechselkosten und Datenvorteil aus Billionen Sicherheitsereignissen. (Bewertung: **Stark**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* Wieder interessant nahe der 200-Tage-Linie
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

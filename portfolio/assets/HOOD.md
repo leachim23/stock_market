@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 7 % | 6 % | 7 % | 6 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 7 % | 6 % | 7 % | 6 % | 6 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Profitiert von hohem Handelsvolumen, Krypto und der jüngeren Anlegergeneration. Auf 7 % gewachsen – laufen lassen.
 - **Risiko:** Laut Becker 'unglaubliche' Volatilität mit brutalen Tagesbewegungen.
-- **Wochenstatus:** KW41: Becker prüft gemeldete CEO-Aktienverkäufe. Bei Übertreibung Calls schreiben, Marke 100 USD soll halten.
+- **Wochenstatus:** KW42: Risk-on-Wert mit extremer Volatilität – Becker erwägt, regelmäßig Prämie über geschriebene Calls einzunehmen.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Starke Marke bei jungen Anlegern und günstige Kostenbasis, aber niedrige Wechselkosten im Broker-Geschäft. (Bewertung: **Schwach**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

@@ -1,24 +1,24 @@
-<!-- meta: {"ticker": "SLV", "name": "iShares Silver Trust", "depot": "beta", "block": "Gold · Inflations-Hedge", "alloc": 3, "last": "3 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": ""} -->
+<!-- meta: {"ticker": "SLV", "name": "iShares Silver Trust", "depot": "beta", "block": "Gold · Inflations-Hedge", "alloc": 2, "last": "2 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": "EINSTEIGEN"} -->
 # iShares Silver Trust (SLV)
 
-> **Beta-Depot** · Gold · Inflations-Hedge · ETF
+> **Beta-Depot** · Gold · Inflations-Hedge · ETF · Status: `EINSTEIGEN`
 
 ## 📊 Depot-Kennzahlen
-- **Depot-Anteil:** 3 % im Beta-Depot (Klassifizierung: Beta-Core)
+- **Depot-Anteil:** 2 % im Beta-Depot (Klassifizierung: Beta-Core)
 - **Positionswert:** n/a (Anzahl: n/a × Kurs: n/a) – die PDFs enthalten nur Gewichtungen
 - **Einstieg → Kurs (laut PDF) / Performance:** n/a / n/a (PDF ohne Einstandskurs)
 - **WKN / ISIN:** A0JMD6 / US46428Q1094
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 3 % | 3 % | – | 3 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 3 % | 3 % | – | 3 % | 2 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Zyklischer Edelmetall-Baustein mit höherem Beta zur Industrieaktivität; bei Ausverkauf antizyklisch interessant.
 - **Risiko:** Deutlich volatiler als Gold; Industriezyklus-Schwäche belastet.
-- **Wochenstatus:** KW41: unverändert.
+- **Wochenstatus:** KW42: fällt von 3 auf 2 %.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -37,4 +37,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

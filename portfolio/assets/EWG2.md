@@ -1,7 +1,7 @@
-<!-- meta: {"ticker": "EWG2", "name": "EUWAX Gold II", "depot": "beta", "block": "Gold · Inflations-Hedge", "alloc": 2, "last": "2 %", "typ": "ETC", "pl": "", "moat": "n/a", "status": ""} -->
+<!-- meta: {"ticker": "EWG2", "name": "EUWAX Gold II", "depot": "beta", "block": "Gold · Inflations-Hedge", "alloc": 2, "last": "2 %", "typ": "ETC", "pl": "", "moat": "n/a", "status": "EINSTEIGEN"} -->
 # EUWAX Gold II (EWG2)
 
-> **Beta-Depot** · Gold · Inflations-Hedge · ETC
+> **Beta-Depot** · Gold · Inflations-Hedge · ETC · Status: `EINSTEIGEN`
 
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 2 % im Beta-Depot (Klassifizierung: Beta-Core)
@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 2 % | 2 % | – | 2 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 2 % | 2 % | – | 2 % | 2 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Kostenfreies deutsches Gold-ETC (0 % TER) mit physischer Besicherung – EU-Alternative zu GLD.
 - **Risiko:** Goldpreis-Schwankungen; Emittentenrisiko der Zertifikatsstruktur.
-- **Wochenstatus:** KW41: unverändert; Produktwechsel bei Gold geplant.
+- **Wochenstatus:** KW42: Becker würde das Produkt 'längst verkaufen und umschichten' – aus der Gruppe vorgeschlagen: Xetra-Gold (4GLD), Becker: 'das kann sein'.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -37,4 +37,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

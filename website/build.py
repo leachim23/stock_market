@@ -118,7 +118,7 @@ def page(title, body, root="", extra_head=""):
 <main>
 {body}
 </main>
-<footer>Keine Anlageberatung · Daten aus Balthasar-Becker-Reports KW38–40/2026 · generiert aus <code>portfolio/*.md</code></footer>
+<footer>Keine Anlageberatung · Daten aus Balthasar-Becker-Reports KW38–42/2026 · generiert aus <code>portfolio/*.md</code></footer>
 <script>
 function toggleTheme(){{
   var r=document.documentElement, cur=r.getAttribute('data-theme');
@@ -294,21 +294,24 @@ def buy_page(b, wiki, dep):
     warn = ""
     if stale_becker:
         warn = (f'<div class="banner warn">⚠️ <b>Becker-Signale veraltet:</b> letzter Report vom {de(b["beckerDate"])} ({b["beckerAge"]} Tage). '
-                'Sie zählen nur halb. Neue PDFs nach <code>PDF_input/</code> legen und <code>python website/serve.py</code> ausführen.</div>')
+                'Sie zählen nur halb. Neue PDFs nach <code>pdf/</code> legen und <code>python website/serve.py</code> ausführen.</div>')
 
+    bbi = dep.get("barbell", {}).get("ist", {})
+    compare = compare_html(dep, wiki)
     return f"""
 <div id="freshness" class="banner" hidden></div>
 <section class="hero">
-  <h1>Kaufempfehlung {esc(dep['label'])}</h1>
-  <p class="tabs"><a href="depot-{dep['id']}.html">Depot {esc(dep['label'])}</a><b>Kaufempfehlung</b></p>
+  <h1>Kaufempfehlung {esc(dep['label'])} vom {de(b['generated'])}</h1>
+  <p class="tabs"><a href="depot-{dep['id']}.html">Depot {esc(dep['label'])}</a><b>Kaufempfehlung {de(b['generated'])}</b></p>
   <p>Erstellt am <b>{de(b['generated'])}</b>, gültig bis <b>{de(b['validUntil'])}</b> (max. {b['maxAge']} Tage). Vier Meinungen je Titel: Becker, Analysten (Yahoo + datierte Webquellen), Fundamentaldaten nach Buffett-Kennzahlen und Momentum/relative Stärke – gefiltert auf Diversifikation zum Depot {esc(dep['label'])}. Keine Anlageberatung.</p>
 </section>
 {warn}
+{compare}
 <section class="card">
-  <h2>Zwei Szenarien</h2>
+  <h2>Zwei Szenarien im Detail</h2>
   <p class="cap">Gleiche Kandidaten und Meinungen, unterschiedliche Aufteilung. A folgt der verbindlichen Barbell-Strategie, B verzichtet ganz auf den Barbell-Anker.</p>
   <div class="chips" role="group" aria-label="Szenario">{tabs}</div>
-  <p class="cap" style="margin-top:12px">Barbell-Regeln (Szenario A): Neues Kapital zuerst in fehlende Anker-Bausteine (Geldmarkt, kurzlaufende AAA-Staatsanleihen, physisches Gold, höchstens ein Welt-ETF). Satelliten nur, solange der Satellit unter 15 % liegt – dann max. 2 Titel, ein Titel je Sektor/Familie, keine Sektoren ≥ 10 % bzw. Familien ≥ 25 %. Kandidaten der „ignorierten Mitte“ werden ausgeschlossen. Barbell heute: Anker {dec(round(dep.get("barbell", {}).get("ist", {}).get("Anker", 0)))} % · Satellit {dec(round(dep.get("barbell", {}).get("ist", {}).get("Satellit", 0)))} % · Mitte {dec(round(dep.get("barbell", {}).get("ist", {}).get("Mitte", 0)))} %.</p>
+  <p class="cap" style="margin-top:12px">Barbell-Regeln (Szenario A): Neues Kapital zuerst in fehlende Anker-Bausteine (Geldmarkt, kurzlaufende AAA-Staatsanleihen, physisches Gold, höchstens ein Welt-ETF). Satelliten nur, solange der Satellit unter 15 % liegt – dann max. 2 Titel, ein Titel je Sektor/Familie, keine Sektoren ≥ 10 % bzw. Familien ≥ 25 %. Kandidaten der „ignorierten Mitte“ werden ausgeschlossen. Barbell heute: Anker {dec(round(bbi.get("Anker", 0)))} % · Satellit {dec(round(bbi.get("Satellit", 0)))} % · Mitte {dec(round(bbi.get("Mitte", 0)))} %.</p>
 </section>
 {blocks}
 <section class="card">
@@ -336,6 +339,46 @@ def buy_page(b, wiki, dep):
   }}));
 }})();
 </script>"""
+
+
+def compare_html(d, wiki):
+    """Szenario A (mit Barbell) und B (ohne Barbell) eines Depots nebeneinander – Kopf des Untertabs Kaufempfehlung."""
+    dec = lambda v: str(v).replace(".", ",")
+    esc = html.escape
+    link = lambda t: f"assets/{t}.html" if t in wiki else f"https://finance.yahoo.com/quote/{t}"
+    rows = {r["t"]: r for r in d["buy"]["rows"]}
+    short = {"A": "Neues Kapital zuerst in fehlende Anker-Bausteine (Geldmarkt, kurzlaufende AAA-Staatsanleihen, physisches Gold, ein Welt-ETF). "
+                  "Satelliten nur, solange der Satellit unter 15 % liegt. Mitte ausgeschlossen.",
+             "B": "Ohne Krisenpuffer: kein Geldmarkt, keine kurzen Anleihen, kein physisches Gold, kein Welt-ETF. Bis zu 3 Einzelaktien und "
+                  "2 Kern-Bausteine (Gewicht 2:1), Mitte erlaubt – höheres Risiko."}
+
+    def col(sv):
+        key = sv["allocKey"]
+        bar = "".join(f'<span class="c{i % 5 + 1}" style="flex:{max(rows[t].get(key, 0), 0.5)}" title="{t} {rows[t].get(key, 0)} %"></span>'
+                      for i, t in enumerate(sv["picks"]))
+        trs = "".join(
+            f'<tr><td><a class="tk" href="{link(t)}">{t}</a><div class="sub">{esc(rows[t]["name"])}</div></td>'
+            f'<td>{esc(rows[t]["bucket"])}<div class="sub"><span class="role role-{rows[t]["role"].lower()}">{esc(rows[t]["role"])}</span></div></td>'
+            f'<td>{esc(rows[t]["signalLabel"])}</td><td>{votes_html(rows[t])}</td><td class="num"><b>{rows[t].get(key, 0)} %</b></td></tr>'
+            for t in sv["picks"])
+        return (f'<section class="op"><h4>{esc(sv["title"])}</h4><p class="cap">{esc(short[sv["id"]])}</p>'
+                f'<div class="wbar">{bar}</div>'
+                f'<div class="table-wrap"><table><thead><tr><th>Titel</th><th>Sektor · Rolle</th><th>Becker</th><th>Meinungen</th><th class="num">Anteil</th></tr></thead>'
+                f'<tbody>{trs or "<tr><td colspan=5 class=empty>Keine Empfehlung</td></tr>"}</tbody></table></div></section>')
+
+    bb, acts = d["barbell"]["ist"], d.get("actions", {})
+    first = " · ".join(f'{k}: {", ".join(acts[k])}' for k in ("Verkaufen", "Trimmen") if acts.get(k)) or "keine Verkäufe oder Trimmungen"
+    summary = "".join(f"<li>{esc(x)}</li>" for x in d["buy"].get("summary", []))
+    becker = (f'<section class="card"><h2>Becker – das Wichtigste aus den Reports</h2>'
+              f'<p class="cap">Stand {esc(d["buy"].get("beckerStand", ""))}. Zusammenfassung von Balthasar Beckers Einschätzung – seine Meinung, keine geprüften Fakten.</p>'
+              f'<ul class="ana">{summary}</ul></section>') if summary else ""
+    return becker + f"""<section class="card">
+  <h2>Mit und ohne Barbell</h2>
+  <p class="cap">Auf Basis des aktuellen Portfolios ({len(d['holdings'])} Positionen). Barbell heute: Anker {dec(round(bb.get('Anker', 0)))} % · Satellit {dec(round(bb.get('Satellit', 0)))} % · Mitte {dec(round(bb.get('Mitte', 0)))} % (Ziel 85 / 15 / 0).
+  Becker-Grundsatz: erst verkaufen und trimmen, dann gestaffelt kaufen – {esc(first)}.</p>
+  <div class="vs">{"".join(col(sv) for sv in d["buy"]["scenarios"])}</div>
+  <p class="note">Details zu jedem Titel (vier Meinungen, Wertung) und die Ausschlussgründe stehen weiter unten.</p>
+</section>"""
 
 
 def md_inline(x):
@@ -445,7 +488,7 @@ def depot_page(d, wiki):
     return f"""
 <section class="hero">
   <h1>Depot {esc(d['label'])}</h1>
-  <p class="tabs"><b>Depot {esc(d['label'])}</b><a href="kaufempfehlung-{d['id']}.html">Kaufempfehlung</a></p>
+  <p class="tabs"><b>Depot {esc(d['label'])}</b><a href="kaufempfehlung-{d['id']}.html">Kaufempfehlung {d['buy']['generated'][8:]}.{d['buy']['generated'][5:7]}.{d['buy']['generated'][:4]}</a></p>
   <p>{len(hs)} Positionen aus <code>input/{esc(d['id'])}/</code> · Kurse Yahoo Finance vom {d['generated'][8:]}.{d['generated'][5:7]}.{d['generated'][:4]} · bewertet nach Beckers Regelwerk (Status, 200-Tage-Linie) und Analystenkonsens. Keine Anlageberatung.</p>
 </section>
 {unres}
@@ -539,7 +582,7 @@ def build():
     stand = re.search(r"\*\*Stichtag:\*\*\s*([^·]+)", idx_md)
     stand = stand.group(1).strip() if stand else ""
     counts = {k: sum(1 for a in assets if a.get("depot") == k) for k in DEPOT_LABEL}
-    cash = {"beta": "20 %", "2030": "0 %", "alpha": "11 %"}
+    cash = {"beta": "21 %", "2030": "0 %", "alpha": "38 %"}
     roles = {"beta": "Beta-Core · Kapitalerhalt", "2030": "Langfrist-Core · Sparplan", "alpha": "Alpha-Satellit · Themenwetten"}
     cards = "".join(
         f'<button class="kpi depot-{k}" data-depot="{k}" type="button">'

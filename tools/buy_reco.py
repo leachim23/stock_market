@@ -26,7 +26,7 @@ FAMILY = {"Halbleiter": "Technologie", "Robotik & Automatisierung": "Technologie
           "Dividenden-Qualität": "US-Aktien breit"}
 OUT_MD = ROOT / "portfolio" / "kaufempfehlung.md"
 OUT_JSON = ROOT / "website" / "data" / "buy.json"
-BECKER_DATE = "2026-10-09"   # letzter Becker-Report: PDF_input/09102026 (KW41)
+BECKER_DATE = "2026-10-16"   # letzter Becker-Report: pdf/ (KW42)
 
 # Diversifikations-Buckets für die eigenen Positionen
 HOLD_BUCKET = {"LULU": "Konsum zyklisch", "CRWD": "Software & Cybersecurity", "IBB": "Gesundheit / Biotech"}
@@ -44,93 +44,107 @@ def slot(c):
 CANDIDATES = [
     # --- Anker-Bausteine (Barbell, SKILL.md Abschnitt 0)
     dict(t="XEON", name="Xtrackers EUR Overnight Rate Swap (Geldmarkt)", bucket="Geldmarkt", kind="ETF", signal="kaufen",
-         becker="Beta-Depot: Liquidität ist eine strategische Position (Ziel ~20 %) – Munition für den Crash; Becker hält 8 % im XEON."),
+         becker="Beta-Depot 9 %, Status EINSTEIGEN: Liquidität (21 %) ist die strategische Reserve für den Moment, in dem die Notenbank eingreifen muss."),
     dict(t="EXVM", name="iShares eb.rexx Government Germany 0-1yr", bucket="Kurzlaufende Staatsanleihen (AAA)", kind="ETF", signal="pruefen",
-         becker="Nicht in Beckers Depots (er bevorzugt taktisch lange US-Anleihen). Im Barbell-Anker gefordert: kurzlaufende AAA-Staatsanleihen – Bund statt Treasury (USA nicht mehr AAA)."),
+         becker="Nicht in Beckers Depots (er schichtet Euro-Liquidität in US-Anleihen, 'eventuell auch kürzere Laufzeiten'). Im Barbell-Anker gefordert: kurzlaufende AAA-Staatsanleihen – Bund statt Treasury (USA nicht mehr AAA)."),
     dict(t="4GLD", name="Xetra-Gold (physisch hinterlegt)", bucket="Gold physisch", kind="ETF", signal="kaufen",
-         becker="Beta-Depot: Gold ~19 % als monetäres Fundament gegen Geldentwertung (Debasement Trade); Becker will auf günstigere Gold-Produkte wechseln – Xetra-Gold ist physisch hinterlegt."),
+         becker="Beta-Depot: Gold 18 % auf Zielallokation, langfristig 'wieder sehr attraktiv'. Xetra-Gold kam aus der Gruppe als Ersatz für EWG2 – Becker: 'das kann sein'."),
     dict(t="VWCE", name="Vanguard FTSE All-World", bucket="Breiter Markt (Welt)", kind="ETF", signal="pruefen",
          becker="Nicht in Beckers Beta-Depot (er meidet marktgewichtete Indizes wegen des KI-Klumpens). Im Barbell-Anker optional: höchstens ein Welt-ETF."),
+    # --- 2030-Depot
     dict(t="GOOGL", name="Alphabet", bucket="Kommunikation & Internet", kind="Aktie", signal="kaufen",
-         becker="2030-Depot, Status AUFBAUEN: gefällt Becker derzeit am besten – er ist 'ausdrücklich bullisch' auf die Aktie."),
+         becker="2030-Depot 10 %, Status AUFBAUEN: mit Amazon der interessanteste Wert – sollte sich auch in einem größeren Abverkauf sehr gut halten."),
     dict(t="AMZN", name="Amazon", bucket="Konsum zyklisch", kind="Aktie", signal="kaufen",
-         becker="2030-Depot, Status AUFBAUEN: 'sehr interessant'; Becker erwägt, Apple zugunsten Amazon aufzulösen."),
+         becker="2030-Depot 7 %, Status AUFBAUEN: 'außergewöhnlich gut aufgestellt'. Kappen die Hyperscaler ihre KI-Investitionen, sollten ihre eigenen Aktien steigen."),
     dict(t="ASML", name="ASML Holding", bucket="Halbleiter", kind="Aktie", signal="kaufen",
-         becker="2030-Depot, Status AUFBAUEN: sollte weiter von KI profitieren."),
-    dict(t="RSP", name="Invesco S&P 500 Equal Weight ETF", bucket="Breiter Markt (gleichgewichtet)", kind="ETF", signal="kaufen",
-         becker="Beta-Depot: am 09.10. von 5 auf 8 % aufgestockt – 'kein Trade, sondern ein Investment'; weiterer Ausbaukandidat. UCITS: SP2Q (IE00BNGJJT35)."),
-    dict(t="NOBL", name="ProShares S&P 500 Dividend Aristocrats", bucket="Dividenden-Qualität", kind="ETF", signal="kaufen",
-         becker="Beta-Depot: ausdrücklicher Ausbaukandidat (Catch-up der Marktbreite bei fallenden Zinsen). UCITS-Näherung: USDV (IE00B6YX5D40)."),
-    dict(t="TLT", name="iShares 20+ Year Treasury Bond ETF", bucket="Anleihen", kind="ETF", signal="kaufen",
-         becker="Beta-Depot: 'der nächste Nachkauf' – XEON soll schrittweise in TLT fließen; Anleihen bei ~5 % taktisch interessant, im Crash Fluchtort. UCITS: DTLA (IE00BFM6TC58)."),
-    dict(t="BRK-B", name="Berkshire Hathaway B", bucket="Finanzen & Zahlungsverkehr", kind="Aktie", signal="halten",
-         becker="Beta-Depot: Kern des Aktienteils (18 %), unverändert – kein aktiver Ausbau genannt."),
+         becker="2030-Depot 3 %, Status AUFBAUEN: erholt sich nach dem Abverkauf; Pick-and-Shovel unabhängig davon, welcher Chiphersteller gewinnt."),
+    dict(t="RKLB", name="Rocket Lab", bucket="Raumfahrt", kind="Aktie", signal="pruefen",
+         becker="2030: 'interessantester Neueinstiegskandidat' nach dem brutalen Abverkauf – Becker schreibt Puts (Strike 66, effektiv ~60), um die Aktie eingebucht zu bekommen. Es kann weiter nach unten gehen."),
     dict(t="RGLD", name="Royal Gold", bucket="Gold & Edelmetalle", kind="Aktie", signal="pruefen",
-         becker="2030-Watchlist: steht oben auf der Liste möglicher Neuaufnahmen – langfristig von steigenden Goldpreisen profitieren."),
-    dict(t="GLD", name="SPDR Gold Shares", bucket="Gold physisch", kind="ETF", signal="warten",
-         becker="Beta-Depot: Nachkauf nur bei deutlicher Schwäche; Wechsel auf gebührengünstigeres Produkt geplant. UCITS: EWG2."),
-    dict(t="V", name="Visa", bucket="Finanzen & Zahlungsverkehr", kind="Aktie", signal="pruefen",
-         becker="2030-Watchlist (antizyklisch beobachtet) – KI- und Stablecoin-Profiteur; Käufe erst nach McDonald's-Abbau."),
-    dict(t="DHI", name="D.R. Horton", bucket="Immobilien & Hausbau", kind="Aktie", signal="pruefen",
-         becker="Alpha-Watchlist: Hausbauer sind für Becker 'die beste Möglichkeit, fallende Zinsen zu spielen'; Buffett hat stark gekauft. Trigger: fallende Zweijahreszinsen."),
-    dict(t="LEN", name="Lennar", bucket="Immobilien & Hausbau", kind="Aktie", signal="pruefen",
-         becker="Alpha-Watchlist: wie D.R. Horton – antizyklische Zinswette, Aufnahme bei fallenden Zweijahreszinsen erwogen."),
-    dict(t="GEV", name="GE Vernova", bucket="Strom & Netzinfrastruktur", kind="Aktie", signal="pruefen",
-         becker="Alpha-Watchlist Stromversorger (GEV, ETN, PWR): nach dem KI-Trade der Bereich mit dem zweitmeisten Momentum."),
-    dict(t="ETN", name="Eaton", bucket="Strom & Netzinfrastruktur", kind="Aktie", signal="pruefen",
-         becker="Alpha-Watchlist Stromversorger: Elektrifizierung und Rechenzentrums-Stromversorgung."),
+         becker="2030: mögliche Neuaufnahme – lief an einem schwachen Tag deutlich im Plus."),
     dict(t="CRDO", name="Credo Technology", bucket="Halbleiter", kind="Aktie", signal="kaufen",
-         becker="Alpha +57 %, 'läuft weiterhin sehr stark'; zusätzlich auf der 2030-Watchlist Block B."),
-    dict(t="LITE", name="Lumentum", bucket="Halbleiter", kind="Aktie", signal="kaufen",
-         becker="Alpha-Neukauf 06.10.: Photonik ist für Becker 'der nächste Trend im Chipbereich' – Ausbruchskauf mit engem Stop."),
-    dict(t="KEYS", name="Keysight Technologies", bucket="Messtechnik & Photonics", kind="Aktie", signal="kaufen",
-         becker="Alpha-Neukauf 06.10. (5 %) als Ausbruchskauf mit engem Ausstieg."),
-    dict(t="MU", name="Micron Technology", bucket="Halbleiter", kind="Aktie", signal="warten",
-         becker="Alpha 17 %: hat auf starke Zahlen kaum reagiert – Warnsignal. Für Neueinsteiger nur mit Stopp (960 oder 891 USD)."),
-    dict(t="TER", name="Teradyne", bucket="Robotik & Automatisierung", kind="Aktie", signal="warten",
-         becker="Alpha: geplante dritte Robotics-Position – Becker wartet auf einen günstigeren Einstieg."),
-    dict(t="BE", name="Bloom Energy", bucket="Strom & Netzinfrastruktur", kind="Aktie", signal="halten",
-         becker="Alpha 7 %: laufen lassen bis zum Bruch der 200-Tage-Linie."),
-    dict(t="NVO", name="Novo Nordisk", bucket="Gesundheit / Biotech", kind="Aktie", signal="pruefen",
-         becker="Alpha-/2030-Watchlist Healthcare (NVO, VRTX, NTRA, BNTX) – stark gefallene Qualität."),
-    dict(t="XOM", name="Exxon Mobil", bucket="Energie & Öl", kind="Aktie", signal="nein",
-         becker="KW41: Ölaktien meidet Becker bewusst – der Ölpreis hängt an politischen Entscheidungen, 'ein Münzwurf'."),
+         becker="Alpha 4 % (+28 %), Status EINSTEIGEN – stärkster Wert im Depot; zusätzlich Neuaufnahme-Kandidat im 2030-Depot."),
+    # --- Beta-Depot
+    dict(t="MKL", name="Markel Group", bucket="Finanzen & Zahlungsverkehr", kind="Aktie", signal="kaufen",
+         becker="Beta-Depot 14 %, Status EINSTEIGEN: an den roten Tagen der Woche im Plus – 'bei Markel würde er einsteigen'."),
+    dict(t="BRK-B", name="Berkshire Hathaway B", bucket="Finanzen & Zahlungsverkehr", kind="Aktie", signal="warten",
+         becker="Beta-Depot 18 %, Status EINSTEIGEN – nach dem starken Anstieg würde Becker für einen Einstieg aber den nächsten Rücksetzer abwarten."),
+    dict(t="RSP", name="Invesco S&P 500 Equal Weight ETF", bucket="Breiter Markt (gleichgewichtet)", kind="ETF", signal="warten",
+         becker="Beta 8 %, Status LAUFEN LASSEN: gut gelaufen, Chance-Risiko schlechter – nächsten Rücksetzer abwarten. UCITS: SP2Q (IE00BNGJJT35)."),
+    dict(t="NOBL", name="ProShares S&P 500 Dividend Aristocrats", bucket="Dividenden-Qualität", kind="ETF", signal="warten",
+         becker="Beta 5 %, Status LAUFEN LASSEN: antizyklischer Kauf aufgegangen – nächsten Rücksetzer abwarten. UCITS-Näherung: SPYD (IE00B6YX5D40)."),
+    dict(t="TLT", name="iShares 20+ Year Treasury Bond ETF", bucket="Anleihen", kind="ETF", signal="kaufen",
+         becker="Beta 6 %, Status EINSTEIGEN: Fluchthafen der Woche; Euro-Liquidität soll schrittweise in TLT/TIP fließen. Zinsgipfel laut Becker gesehen. UCITS: DTLA (IE00BFM6TC58)."),
+    dict(t="GLD", name="SPDR Gold Shares", bucket="Gold physisch", kind="ETF", signal="warten",
+         becker="Beta 14 %, auf Zielallokation; wegen hoher Gebühren will Becker in ein günstigeres Produkt tauschen. UCITS: EWG2 / Xetra-Gold."),
     dict(t="IBIT", name="iShares Bitcoin Trust", bucket="Krypto", kind="ETF", signal="warten",
-         becker="Beta: über Zielquote, laufen lassen; ohne Liquidität erwartet Becker einen kräftigen Rücksetzer. UCITS-ETP: IB1T."),
+         becker="Beta 10 %, auf Zielallokation – nicht mehr aggressiv nachkaufen, Einsteiger nur in Tranchen. Struktur beendet unter 75.000 USD. UCITS-ETP: IB1T."),
+    # --- Alpha-Depot und Watchlists
+    dict(t="XPEV", name="XPeng", bucket="China & Schwellenländer", kind="Aktie", signal="kaufen",
+         becker="Alpha 4 % (−17 %), Status EINSTEIGEN: China hielt im Abverkauf – Becker hält XPeng 'für Einsteiger ausdrücklich für kaufbar'."),
+    dict(t="KEYS", name="Keysight Technologies", bucket="Messtechnik & Photonics", kind="Aktie", signal="pruefen",
+         becker="Alpha 5 % (−10 %): reiner Chart-Trade – wird der Ausbruch negiert, geht Becker raus."),
+    dict(t="BE", name="Bloom Energy", bucket="Strom & Netzinfrastruktur", kind="Aktie", signal="pruefen",
+         becker="Alpha 6 % (+8 %), Status EINSTEIGEN: Strom- und Netzanschlüsse als möglicher nächster KI-Engpass; Ausstieg bei nachhaltigem Bruch der 200-Tage-Linie."),
+    dict(t="GDX", name="VanEck Gold Miners ETF", bucket="Gold & Edelmetalle", kind="ETF", signal="pruefen",
+         becker="Alpha-Watchlist KW42: neben GDXJ jetzt auch der großkapitalisierte GDX – Minen verdienen beim aktuellen Goldpreis 'einen Haufen Geld'."),
+    dict(t="DHI", name="D.R. Horton", bucket="Immobilien & Hausbau", kind="Aktie", signal="pruefen",
+         becker="Alpha-Watchlist KW42: steht mit Lennar 'ganz oben' bei den Profiteuren fallender Zinsen – Absicht, kein Kauf."),
+    dict(t="LEN", name="Lennar", bucket="Immobilien & Hausbau", kind="Aktie", signal="pruefen",
+         becker="Alpha-Watchlist KW42: wie D.R. Horton – Rotation in alles, was von fallenden Zinsen profitiert."),
+    dict(t="GEV", name="GE Vernova", bucket="Strom & Netzinfrastruktur", kind="Aktie", signal="pruefen",
+         becker="Alpha-Watchlist Versorger & Netze: Strom- und Netzanschlüsse könnten der nächste Engpass im KI-Thema werden."),
+    dict(t="ETN", name="Eaton", bucket="Strom & Netzinfrastruktur", kind="Aktie", signal="pruefen",
+         becker="Alpha-Watchlist Versorger & Netze: Elektrifizierung und Rechenzentrums-Stromversorgung."),
+    dict(t="NVO", name="Novo Nordisk", bucket="Gesundheit / Biotech", kind="Aktie", signal="pruefen",
+         becker="Healthcare: deutliche Zuflüsse – Becker prüft, ob er den Sektor über einen Healthcare- oder Biotech-ETF spielt (Einzelwerte-Watchlist KW41: NVO, VRTX)."),
+    dict(t="TER", name="Teradyne", bucket="Robotik & Automatisierung", kind="Aktie", signal="warten",
+         becker="Alpha (KW41): geplante dritte Robotics-Position – Becker wartet auf einen günstigeren Einstieg. Robotics will er in die Schwäche hinein ausbauen."),
+    dict(t="V", name="Visa", bucket="Finanzen & Zahlungsverkehr", kind="Aktie", signal="pruefen",
+         becker="2030-Watchlist (KW41, antizyklisch beobachtet) – Käufe erst nach dem McDonald's-Abbau."),
     dict(t="PLTR", name="Palantir", bucket="Software & Cybersecurity", kind="Aktie", signal="pruefen",
          becker="KW41: 'eine der führenden Aktien des Marktes' (Leading Stock) – auf der Watchlist, nicht gekauft."),
+    dict(t="MU", name="Micron Technology", bucket="Halbleiter", kind="Aktie", signal="nein",
+         becker="Alpha: am 13.10. über die Stop-Marke verkauft (zuvor 17 %, größte Position) – Thema Speicher fällt weg."),
+    dict(t="LITE", name="Lumentum", bucket="Halbleiter", kind="Aktie", signal="nein",
+         becker="Alpha: am 14.10. verkauft, acht Tage nach dem Kauf – Ausbruch auf neue Hochs negiert."),
+    dict(t="XOM", name="Exxon Mobil", bucket="Energie & Öl", kind="Aktie", signal="nein",
+         becker="Ölaktien meidet Becker bewusst – der Ölpreis ist ihm 'deutlich zu hoch' und hängt an einem möglichen Ukraine-Deal."),
+]
+
+# Kurzfassung der Becker-Reports für die datierte Kaufempfehlung (Paraphrase, Beckers Meinung)
+BECKER_SUMMARY = [
+    "Rotation aus KI in defensive Werte: Gleichgewichteter S&P, Dividenden-ETF, lange Anleihen und McDonald's steigen, gehypte KI-Aktien werden abgestraft.",
+    "Alpha-Depot: Micron und Corning (13.10.) sowie Lumentum (14.10.) über Stop-Marken verkauft – Cash springt von 11 auf 38 %. Keine Neukäufe, bis sich eine Gelegenheit konkretisiert.",
+    "Beta- und 2030-Depot ohne Transaktion: Beta im Plus (Berkshire, Markel, NOBL, RSP, TLT), 2030 stabil über McDonald's (32 %), das jetzt in die Stärke hinein abgebaut wird.",
+    "Zinsen: Höhepunkt laut Becker gesehen, Dollar schwächer. Liquidität erstmals leicht gefallen, aber noch ausreichend. Viel Angst (Fear & Greed 25) stützt die Jahresendrallye.",
+    "Nächste Richtungen: Halbleiter-Gegenbewegung und Zinssenkungs-Profiteure (Lennar, D.R. Horton, Versorger, Healthcare); im 2030-Depot Rocket Lab, Royal Gold, Credo.",
+    "Wichtigster Termin: Capex-Aussagen der Hyperscaler in der Berichtssaison. Dazu Bitcoin-Zone 80.000 USD, Stichwahl Brasilien 25.10., US-Midterms 03.11.",
 ]
 
 # --------------------------------------------------------------------------- Zweitmeinung aus dem Web (datiert)
-GLOBE = ("The Globe and Mail – U.S. Analyst Updates", "https://www.theglobeandmail.com/investing/markets/stocks/NOW/pressreleases/4992898/us-analyst-updates-october-6th-2026/")
-STRONG = ("StrongBuy Analytics – Stock Market Outlook", "https://strongbuyanalytics.com/stock-market-outlook")
-MARKETBEAT = ("MarketBeat – Homebuilders Are Down for the Year", "https://www.marketbeat.com/articles/homebuilders-are-down-for-the-year-is-wall-street-in-denial/")
-GOOGLEFIN = ("Google Finance – GEV Analysten", "https://www.google.com/finance/labs/quote/GEV:NYSE")
-SCHWAB = ("Schwab – Monthly Stock Sector Outlook", "https://www.schwab.com/learn/story/stock-sector-outlook")
+GLOBE19 = ("The Globe and Mail – US Analyst Updates 19.10.", "https://www.theglobeandmail.com/investing/markets/stocks/FCX/pressreleases/8206287/us-analyst-updates-october-19th-2026/")
+GLOBE20 = ("The Globe and Mail – US Analyst Updates 20.10.", "https://www.theglobeandmail.com/investing/markets/stocks/MSFT/pressreleases/8245510/us-analyst-updates-october-20th-2026/")
+INVESTRADE = ("Investrade – Market Review 20.10.2026", "https://investrade.com/market-review-october-20-2026/")
+AOL = ("AOL – Chips Bounced, Builders Sank", "https://www.aol.com/articles/chips-bounced-builders-sank-crude-135400000.html")
+MARKETBEAT = ("MarketBeat – Rocket Lab nach Analysten-Abstufung", "https://www.marketbeat.com/instant-alerts/price-rocket-lab-nasdaq-rklb-stock-price-down-8-after-analyst-downgrade-2026-10-16/")
+CHIPS = ("2026-10-20", "Halbleiter beenden eine 9-tägige Verlustserie – Speicher- und KI-Infrastrukturwerte erholen sich.", "+", AOL)
+BUILDERS = ("2026-10-20", "Hausbauer fallen, nachdem die Bauherren-Stimmung auf ein 14-Jahres-Tief gesunken ist.", "−", AOL)
 WEB = {
-    "GOOGL": [("2026-10-06", "Wells Fargo: Overweight bestätigt, Kursziel 411 → 417 USD.", "+", GLOBE),
-              ("2026-10-09", "Kommunikationssektor (XLC −1,51 %) schwächster Sektor des Tages.", "−", STRONG)],
-    "AMZN": [("2026-10-06", "Tigress Financial: Buy bestätigt, Kursziel 315 → 385 USD.", "+", GLOBE),
-             ("2026-10-09", "Zyklischer Konsum (XLY +1,02 %) mit stärkster relativer Stärke.", "+", STRONG)],
-    "KEYS": [("2026-10-06", "Goldman Sachs: Buy bestätigt, Kursziel 452 → 487 USD.", "+", GLOBE)],
-    "CRDO": [("2026-10-09", "Halbleiter (SMH −0,65 %) unter den Nachzüglern des Tages.", "−", STRONG)],
-    "MU":   [("2026-10-09", "Halbleiter (SMH −0,65 %) unter den Nachzüglern des Tages.", "−", STRONG)],
-    "ASML": [("2026-10-06", "Gemischtes Bild bei Ausrüstern: KLA-Kursziel bei Morgan Stanley 253 → 227 gesenkt, TSMC 650 → 665 angehoben (Barclays).", "0", GLOBE)],
-    "BRK-B": [("2026-10-06", "Versicherer mit überwiegend gesenkten Kurszielen (Chubb, AIG, Allstate bei Morgan Stanley).", "−", GLOBE)],
-    "V":    [("2026-10-06", "Finanzwerte gemischt: Konsumkreditgeber und Broker mit gesenkten Zielen.", "0", GLOBE)],
-    "XOM":  [("2026-10-06", "Raffinerien/Energie mit selektiver Unterstützung (Valero 323 → 441, PBF 74 → 91).", "+", GLOBE)],
-    "DHI":  [("2026-10-06", "Barclays: Equal Weight, Kursziel 141 → 130 USD; Hausbauer insgesamt mit gesenkten Zielen (Pulte, Toll).", "−", GLOBE),
-             ("2026-10-06", "Aktie bei 136,64 USD nahe 52-Wochen-Tief; Hypothekenzinsen ~7 % und 10-jährige zeitweise 5 % belasten.", "−", MARKETBEAT)],
-    "LEN":  [("2026-10-06", "Wohnungsbau-Sektor mit Vorsicht: mehrere Kursziel-Senkungen bei Hausbauern.", "−", GLOBE)],
-    "GEV":  [("2026-10-05", "20 Analysten: 16× Buy, 3× Hold, 1× Sell; Ø Kursziel ~1.232 USD.", "+", GOOGLEFIN)],
-    "NVO":  [("2026-10-09", "Gesundheit (XLV +1,58 %) stärkster Sektor des Tages.", "+", STRONG)],
-    "LITE": [("2026-10-09", "Halbleiter (SMH −0,65 %) unter den Nachzüglern des Tages.", "−", STRONG)],
-    "RSP":  [("2026-10-09", "Breiter Markt: Bias bullish, Small Caps (IWM) und Futures höher, VIX tiefer.", "+", STRONG)],
-    "TLT":  [("2026-10-09", "Am 12.10. (Columbus Day) Anleihemarkt geschlossen – geringe Liquidität.", "0", STRONG)],
-    "*":    [("2026-10-06", "Analysten bevorzugen selektive Wachstumsstorys (Halbleiter, KI-Infrastruktur, Software), Gesundheit/Verteidigung/Kupfer mit Unterstützung; Wohnungsbau, Autohandel, Transport vorsichtig.", "0", GLOBE),
-             ("2026-10-09", "Marktausblick für 12.10.: 'Bullish, with holiday-liquidity caveats' – Gesundheit (XLV +1,58 %) und Konsum zyklisch führen, Kommunikation/Halbleiter/Regionalbanken hinken.", "0", STRONG),
-             ("2026-10-06", "Berenberg stuft Nike von Hold auf Sell ab (Ziel 27,50 USD) – negatives Signal für Sportartikel/LULU.", "−", GLOBE),
-             ("2026-10-02", "Sektor-Ausblick: Industrie und Rohstoffe (Kupfer) favorisiert.", "+", SCHWAB)],
+    "GOOGL": [("2026-10-19", "KeyCorp: Overweight bestätigt, Kursziel auf 410 USD gesenkt.", "0", GLOBE19)],
+    "ASML": [CHIPS],
+    "CRDO": [CHIPS],
+    "KEYS": [CHIPS],
+    "DHI": [BUILDERS],
+    "LEN": [BUILDERS],
+    "NVO": [("2026-10-20", "Gesundheit (XLV) auf Allzeithoch – defensive Rotation hält an.", "+", INVESTRADE)],
+    "GEV": [("2026-10-20", "BTIG stuft den Versorger American Electric Power auf Buy hoch (Ziel 147 USD) – Versorger gefragt.", "+", GLOBE20)],
+    "ETN": [("2026-10-20", "BTIG stuft den Versorger American Electric Power auf Buy hoch (Ziel 147 USD) – Versorger gefragt.", "+", GLOBE20)],
+    "RKLB": [("2026-10-16", "Kursziel-Senkungen nach Neutron-Verzögerung (Citizens JMP 130 → 90, KeyBanc 135 → 100 USD).", "−", MARKETBEAT)],
+    "*":    [("2026-10-20", "107 Kursziel-Senkungen gegenüber 51 Anhebungen – Analysten werden vorsichtiger.", "−", GLOBE20),
+             ("2026-10-20", "Defensive Rotation: Gesundheit auf Allzeithoch, Versorger, Basiskonsum und REITs stark; Halbleiter erholen sich nur leicht.", "0", INVESTRADE),
+             ("2026-10-20", "Chips erholen sich, Hausbauer fallen nach Bauherren-Stimmung auf 14-Jahres-Tief, Ölpreis uneinheitlich.", "0", AOL),
+             ("2026-10-16", "Rocket Lab: Kursziel-Senkungen nach Neutron-Verzögerung.", "−", MARKETBEAT)],
 }
 
 SIGNAL_SCORE = {"kaufen": 3.0, "pruefen": 1.5, "halten": 0.8, "warten": 0.5, "nein": -2.0}

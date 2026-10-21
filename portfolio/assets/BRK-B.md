@@ -1,7 +1,7 @@
-<!-- meta: {"ticker": "BRK-B", "name": "Berkshire Hathaway B", "depot": "beta", "block": "Aktien · Defensiver Wachstums-Baustein", "alloc": 18, "last": "18 %", "typ": "Aktie", "pl": "", "moat": "Stark", "status": ""} -->
+<!-- meta: {"ticker": "BRK-B", "name": "Berkshire Hathaway B", "depot": "beta", "block": "Aktien · Defensiver Wachstums-Baustein", "alloc": 18, "last": "18 %", "typ": "Aktie", "pl": "", "moat": "Stark", "status": "EINSTEIGEN"} -->
 # Berkshire Hathaway B (BRK-B)
 
-> **Beta-Depot** · Aktien · Defensiver Wachstums-Baustein · Aktie
+> **Beta-Depot** · Aktien · Defensiver Wachstums-Baustein · Aktie · Status: `EINSTEIGEN`
 
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 18 % im Beta-Depot (Klassifizierung: Beta-Core)
@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 17 % | 18 % | – | 18 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 17 % | 18 % | – | 18 % | 18 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Massive Cash-Reserven (>30 % der Bilanz) für antizyklische Akquisitionen; historisch Outperformance in Krisen (2000-2003, 2008-2009).
 - **Risiko:** Macht den letzten Teil eines Bullenmarkts typischerweise nicht mit; Einzeltitel-Konzentration statt Diversifikation.
-- **Wochenstatus:** KW41: Kern des Aktienteils (Aktien gesamt 44 %), unverändert.
+- **Wochenstatus:** KW42: Status Einsteigen – an den Abverkaufstagen im Plus. Nach dem starken Anstieg würde Becker für einen Einstieg den nächsten Rücksetzer abwarten.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Versicherungs-Float als günstige Finanzierung, Portfolio aus Monopol-ähnlichen Tochterfirmen (BNSF, BHE, GEICO) und Reputation als bevorzugter Käufer. (Bewertung: **Stark**)
@@ -28,11 +28,11 @@
 ## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Gering – profitiert eher von Krisen (kann dann günstig kaufen) als von Liquiditätsschüben.
 - **Asymmetrisches Risikoprofil:** Nein – Kapitalerhalt mit Krisen-Option.
-- **Antizyklischer Status:** Defensiv positioniert, kein Übertreibungsrisiko.
+- **Antizyklischer Status:** Sicherer Hafen der Abverkaufswoche; zuletzt stark gestiegen – Rücksetzer abwarten.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* [eigene Eingabe]
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

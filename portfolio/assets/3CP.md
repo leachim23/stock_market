@@ -1,24 +1,24 @@
-<!-- meta: {"ticker": "3CP", "name": "Xiaomi", "depot": "alpha", "block": "China + EEM", "alloc": 6, "last": "6 %", "typ": "Aktie", "pl": "−6 %", "moat": "Mittel", "status": "EINSTEIGEN"} -->
+<!-- meta: {"ticker": "3CP", "name": "Xiaomi", "depot": "alpha", "block": "China + EEM", "alloc": 7, "last": "7 %", "typ": "Aktie", "pl": "−3 %", "moat": "Mittel", "status": "EINSTEIGEN"} -->
 # Xiaomi (3CP)
 
 > **Alpha-Depot** · China + EEM · Aktie · Status: `EINSTEIGEN`
 
 ## 📊 Depot-Kennzahlen
-- **Depot-Anteil:** 6 % im Alpha-Depot (Klassifizierung: Alpha-Satellit)
+- **Depot-Anteil:** 7 % im Alpha-Depot (Klassifizierung: Alpha-Satellit)
 - **Positionswert:** n/a (Anzahl: n/a × Kurs: n/a) – die PDFs enthalten nur Gewichtungen
-- **Einstieg → Kurs (laut PDF) / Performance:** 3,1 → 2,9 / −6 %
+- **Einstieg → Kurs (laut PDF) / Performance:** 3,1 → 3 / −3 %
 - **WKN / ISIN:** A2JNY1 / KYG9830T1067
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 6 % | – | – | 6 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 6 % | – | – | 6 % | 7 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Ökosystem aus Smartphones, IoT und schnell wachsendem E-Auto-Geschäft – Hardware-Skaleneffekte plus wiederkehrende Software-Erlöse.
 - **Risiko:** Harter Wettbewerb im China-EV- und Smartphone-Markt, regulatorische Eingriffe.
-- **Wochenstatus:** KW41: China frustriert weiter, bleibt liegen.
+- **Wochenstatus:** KW42: Gewinner der Woche (−6 → −3 %), während der US-Markt abverkauft wurde.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Riesige Nutzerbasis im HyperOS-Ökosystem und Kostenführerschaft; Marke stark in China und Schwellenländern. (Bewertung: **Mittel**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

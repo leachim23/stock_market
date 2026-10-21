@@ -1,7 +1,7 @@
-<!-- meta: {"ticker": "TIP", "name": "iShares TIPS Bond ETF", "depot": "beta", "block": "Liquidität · Anleihen", "alloc": 5, "last": "5 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": ""} -->
+<!-- meta: {"ticker": "TIP", "name": "iShares TIPS Bond ETF", "depot": "beta", "block": "Liquidität · Anleihen", "alloc": 5, "last": "5 %", "typ": "ETF", "pl": "", "moat": "n/a", "status": "EINSTEIGEN"} -->
 # iShares TIPS Bond ETF (TIP)
 
-> **Beta-Depot** · Liquidität · Anleihen · ETF
+> **Beta-Depot** · Liquidität · Anleihen · ETF · Status: `EINSTEIGEN`
 
 ## 📊 Depot-Kennzahlen
 - **Depot-Anteil:** 5 % im Beta-Depot (Klassifizierung: Beta-Core)
@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 6 % | 6 % | – | 5 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 6 % | 6 % | – | 5 % | 5 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Inflationsgeschützte US-Staatsanleihen – Nennwert steigt mit der Inflation; monatliche Ausschüttung.
 - **Risiko:** Realzins-/Durationsrisiko (~6 Jahre). Becker erwartet keine steigenden Inflationserwartungen mehr.
-- **Wochenstatus:** KW41: läuft schlecht, bleibt aber vorerst im Depot.
+- **Wochenstatus:** KW42: hielt sich im Abverkauf im Plus; Euro-Liquidität soll schrittweise in TLT und TIP wandern.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 > Fonds/ETC: Der Buffett-Check bewertet hier den Korb bzw. das Underlying, nicht ein Einzelunternehmen.
@@ -30,11 +30,11 @@
 ## 🌊 Der Balthasar Becker Zyklus-Check (Makro & Asymmetrie)
 - **Korrelation mit Globaler Liquidität:** Mittel – profitiert von fallenden Realzinsen.
 - **Asymmetrisches Risikoprofil:** Nein.
-- **Antizyklischer Status:** Läuft schwach – These (steigende Inflationserwartung) schwächt sich ab.
+- **Antizyklischer Status:** Hielt sich im Abverkauf im Plus.
 
 ## 📌 Eigene Notizen & Kauf-/Verkaufslimits
 - *Mein Fairer Wert (Intrinsic Value):* n/a
-- *Nachkaufmarke bei Liquiditäts-Dip:* Verkaufskandidat (Becker)
+- *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*

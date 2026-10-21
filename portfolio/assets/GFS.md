@@ -11,14 +11,14 @@
 
 **Gewichtungsverlauf**
 
-| KW 38 | KW 39 | KW 40 | KW 41 |
-|---|---|---|---|
-| 2 % | – | – | 2 % |
+| KW 38 | KW 39 | KW 40 | KW 41 | KW 42 |
+|---|---|---|---|---|
+| 2 % | – | – | 2 % | 2 % |
 
 ## 🗣️ Einschätzung Balthasar Becker (Quelle: PDF)
 - **Chance:** Foundry für Silicon-Photonics- und Connectivity-Chips mit Produktion außerhalb China/Taiwan. Erholt sich laut Recap KW40.
 - **Risiko:** Kapitalintensiv und zyklisch; liegt seit Einstieg im Minus.
-- **Wochenstatus:** KW41: soll sich weiter erholen.
+- **Wochenstatus:** KW42: unverändert −9 % – einziger Wert im Block, der sich nicht verschlechtert hat.
 
 ## 🏛️ Das Warren Buffett Fundament (Value Check)
 - **Burggraben (Economic Moat):** Kein Leading-Edge-Prozess; Vorteil nur über 'Made in USA/EU' und Spezialprozesse. (Bewertung: **Schwach**)
@@ -35,4 +35,4 @@
 - *Nachkaufmarke bei Liquiditäts-Dip:* [eigene Eingabe]
 
 ---
-[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 09.10.2026 (KW 41)*
+[⬅️ Dashboard](../index.md) | *Keine Anlageberatung. Stand: 16.10.2026 (KW 42)*
